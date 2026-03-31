@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.4.11620.152 stable
+VisualStudioVersion = 18.4.11620.152
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AutoAdornos.Core.Database", "AutoAdornos.Core.Database\AutoAdornos.Core.Database.sqlproj", "{618E5697-A538-45FF-A4F3-0EDBFF471554}"
 EndProject
@@ -102,6 +102,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Integracion.Sincronizador",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Integracion.API", "Integracion.WebServices\Integracion.API.csproj", "{AB7AFF21-9440-447C-9DA2-8F3FB61A667F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoAdornos.Caja.UI", "AutoAdornos.Caja.UI\AutoAdornos.Caja.UI.csproj", "{C856CE0F-7BA2-49A6-9D15-306AAD184FDC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -142,6 +144,10 @@ Global
 		{AB7AFF21-9440-447C-9DA2-8F3FB61A667F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB7AFF21-9440-447C-9DA2-8F3FB61A667F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB7AFF21-9440-447C-9DA2-8F3FB61A667F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C856CE0F-7BA2-49A6-9D15-306AAD184FDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C856CE0F-7BA2-49A6-9D15-306AAD184FDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C856CE0F-7BA2-49A6-9D15-306AAD184FDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C856CE0F-7BA2-49A6-9D15-306AAD184FDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

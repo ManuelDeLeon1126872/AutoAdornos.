@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AutoAdornos_CajaLocalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblFacturaDetalleLocal">
+          <Key>
+            <PropertyRef Name="IdDetalle" />
+          </Key>
+          <Property Name="IdDetalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdFactura" Type="int" />
+          <Property Name="IdProducto" Type="int" />
+          <Property Name="Cantidad" Type="int" />
+          <Property Name="PrecioUnitario" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="tblFacturaLocal">
+          <Key>
+            <PropertyRef Name="IdFactura" />
+          </Key>
+          <Property Name="IdFactura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="CedulaCliente" Type="nvarchar" MaxLength="20" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="EnviadoAIntegracion" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblProductoCache">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdProducto" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="Precio" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Stock" Type="int" />
+        </EntityType>
+        <Association Name="FK__tblFactur__IdFac__4F7CD00D">
+          <End Role="tblFacturaLocal" Type="Self.tblFacturaLocal" Multiplicity="0..1" />
+          <End Role="tblFacturaDetalleLocal" Type="Self.tblFacturaDetalleLocal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFacturaLocal">
+              <PropertyRef Name="IdFactura" />
+            </Principal>
+            <Dependent Role="tblFacturaDetalleLocal">
+              <PropertyRef Name="IdFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AutoAdornos_CajaLocalModelStoreContainer">
+          <EntitySet Name="tblFacturaDetalleLocal" EntityType="Self.tblFacturaDetalleLocal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFacturaLocal" EntityType="Self.tblFacturaLocal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProductoCache" EntityType="Self.tblProductoCache" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tblFactur__IdFac__4F7CD00D" Association="Self.FK__tblFactur__IdFac__4F7CD00D">
+            <End Role="tblFacturaLocal" EntitySet="tblFacturaLocal" />
+            <End Role="tblFacturaDetalleLocal" EntitySet="tblFacturaDetalleLocal" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AutoAdornos_CajaLocalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblFacturaDetalleLocal">
+          <Key>
+            <PropertyRef Name="IdDetalle" />
+          </Key>
+          <Property Name="IdDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdFactura" Type="Int32" />
+          <Property Name="IdProducto" Type="Int32" />
+          <Property Name="Cantidad" Type="Int32" />
+          <Property Name="PrecioUnitario" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="tblFacturaLocal" Relationship="Self.FK__tblFactur__IdFac__4F7CD00D" FromRole="tblFacturaDetalleLocal" ToRole="tblFacturaLocal" />
+        </EntityType>
+        <EntityType Name="tblFacturaLocal">
+          <Key>
+            <PropertyRef Name="IdFactura" />
+          </Key>
+          <Property Name="IdFactura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="CedulaCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Total" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="EnviadoAIntegracion" Type="Boolean" />
+          <NavigationProperty Name="tblFacturaDetalleLocals" Relationship="Self.FK__tblFactur__IdFac__4F7CD00D" FromRole="tblFacturaLocal" ToRole="tblFacturaDetalleLocal" />
+        </EntityType>
+        <EntityType Name="tblProductoCache">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Stock" Type="Int32" />
+        </EntityType>
+        <Association Name="FK__tblFactur__IdFac__4F7CD00D">
+          <End Role="tblFacturaLocal" Type="Self.tblFacturaLocal" Multiplicity="0..1" />
+          <End Role="tblFacturaDetalleLocal" Type="Self.tblFacturaDetalleLocal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFacturaLocal">
+              <PropertyRef Name="IdFactura" />
+            </Principal>
+            <Dependent Role="tblFacturaDetalleLocal">
+              <PropertyRef Name="IdFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AutoAdornos_CajaLocalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblFacturaDetalleLocals" EntityType="Self.tblFacturaDetalleLocal" />
+          <EntitySet Name="tblFacturaLocals" EntityType="Self.tblFacturaLocal" />
+          <EntitySet Name="tblProductoCaches" EntityType="Self.tblProductoCache" />
+          <AssociationSet Name="FK__tblFactur__IdFac__4F7CD00D" Association="Self.FK__tblFactur__IdFac__4F7CD00D">
+            <End Role="tblFacturaLocal" EntitySet="tblFacturaLocals" />
+            <End Role="tblFacturaDetalleLocal" EntitySet="tblFacturaDetalleLocals" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AutoAdornos_CajaLocalModelStoreContainer" CdmEntityContainer="AutoAdornos_CajaLocalEntities">
+          <EntitySetMapping Name="tblFacturaDetalleLocals">
+            <EntityTypeMapping TypeName="AutoAdornos_CajaLocalModel.tblFacturaDetalleLocal">
+              <MappingFragment StoreEntitySet="tblFacturaDetalleLocal">
+                <ScalarProperty Name="IdDetalle" ColumnName="IdDetalle" />
+                <ScalarProperty Name="IdFactura" ColumnName="IdFactura" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="PrecioUnitario" ColumnName="PrecioUnitario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFacturaLocals">
+            <EntityTypeMapping TypeName="AutoAdornos_CajaLocalModel.tblFacturaLocal">
+              <MappingFragment StoreEntitySet="tblFacturaLocal">
+                <ScalarProperty Name="IdFactura" ColumnName="IdFactura" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="CedulaCliente" ColumnName="CedulaCliente" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="EnviadoAIntegracion" ColumnName="EnviadoAIntegracion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProductoCaches">
+            <EntityTypeMapping TypeName="AutoAdornos_CajaLocalModel.tblProductoCache">
+              <MappingFragment StoreEntitySet="tblProductoCache">
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
