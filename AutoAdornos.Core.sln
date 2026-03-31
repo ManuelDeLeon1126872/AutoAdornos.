@@ -1,0 +1,165 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.4.11620.152 stable
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AutoAdornos.Core.Database", "AutoAdornos.Core.Database\AutoAdornos.Core.Database.sqlproj", "{618E5697-A538-45FF-A4F3-0EDBFF471554}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tables", "Tables", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		tblAuditoria.sql = tblAuditoria.sql
+		tblCliente.sql = tblCliente.sql
+		tblFactura.sql = tblFactura.sql
+		tblFacturaDetalle.sql = tblFacturaDetalle.sql
+		tblLogServicio.sql = tblLogServicio.sql
+		tblMovimientoInventario.sql = tblMovimientoInventario.sql
+		tblPerfil.sql = tblPerfil.sql
+		tblProducto.sql = tblProducto.sql
+		tblServicio.sql = tblServicio.sql
+		tblSucursal.sql = tblSucursal.sql
+		tblSuplidor.sql = tblSuplidor.sql
+		tblUsuario.sql = tblUsuario.sql
+		tblUsuarioPerfil.sql = tblUsuarioPerfil.sql
+		tblVehiculo.sql = tblVehiculo.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stored Procedures", "Stored Procedures", "{59A20F49-D96E-48F1-874E-CF089ECBE720}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{277DAD65-3CD7-48EF-9BF6-24D829FAAA91}"
+	ProjectSection(SolutionItems) = preProject
+		Relaciones.sql = Relaciones.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Seed", "Seed", "{6807AAEF-F5F5-41FF-BFBD-7A98E3000481}"
+	ProjectSection(SolutionItems) = preProject
+		DatosIniciales.sql = DatosIniciales.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Seguridad", "Seguridad", "{88A085F0-D7C9-42ED-8D59-F4A3FE14E4A4}"
+	ProjectSection(SolutionItems) = preProject
+		sp_ValidarUsuario.sql = sp_ValidarUsuario.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clientes", "Clientes", "{EE2C6ECA-C278-4035-B072-4AABFDE325B1}"
+	ProjectSection(SolutionItems) = preProject
+		sp_BuscarClientePorCedulaRNC.sql = sp_BuscarClientePorCedulaRNC.sql
+		sp_BuscarClientePorId.sql = sp_BuscarClientePorId.sql
+		sp_InsertarCliente.sql = sp_InsertarCliente.sql
+		sp_ListarClientes.sql = sp_ListarClientes.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Vehiculos", "Vehiculos", "{1E9FD762-50BF-456A-BE20-2224FC80C2A3}"
+	ProjectSection(SolutionItems) = preProject
+		sp_InsertarVehiculo.sql = sp_InsertarVehiculo.sql
+		sp_ListarVehiculosPorCliente.sql = sp_ListarVehiculosPorCliente.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalogos", "Catalogos", "{088C9274-E6B7-4600-B251-3602A995F2A3}"
+	ProjectSection(SolutionItems) = preProject
+		sp_BuscarProductoPorId.sql = sp_BuscarProductoPorId.sql
+		sp_ListarProductos.sql = sp_ListarProductos.sql
+		sp_ListarServicios.sql = sp_ListarServicios.sql
+		sp_ListarSucursales.sql = sp_ListarSucursales.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Inventario", "Inventario", "{247E31B0-B31B-4A5D-8FB4-1C10BF29CE2C}"
+	ProjectSection(SolutionItems) = preProject
+		sp_RegistrarMovimientoInventario.sql = sp_RegistrarMovimientoInventario.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Facturacion", "Facturacion", "{19DAF3FA-AEBD-4BE4-B0A6-9EE1A63D0287}"
+	ProjectSection(SolutionItems) = preProject
+		sp_ConsultarFacturaPorId.sql = sp_ConsultarFacturaPorId.sql
+		sp_InsertarFactura.sql = sp_InsertarFactura.sql
+		sp_InsertarFacturaDetalle.sql = sp_InsertarFacturaDetalle.sql
+		sp_ListarFacturas.sql = sp_ListarFacturas.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Auditoria", "Auditoria", "{CD276219-3927-4BE3-AE01-09D18C7ABD8A}"
+	ProjectSection(SolutionItems) = preProject
+		sp_InsertarAuditoria.sql = sp_InsertarAuditoria.sql
+		sp_InsertarLogServicio.sql = sp_InsertarLogServicio.sql
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoAdornos.Core.Data", "AutoAdornos.Core.Data\AutoAdornos.Core.Data.csproj", "{A733F986-3350-4647-BCEE-31F3E9155679}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoAdornos.Core.Business", "AutoAdornos.Core.Business\AutoAdornos.Core.Business.csproj", "{0E902A50-D12E-4D28-8777-61F5678B1CA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoAdornos.Core.TestApp", "AutoAdornos.Core.TestApp\AutoAdornos.Core.TestApp.csproj", "{989D768D-42AA-4E5B-963C-BBFFAF26C7C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoAdornos.Core.Services", "AutoAdornos.Core.Services\AutoAdornos.Core.Services.csproj", "{8E254AC6-C11A-4A9D-BB78-91679D7B3984}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseScripts", "DatabaseScripts", "{F149149B-77E6-42A4-8E0B-2200D62F3DE0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Indicaciones", "Indicaciones", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		Indicaciones(README).txt = Indicaciones(README).txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Integracion.Datos", "Integracion.Datos\Integracion.Datos.csproj", "{E07EFD3D-B9EB-4436-B074-168F90A33C22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Integracion.Sincronizador", "Integracion.Sincronizador\Integracion.Sincronizador.csproj", "{3F4DF348-B95B-437A-B112-2B9D476DBAA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Integracion.API", "Integracion.WebServices\Integracion.API.csproj", "{AB7AFF21-9440-447C-9DA2-8F3FB61A667F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{618E5697-A538-45FF-A4F3-0EDBFF471554}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{618E5697-A538-45FF-A4F3-0EDBFF471554}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{618E5697-A538-45FF-A4F3-0EDBFF471554}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{618E5697-A538-45FF-A4F3-0EDBFF471554}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{618E5697-A538-45FF-A4F3-0EDBFF471554}.Release|Any CPU.Build.0 = Release|Any CPU
+		{618E5697-A538-45FF-A4F3-0EDBFF471554}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{A733F986-3350-4647-BCEE-31F3E9155679}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A733F986-3350-4647-BCEE-31F3E9155679}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A733F986-3350-4647-BCEE-31F3E9155679}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A733F986-3350-4647-BCEE-31F3E9155679}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E902A50-D12E-4D28-8777-61F5678B1CA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E902A50-D12E-4D28-8777-61F5678B1CA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E902A50-D12E-4D28-8777-61F5678B1CA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E902A50-D12E-4D28-8777-61F5678B1CA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{989D768D-42AA-4E5B-963C-BBFFAF26C7C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{989D768D-42AA-4E5B-963C-BBFFAF26C7C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{989D768D-42AA-4E5B-963C-BBFFAF26C7C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{989D768D-42AA-4E5B-963C-BBFFAF26C7C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E254AC6-C11A-4A9D-BB78-91679D7B3984}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E254AC6-C11A-4A9D-BB78-91679D7B3984}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E254AC6-C11A-4A9D-BB78-91679D7B3984}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E254AC6-C11A-4A9D-BB78-91679D7B3984}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E07EFD3D-B9EB-4436-B074-168F90A33C22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E07EFD3D-B9EB-4436-B074-168F90A33C22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E07EFD3D-B9EB-4436-B074-168F90A33C22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E07EFD3D-B9EB-4436-B074-168F90A33C22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F4DF348-B95B-437A-B112-2B9D476DBAA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F4DF348-B95B-437A-B112-2B9D476DBAA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F4DF348-B95B-437A-B112-2B9D476DBAA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F4DF348-B95B-437A-B112-2B9D476DBAA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB7AFF21-9440-447C-9DA2-8F3FB61A667F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB7AFF21-9440-447C-9DA2-8F3FB61A667F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB7AFF21-9440-447C-9DA2-8F3FB61A667F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB7AFF21-9440-447C-9DA2-8F3FB61A667F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {F149149B-77E6-42A4-8E0B-2200D62F3DE0}
+		{59A20F49-D96E-48F1-874E-CF089ECBE720} = {F149149B-77E6-42A4-8E0B-2200D62F3DE0}
+		{277DAD65-3CD7-48EF-9BF6-24D829FAAA91} = {F149149B-77E6-42A4-8E0B-2200D62F3DE0}
+		{6807AAEF-F5F5-41FF-BFBD-7A98E3000481} = {F149149B-77E6-42A4-8E0B-2200D62F3DE0}
+		{88A085F0-D7C9-42ED-8D59-F4A3FE14E4A4} = {59A20F49-D96E-48F1-874E-CF089ECBE720}
+		{EE2C6ECA-C278-4035-B072-4AABFDE325B1} = {59A20F49-D96E-48F1-874E-CF089ECBE720}
+		{1E9FD762-50BF-456A-BE20-2224FC80C2A3} = {59A20F49-D96E-48F1-874E-CF089ECBE720}
+		{088C9274-E6B7-4600-B251-3602A995F2A3} = {59A20F49-D96E-48F1-874E-CF089ECBE720}
+		{247E31B0-B31B-4A5D-8FB4-1C10BF29CE2C} = {59A20F49-D96E-48F1-874E-CF089ECBE720}
+		{19DAF3FA-AEBD-4BE4-B0A6-9EE1A63D0287} = {59A20F49-D96E-48F1-874E-CF089ECBE720}
+		{CD276219-3927-4BE3-AE01-09D18C7ABD8A} = {59A20F49-D96E-48F1-874E-CF089ECBE720}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E646D54B-425C-493E-8B98-049CAB225B99}
+	EndGlobalSection
+EndGlobal

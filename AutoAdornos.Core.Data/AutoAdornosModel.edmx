@@ -1,0 +1,1470 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBAutoAdornosCoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblAuditoria">
+          <Key>
+            <PropertyRef Name="IdAuditoria" />
+          </Key>
+          <Property Name="IdAuditoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="Modulo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Accion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCliente">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CedulaRNC" Type="nvarchar" MaxLength="20" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="20" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="200" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="EsAnonimo" Type="bit" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblFactura">
+          <Key>
+            <PropertyRef Name="IdFactura" />
+          </Key>
+          <Property Name="IdFactura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCliente" Type="int" Nullable="false" />
+          <Property Name="IdVehiculo" Type="int" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="IdSucursal" Type="int" Nullable="false" />
+          <Property Name="CanalVenta" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Subtotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Impuesto" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblFacturaDetalle">
+          <Key>
+            <PropertyRef Name="IdFacturaDetalle" />
+          </Key>
+          <Property Name="IdFacturaDetalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdFactura" Type="int" Nullable="false" />
+          <Property Name="IdProducto" Type="int" />
+          <Property Name="IdServicio" Type="int" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="Precio" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Importe" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblLogServicio">
+          <Key>
+            <PropertyRef Name="IdLogServicio" />
+          </Key>
+          <Property Name="IdLogServicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Servicio" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Parametros" Type="nvarchar(max)" />
+          <Property Name="Respuesta" Type="nvarchar(max)" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblMovimientoInventario">
+          <Key>
+            <PropertyRef Name="IdMovimientoInventario" />
+          </Key>
+          <Property Name="IdMovimientoInventario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProducto" Type="int" Nullable="false" />
+          <Property Name="IdSucursal" Type="int" Nullable="false" />
+          <Property Name="TipoMovimiento" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Observacion" Type="nvarchar" MaxLength="200" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPerfil">
+          <Key>
+            <PropertyRef Name="IdPerfil" />
+          </Key>
+          <Property Name="IdPerfil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombrePerfil" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="150" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblProducto">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Precio" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Existencia" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblServicio">
+          <Key>
+            <PropertyRef Name="IdServicio" />
+          </Key>
+          <Property Name="IdServicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Precio" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSucursal">
+          <Key>
+            <PropertyRef Name="IdSucursal" />
+          </Key>
+          <Property Name="IdSucursal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="200" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="20" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSuplidor">
+          <Key>
+            <PropertyRef Name="IdSuplidor" />
+          </Key>
+          <Property Name="IdSuplidor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="RNC" Type="nvarchar" MaxLength="20" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="20" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="200" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUsuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreUsuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Clave" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="NombreCompleto" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUsuarioPerfil">
+          <Key>
+            <PropertyRef Name="IdUsuarioPerfil" />
+          </Key>
+          <Property Name="IdUsuarioPerfil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="IdPerfil" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblVehiculo">
+          <Key>
+            <PropertyRef Name="IdVehiculo" />
+          </Key>
+          <Property Name="IdVehiculo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCliente" Type="int" Nullable="false" />
+          <Property Name="Marca" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Modelo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Anio" Type="int" />
+          <Property Name="Placa" Type="nvarchar" MaxLength="20" />
+          <Property Name="Color" Type="nvarchar" MaxLength="30" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tblAuditoria_tblUsuario">
+          <End Role="tblUsuario" Type="Self.tblUsuario" Multiplicity="1" />
+          <End Role="tblAuditoria" Type="Self.tblAuditoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="tblAuditoria">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblFactura_tblCliente">
+          <End Role="tblCliente" Type="Self.tblCliente" Multiplicity="1" />
+          <End Role="tblFactura" Type="Self.tblFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCliente">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="tblFactura">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblFactura_tblSucursal">
+          <End Role="tblSucursal" Type="Self.tblSucursal" Multiplicity="1" />
+          <End Role="tblFactura" Type="Self.tblFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSucursal">
+              <PropertyRef Name="IdSucursal" />
+            </Principal>
+            <Dependent Role="tblFactura">
+              <PropertyRef Name="IdSucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblFactura_tblUsuario">
+          <End Role="tblUsuario" Type="Self.tblUsuario" Multiplicity="1" />
+          <End Role="tblFactura" Type="Self.tblFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="tblFactura">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblFactura_tblVehiculo">
+          <End Role="tblVehiculo" Type="Self.tblVehiculo" Multiplicity="0..1" />
+          <End Role="tblFactura" Type="Self.tblFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVehiculo">
+              <PropertyRef Name="IdVehiculo" />
+            </Principal>
+            <Dependent Role="tblFactura">
+              <PropertyRef Name="IdVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblFacturaDetalle_tblFactura">
+          <End Role="tblFactura" Type="Self.tblFactura" Multiplicity="1" />
+          <End Role="tblFacturaDetalle" Type="Self.tblFacturaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFactura">
+              <PropertyRef Name="IdFactura" />
+            </Principal>
+            <Dependent Role="tblFacturaDetalle">
+              <PropertyRef Name="IdFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblFacturaDetalle_tblProducto">
+          <End Role="tblProducto" Type="Self.tblProducto" Multiplicity="0..1" />
+          <End Role="tblFacturaDetalle" Type="Self.tblFacturaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProducto">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="tblFacturaDetalle">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblFacturaDetalle_tblServicio">
+          <End Role="tblServicio" Type="Self.tblServicio" Multiplicity="0..1" />
+          <End Role="tblFacturaDetalle" Type="Self.tblFacturaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblServicio">
+              <PropertyRef Name="IdServicio" />
+            </Principal>
+            <Dependent Role="tblFacturaDetalle">
+              <PropertyRef Name="IdServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMovimientoInventario_tblProducto">
+          <End Role="tblProducto" Type="Self.tblProducto" Multiplicity="1" />
+          <End Role="tblMovimientoInventario" Type="Self.tblMovimientoInventario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProducto">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="tblMovimientoInventario">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMovimientoInventario_tblSucursal">
+          <End Role="tblSucursal" Type="Self.tblSucursal" Multiplicity="1" />
+          <End Role="tblMovimientoInventario" Type="Self.tblMovimientoInventario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSucursal">
+              <PropertyRef Name="IdSucursal" />
+            </Principal>
+            <Dependent Role="tblMovimientoInventario">
+              <PropertyRef Name="IdSucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMovimientoInventario_tblUsuario">
+          <End Role="tblUsuario" Type="Self.tblUsuario" Multiplicity="1" />
+          <End Role="tblMovimientoInventario" Type="Self.tblMovimientoInventario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="tblMovimientoInventario">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUsuarioPerfil_tblPerfil">
+          <End Role="tblPerfil" Type="Self.tblPerfil" Multiplicity="1" />
+          <End Role="tblUsuarioPerfil" Type="Self.tblUsuarioPerfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPerfil">
+              <PropertyRef Name="IdPerfil" />
+            </Principal>
+            <Dependent Role="tblUsuarioPerfil">
+              <PropertyRef Name="IdPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUsuarioPerfil_tblUsuario">
+          <End Role="tblUsuario" Type="Self.tblUsuario" Multiplicity="1" />
+          <End Role="tblUsuarioPerfil" Type="Self.tblUsuarioPerfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="tblUsuarioPerfil">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVehiculo_tblCliente">
+          <End Role="tblCliente" Type="Self.tblCliente" Multiplicity="1" />
+          <End Role="tblVehiculo" Type="Self.tblVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCliente">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="tblVehiculo">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_BuscarClientePorCedulaRNC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CedulaRNC" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_BuscarClientePorId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdCliente" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_BuscarProductoPorId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdProducto" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_ConsultarFacturaPorId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdFactura" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertarAuditoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdUsuario" Type="int" Mode="In" />
+          <Parameter Name="Modulo" Type="nvarchar" Mode="In" />
+          <Parameter Name="Accion" Type="nvarchar" Mode="In" />
+          <Parameter Name="Descripcion" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="CedulaRNC" Type="nvarchar" Mode="In" />
+          <Parameter Name="Telefono" Type="nvarchar" Mode="In" />
+          <Parameter Name="Direccion" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="EsAnonimo" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertarFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdCliente" Type="int" Mode="In" />
+          <Parameter Name="IdVehiculo" Type="int" Mode="In" />
+          <Parameter Name="IdUsuario" Type="int" Mode="In" />
+          <Parameter Name="IdSucursal" Type="int" Mode="In" />
+          <Parameter Name="CanalVenta" Type="nvarchar" Mode="In" />
+          <Parameter Name="Subtotal" Type="decimal" Mode="In" />
+          <Parameter Name="Impuesto" Type="decimal" Mode="In" />
+          <Parameter Name="Total" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertarFacturaDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdFactura" Type="int" Mode="In" />
+          <Parameter Name="IdProducto" Type="int" Mode="In" />
+          <Parameter Name="IdServicio" Type="int" Mode="In" />
+          <Parameter Name="Cantidad" Type="int" Mode="In" />
+          <Parameter Name="Precio" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertarLogServicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Servicio" Type="nvarchar" Mode="In" />
+          <Parameter Name="Parametros" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Respuesta" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertarVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdCliente" Type="int" Mode="In" />
+          <Parameter Name="Marca" Type="nvarchar" Mode="In" />
+          <Parameter Name="Modelo" Type="nvarchar" Mode="In" />
+          <Parameter Name="Anio" Type="int" Mode="In" />
+          <Parameter Name="Placa" Type="nvarchar" Mode="In" />
+          <Parameter Name="Color" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ListarClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_ListarFacturas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_ListarProductos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_ListarServicios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_ListarSucursales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_ListarVehiculosPorCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdCliente" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_RegistrarMovimientoInventario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdProducto" Type="int" Mode="In" />
+          <Parameter Name="IdSucursal" Type="int" Mode="In" />
+          <Parameter Name="TipoMovimiento" Type="nvarchar" Mode="In" />
+          <Parameter Name="Cantidad" Type="int" Mode="In" />
+          <Parameter Name="Observacion" Type="nvarchar" Mode="In" />
+          <Parameter Name="IdUsuario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_ValidarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NombreUsuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="Clave" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="DBAutoAdornosCoreModelStoreContainer">
+          <EntitySet Name="tblAuditoria" EntityType="Self.tblAuditoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCliente" EntityType="Self.tblCliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFactura" EntityType="Self.tblFactura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFacturaDetalle" EntityType="Self.tblFacturaDetalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLogServicio" EntityType="Self.tblLogServicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMovimientoInventario" EntityType="Self.tblMovimientoInventario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPerfil" EntityType="Self.tblPerfil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProducto" EntityType="Self.tblProducto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblServicio" EntityType="Self.tblServicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSucursal" EntityType="Self.tblSucursal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSuplidor" EntityType="Self.tblSuplidor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUsuario" EntityType="Self.tblUsuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUsuarioPerfil" EntityType="Self.tblUsuarioPerfil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVehiculo" EntityType="Self.tblVehiculo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tblAuditoria_tblUsuario" Association="Self.FK_tblAuditoria_tblUsuario">
+            <End Role="tblUsuario" EntitySet="tblUsuario" />
+            <End Role="tblAuditoria" EntitySet="tblAuditoria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblFactura_tblCliente" Association="Self.FK_tblFactura_tblCliente">
+            <End Role="tblCliente" EntitySet="tblCliente" />
+            <End Role="tblFactura" EntitySet="tblFactura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblFactura_tblSucursal" Association="Self.FK_tblFactura_tblSucursal">
+            <End Role="tblSucursal" EntitySet="tblSucursal" />
+            <End Role="tblFactura" EntitySet="tblFactura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblFactura_tblUsuario" Association="Self.FK_tblFactura_tblUsuario">
+            <End Role="tblUsuario" EntitySet="tblUsuario" />
+            <End Role="tblFactura" EntitySet="tblFactura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblFactura_tblVehiculo" Association="Self.FK_tblFactura_tblVehiculo">
+            <End Role="tblVehiculo" EntitySet="tblVehiculo" />
+            <End Role="tblFactura" EntitySet="tblFactura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblFacturaDetalle_tblFactura" Association="Self.FK_tblFacturaDetalle_tblFactura">
+            <End Role="tblFactura" EntitySet="tblFactura" />
+            <End Role="tblFacturaDetalle" EntitySet="tblFacturaDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblFacturaDetalle_tblProducto" Association="Self.FK_tblFacturaDetalle_tblProducto">
+            <End Role="tblProducto" EntitySet="tblProducto" />
+            <End Role="tblFacturaDetalle" EntitySet="tblFacturaDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblFacturaDetalle_tblServicio" Association="Self.FK_tblFacturaDetalle_tblServicio">
+            <End Role="tblServicio" EntitySet="tblServicio" />
+            <End Role="tblFacturaDetalle" EntitySet="tblFacturaDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMovimientoInventario_tblProducto" Association="Self.FK_tblMovimientoInventario_tblProducto">
+            <End Role="tblProducto" EntitySet="tblProducto" />
+            <End Role="tblMovimientoInventario" EntitySet="tblMovimientoInventario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMovimientoInventario_tblSucursal" Association="Self.FK_tblMovimientoInventario_tblSucursal">
+            <End Role="tblSucursal" EntitySet="tblSucursal" />
+            <End Role="tblMovimientoInventario" EntitySet="tblMovimientoInventario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMovimientoInventario_tblUsuario" Association="Self.FK_tblMovimientoInventario_tblUsuario">
+            <End Role="tblUsuario" EntitySet="tblUsuario" />
+            <End Role="tblMovimientoInventario" EntitySet="tblMovimientoInventario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUsuarioPerfil_tblPerfil" Association="Self.FK_tblUsuarioPerfil_tblPerfil">
+            <End Role="tblPerfil" EntitySet="tblPerfil" />
+            <End Role="tblUsuarioPerfil" EntitySet="tblUsuarioPerfil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUsuarioPerfil_tblUsuario" Association="Self.FK_tblUsuarioPerfil_tblUsuario">
+            <End Role="tblUsuario" EntitySet="tblUsuario" />
+            <End Role="tblUsuarioPerfil" EntitySet="tblUsuarioPerfil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVehiculo_tblCliente" Association="Self.FK_tblVehiculo_tblCliente">
+            <End Role="tblCliente" EntitySet="tblCliente" />
+            <End Role="tblVehiculo" EntitySet="tblVehiculo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBAutoAdornosCoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblAuditoria">
+          <Key>
+            <PropertyRef Name="IdAuditoria" />
+          </Key>
+          <Property Name="IdAuditoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="Modulo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Accion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tblUsuario" Relationship="Self.FK_tblAuditoria_tblUsuario" FromRole="tblAuditoria" ToRole="tblUsuario" />
+        </EntityType>
+        <EntityType Name="tblCliente">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CedulaRNC" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EsAnonimo" Type="Boolean" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tblFacturas" Relationship="Self.FK_tblFactura_tblCliente" FromRole="tblCliente" ToRole="tblFactura" />
+          <NavigationProperty Name="tblVehiculoes" Relationship="Self.FK_tblVehiculo_tblCliente" FromRole="tblCliente" ToRole="tblVehiculo" />
+        </EntityType>
+        <EntityType Name="tblFactura">
+          <Key>
+            <PropertyRef Name="IdFactura" />
+          </Key>
+          <Property Name="IdFactura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCliente" Type="Int32" Nullable="false" />
+          <Property Name="IdVehiculo" Type="Int32" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="IdSucursal" Type="Int32" Nullable="false" />
+          <Property Name="CanalVenta" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Subtotal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Impuesto" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tblCliente" Relationship="Self.FK_tblFactura_tblCliente" FromRole="tblFactura" ToRole="tblCliente" />
+          <NavigationProperty Name="tblSucursal" Relationship="Self.FK_tblFactura_tblSucursal" FromRole="tblFactura" ToRole="tblSucursal" />
+          <NavigationProperty Name="tblUsuario" Relationship="Self.FK_tblFactura_tblUsuario" FromRole="tblFactura" ToRole="tblUsuario" />
+          <NavigationProperty Name="tblVehiculo" Relationship="Self.FK_tblFactura_tblVehiculo" FromRole="tblFactura" ToRole="tblVehiculo" />
+          <NavigationProperty Name="tblFacturaDetalles" Relationship="Self.FK_tblFacturaDetalle_tblFactura" FromRole="tblFactura" ToRole="tblFacturaDetalle" />
+        </EntityType>
+        <EntityType Name="tblFacturaDetalle">
+          <Key>
+            <PropertyRef Name="IdFacturaDetalle" />
+          </Key>
+          <Property Name="IdFacturaDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdFactura" Type="Int32" Nullable="false" />
+          <Property Name="IdProducto" Type="Int32" />
+          <Property Name="IdServicio" Type="Int32" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Importe" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <NavigationProperty Name="tblFactura" Relationship="Self.FK_tblFacturaDetalle_tblFactura" FromRole="tblFacturaDetalle" ToRole="tblFactura" />
+          <NavigationProperty Name="tblProducto" Relationship="Self.FK_tblFacturaDetalle_tblProducto" FromRole="tblFacturaDetalle" ToRole="tblProducto" />
+          <NavigationProperty Name="tblServicio" Relationship="Self.FK_tblFacturaDetalle_tblServicio" FromRole="tblFacturaDetalle" ToRole="tblServicio" />
+        </EntityType>
+        <EntityType Name="tblLogServicio">
+          <Key>
+            <PropertyRef Name="IdLogServicio" />
+          </Key>
+          <Property Name="IdLogServicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Servicio" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Parametros" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Respuesta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblMovimientoInventario">
+          <Key>
+            <PropertyRef Name="IdMovimientoInventario" />
+          </Key>
+          <Property Name="IdMovimientoInventario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
+          <Property Name="IdSucursal" Type="Int32" Nullable="false" />
+          <Property Name="TipoMovimiento" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Observacion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblProducto" Relationship="Self.FK_tblMovimientoInventario_tblProducto" FromRole="tblMovimientoInventario" ToRole="tblProducto" />
+          <NavigationProperty Name="tblSucursal" Relationship="Self.FK_tblMovimientoInventario_tblSucursal" FromRole="tblMovimientoInventario" ToRole="tblSucursal" />
+          <NavigationProperty Name="tblUsuario" Relationship="Self.FK_tblMovimientoInventario_tblUsuario" FromRole="tblMovimientoInventario" ToRole="tblUsuario" />
+        </EntityType>
+        <EntityType Name="tblPerfil">
+          <Key>
+            <PropertyRef Name="IdPerfil" />
+          </Key>
+          <Property Name="IdPerfil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombrePerfil" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblUsuarioPerfils" Relationship="Self.FK_tblUsuarioPerfil_tblPerfil" FromRole="tblPerfil" ToRole="tblUsuarioPerfil" />
+        </EntityType>
+        <EntityType Name="tblProducto">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Existencia" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tblFacturaDetalles" Relationship="Self.FK_tblFacturaDetalle_tblProducto" FromRole="tblProducto" ToRole="tblFacturaDetalle" />
+          <NavigationProperty Name="tblMovimientoInventarios" Relationship="Self.FK_tblMovimientoInventario_tblProducto" FromRole="tblProducto" ToRole="tblMovimientoInventario" />
+        </EntityType>
+        <EntityType Name="tblServicio">
+          <Key>
+            <PropertyRef Name="IdServicio" />
+          </Key>
+          <Property Name="IdServicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblFacturaDetalles" Relationship="Self.FK_tblFacturaDetalle_tblServicio" FromRole="tblServicio" ToRole="tblFacturaDetalle" />
+        </EntityType>
+        <EntityType Name="tblSucursal">
+          <Key>
+            <PropertyRef Name="IdSucursal" />
+          </Key>
+          <Property Name="IdSucursal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tblFacturas" Relationship="Self.FK_tblFactura_tblSucursal" FromRole="tblSucursal" ToRole="tblFactura" />
+          <NavigationProperty Name="tblMovimientoInventarios" Relationship="Self.FK_tblMovimientoInventario_tblSucursal" FromRole="tblSucursal" ToRole="tblMovimientoInventario" />
+        </EntityType>
+        <EntityType Name="tblSuplidor">
+          <Key>
+            <PropertyRef Name="IdSuplidor" />
+          </Key>
+          <Property Name="IdSuplidor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RNC" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblUsuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Clave" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NombreCompleto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tblAuditorias" Relationship="Self.FK_tblAuditoria_tblUsuario" FromRole="tblUsuario" ToRole="tblAuditoria" />
+          <NavigationProperty Name="tblFacturas" Relationship="Self.FK_tblFactura_tblUsuario" FromRole="tblUsuario" ToRole="tblFactura" />
+          <NavigationProperty Name="tblMovimientoInventarios" Relationship="Self.FK_tblMovimientoInventario_tblUsuario" FromRole="tblUsuario" ToRole="tblMovimientoInventario" />
+          <NavigationProperty Name="tblUsuarioPerfils" Relationship="Self.FK_tblUsuarioPerfil_tblUsuario" FromRole="tblUsuario" ToRole="tblUsuarioPerfil" />
+        </EntityType>
+        <EntityType Name="tblUsuarioPerfil">
+          <Key>
+            <PropertyRef Name="IdUsuarioPerfil" />
+          </Key>
+          <Property Name="IdUsuarioPerfil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="IdPerfil" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblPerfil" Relationship="Self.FK_tblUsuarioPerfil_tblPerfil" FromRole="tblUsuarioPerfil" ToRole="tblPerfil" />
+          <NavigationProperty Name="tblUsuario" Relationship="Self.FK_tblUsuarioPerfil_tblUsuario" FromRole="tblUsuarioPerfil" ToRole="tblUsuario" />
+        </EntityType>
+        <EntityType Name="tblVehiculo">
+          <Key>
+            <PropertyRef Name="IdVehiculo" />
+          </Key>
+          <Property Name="IdVehiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCliente" Type="Int32" Nullable="false" />
+          <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Anio" Type="Int32" />
+          <Property Name="Placa" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Color" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblCliente" Relationship="Self.FK_tblVehiculo_tblCliente" FromRole="tblVehiculo" ToRole="tblCliente" />
+          <NavigationProperty Name="tblFacturas" Relationship="Self.FK_tblFactura_tblVehiculo" FromRole="tblVehiculo" ToRole="tblFactura" />
+        </EntityType>
+        <Association Name="FK_tblAuditoria_tblUsuario">
+          <End Role="tblUsuario" Type="Self.tblUsuario" Multiplicity="1" />
+          <End Role="tblAuditoria" Type="Self.tblAuditoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="tblAuditoria">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblFactura_tblCliente">
+          <End Role="tblCliente" Type="Self.tblCliente" Multiplicity="1" />
+          <End Role="tblFactura" Type="Self.tblFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCliente">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="tblFactura">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVehiculo_tblCliente">
+          <End Role="tblCliente" Type="Self.tblCliente" Multiplicity="1" />
+          <End Role="tblVehiculo" Type="Self.tblVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCliente">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="tblVehiculo">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblFactura_tblSucursal">
+          <End Role="tblSucursal" Type="Self.tblSucursal" Multiplicity="1" />
+          <End Role="tblFactura" Type="Self.tblFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSucursal">
+              <PropertyRef Name="IdSucursal" />
+            </Principal>
+            <Dependent Role="tblFactura">
+              <PropertyRef Name="IdSucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblFactura_tblUsuario">
+          <End Role="tblUsuario" Type="Self.tblUsuario" Multiplicity="1" />
+          <End Role="tblFactura" Type="Self.tblFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="tblFactura">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblFactura_tblVehiculo">
+          <End Role="tblVehiculo" Type="Self.tblVehiculo" Multiplicity="0..1" />
+          <End Role="tblFactura" Type="Self.tblFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVehiculo">
+              <PropertyRef Name="IdVehiculo" />
+            </Principal>
+            <Dependent Role="tblFactura">
+              <PropertyRef Name="IdVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblFacturaDetalle_tblFactura">
+          <End Role="tblFactura" Type="Self.tblFactura" Multiplicity="1" />
+          <End Role="tblFacturaDetalle" Type="Self.tblFacturaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFactura">
+              <PropertyRef Name="IdFactura" />
+            </Principal>
+            <Dependent Role="tblFacturaDetalle">
+              <PropertyRef Name="IdFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblFacturaDetalle_tblProducto">
+          <End Role="tblProducto" Type="Self.tblProducto" Multiplicity="0..1" />
+          <End Role="tblFacturaDetalle" Type="Self.tblFacturaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProducto">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="tblFacturaDetalle">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblFacturaDetalle_tblServicio">
+          <End Role="tblServicio" Type="Self.tblServicio" Multiplicity="0..1" />
+          <End Role="tblFacturaDetalle" Type="Self.tblFacturaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblServicio">
+              <PropertyRef Name="IdServicio" />
+            </Principal>
+            <Dependent Role="tblFacturaDetalle">
+              <PropertyRef Name="IdServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMovimientoInventario_tblProducto">
+          <End Role="tblProducto" Type="Self.tblProducto" Multiplicity="1" />
+          <End Role="tblMovimientoInventario" Type="Self.tblMovimientoInventario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProducto">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="tblMovimientoInventario">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMovimientoInventario_tblSucursal">
+          <End Role="tblSucursal" Type="Self.tblSucursal" Multiplicity="1" />
+          <End Role="tblMovimientoInventario" Type="Self.tblMovimientoInventario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSucursal">
+              <PropertyRef Name="IdSucursal" />
+            </Principal>
+            <Dependent Role="tblMovimientoInventario">
+              <PropertyRef Name="IdSucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMovimientoInventario_tblUsuario">
+          <End Role="tblUsuario" Type="Self.tblUsuario" Multiplicity="1" />
+          <End Role="tblMovimientoInventario" Type="Self.tblMovimientoInventario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="tblMovimientoInventario">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUsuarioPerfil_tblPerfil">
+          <End Role="tblPerfil" Type="Self.tblPerfil" Multiplicity="1" />
+          <End Role="tblUsuarioPerfil" Type="Self.tblUsuarioPerfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPerfil">
+              <PropertyRef Name="IdPerfil" />
+            </Principal>
+            <Dependent Role="tblUsuarioPerfil">
+              <PropertyRef Name="IdPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUsuarioPerfil_tblUsuario">
+          <End Role="tblUsuario" Type="Self.tblUsuario" Multiplicity="1" />
+          <End Role="tblUsuarioPerfil" Type="Self.tblUsuarioPerfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="tblUsuarioPerfil">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBAutoAdornosCoreEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblAuditorias" EntityType="Self.tblAuditoria" />
+          <EntitySet Name="tblClientes" EntityType="Self.tblCliente" />
+          <EntitySet Name="tblFacturas" EntityType="Self.tblFactura" />
+          <EntitySet Name="tblFacturaDetalles" EntityType="Self.tblFacturaDetalle" />
+          <EntitySet Name="tblLogServicios" EntityType="Self.tblLogServicio" />
+          <EntitySet Name="tblMovimientoInventarios" EntityType="Self.tblMovimientoInventario" />
+          <EntitySet Name="tblPerfils" EntityType="Self.tblPerfil" />
+          <EntitySet Name="tblProductoes" EntityType="Self.tblProducto" />
+          <EntitySet Name="tblServicios" EntityType="Self.tblServicio" />
+          <EntitySet Name="tblSucursals" EntityType="Self.tblSucursal" />
+          <EntitySet Name="tblSuplidors" EntityType="Self.tblSuplidor" />
+          <EntitySet Name="tblUsuarios" EntityType="Self.tblUsuario" />
+          <EntitySet Name="tblUsuarioPerfils" EntityType="Self.tblUsuarioPerfil" />
+          <EntitySet Name="tblVehiculoes" EntityType="Self.tblVehiculo" />
+          <AssociationSet Name="FK_tblAuditoria_tblUsuario" Association="Self.FK_tblAuditoria_tblUsuario">
+            <End Role="tblUsuario" EntitySet="tblUsuarios" />
+            <End Role="tblAuditoria" EntitySet="tblAuditorias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblFactura_tblCliente" Association="Self.FK_tblFactura_tblCliente">
+            <End Role="tblCliente" EntitySet="tblClientes" />
+            <End Role="tblFactura" EntitySet="tblFacturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVehiculo_tblCliente" Association="Self.FK_tblVehiculo_tblCliente">
+            <End Role="tblCliente" EntitySet="tblClientes" />
+            <End Role="tblVehiculo" EntitySet="tblVehiculoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblFactura_tblSucursal" Association="Self.FK_tblFactura_tblSucursal">
+            <End Role="tblSucursal" EntitySet="tblSucursals" />
+            <End Role="tblFactura" EntitySet="tblFacturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblFactura_tblUsuario" Association="Self.FK_tblFactura_tblUsuario">
+            <End Role="tblUsuario" EntitySet="tblUsuarios" />
+            <End Role="tblFactura" EntitySet="tblFacturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblFactura_tblVehiculo" Association="Self.FK_tblFactura_tblVehiculo">
+            <End Role="tblVehiculo" EntitySet="tblVehiculoes" />
+            <End Role="tblFactura" EntitySet="tblFacturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblFacturaDetalle_tblFactura" Association="Self.FK_tblFacturaDetalle_tblFactura">
+            <End Role="tblFactura" EntitySet="tblFacturas" />
+            <End Role="tblFacturaDetalle" EntitySet="tblFacturaDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblFacturaDetalle_tblProducto" Association="Self.FK_tblFacturaDetalle_tblProducto">
+            <End Role="tblProducto" EntitySet="tblProductoes" />
+            <End Role="tblFacturaDetalle" EntitySet="tblFacturaDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblFacturaDetalle_tblServicio" Association="Self.FK_tblFacturaDetalle_tblServicio">
+            <End Role="tblServicio" EntitySet="tblServicios" />
+            <End Role="tblFacturaDetalle" EntitySet="tblFacturaDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMovimientoInventario_tblProducto" Association="Self.FK_tblMovimientoInventario_tblProducto">
+            <End Role="tblProducto" EntitySet="tblProductoes" />
+            <End Role="tblMovimientoInventario" EntitySet="tblMovimientoInventarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMovimientoInventario_tblSucursal" Association="Self.FK_tblMovimientoInventario_tblSucursal">
+            <End Role="tblSucursal" EntitySet="tblSucursals" />
+            <End Role="tblMovimientoInventario" EntitySet="tblMovimientoInventarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMovimientoInventario_tblUsuario" Association="Self.FK_tblMovimientoInventario_tblUsuario">
+            <End Role="tblUsuario" EntitySet="tblUsuarios" />
+            <End Role="tblMovimientoInventario" EntitySet="tblMovimientoInventarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUsuarioPerfil_tblPerfil" Association="Self.FK_tblUsuarioPerfil_tblPerfil">
+            <End Role="tblPerfil" EntitySet="tblPerfils" />
+            <End Role="tblUsuarioPerfil" EntitySet="tblUsuarioPerfils" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUsuarioPerfil_tblUsuario" Association="Self.FK_tblUsuarioPerfil_tblUsuario">
+            <End Role="tblUsuario" EntitySet="tblUsuarios" />
+            <End Role="tblUsuarioPerfil" EntitySet="tblUsuarioPerfils" />
+          </AssociationSet>
+          <FunctionImport Name="sp_BuscarClientePorCedulaRNC" ReturnType="Collection(DBAutoAdornosCoreModel.sp_BuscarClientePorCedulaRNC_Result)">
+          <Parameter Name="CedulaRNC" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_BuscarClientePorId" ReturnType="Collection(DBAutoAdornosCoreModel.sp_BuscarClientePorId_Result)">
+          <Parameter Name="IdCliente" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_BuscarProductoPorId" ReturnType="Collection(DBAutoAdornosCoreModel.sp_BuscarProductoPorId_Result)">
+          <Parameter Name="IdProducto" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ConsultarFacturaPorId" ReturnType="Collection(DBAutoAdornosCoreModel.sp_ConsultarFacturaPorId_Result)">
+          <Parameter Name="IdFactura" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertarAuditoria">
+            <Parameter Name="IdUsuario" Mode="In" Type="Int32" />
+            <Parameter Name="Modulo" Mode="In" Type="String" />
+            <Parameter Name="Accion" Mode="In" Type="String" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertarCliente" ReturnType="Collection(Decimal)">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="CedulaRNC" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="String" />
+            <Parameter Name="Direccion" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="EsAnonimo" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertarFactura" ReturnType="Collection(Decimal)">
+            <Parameter Name="IdCliente" Mode="In" Type="Int32" />
+            <Parameter Name="IdVehiculo" Mode="In" Type="Int32" />
+            <Parameter Name="IdUsuario" Mode="In" Type="Int32" />
+            <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
+            <Parameter Name="CanalVenta" Mode="In" Type="String" />
+            <Parameter Name="Subtotal" Mode="In" Type="Decimal" />
+            <Parameter Name="Impuesto" Mode="In" Type="Decimal" />
+            <Parameter Name="Total" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertarFacturaDetalle">
+            <Parameter Name="IdFactura" Mode="In" Type="Int32" />
+            <Parameter Name="IdProducto" Mode="In" Type="Int32" />
+            <Parameter Name="IdServicio" Mode="In" Type="Int32" />
+            <Parameter Name="Cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="Precio" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertarLogServicio">
+            <Parameter Name="Servicio" Mode="In" Type="String" />
+            <Parameter Name="Parametros" Mode="In" Type="String" />
+            <Parameter Name="Respuesta" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertarVehiculo" ReturnType="Collection(Decimal)">
+            <Parameter Name="IdCliente" Mode="In" Type="Int32" />
+            <Parameter Name="Marca" Mode="In" Type="String" />
+            <Parameter Name="Modelo" Mode="In" Type="String" />
+            <Parameter Name="Anio" Mode="In" Type="Int32" />
+            <Parameter Name="Placa" Mode="In" Type="String" />
+            <Parameter Name="Color" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ListarClientes" ReturnType="Collection(DBAutoAdornosCoreModel.sp_ListarClientes_Result)" />
+          <FunctionImport Name="sp_ListarFacturas" ReturnType="Collection(DBAutoAdornosCoreModel.sp_ListarFacturas_Result)" />
+          <FunctionImport Name="sp_ListarProductos" ReturnType="Collection(DBAutoAdornosCoreModel.sp_ListarProductos_Result)" />
+          <FunctionImport Name="sp_ListarServicios" ReturnType="Collection(DBAutoAdornosCoreModel.sp_ListarServicios_Result)" />
+          <FunctionImport Name="sp_ListarSucursales" ReturnType="Collection(DBAutoAdornosCoreModel.sp_ListarSucursales_Result)" />
+          <FunctionImport Name="sp_ListarVehiculosPorCliente" ReturnType="Collection(DBAutoAdornosCoreModel.sp_ListarVehiculosPorCliente_Result)">
+          <Parameter Name="IdCliente" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RegistrarMovimientoInventario">
+            <Parameter Name="IdProducto" Mode="In" Type="Int32" />
+            <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
+            <Parameter Name="TipoMovimiento" Mode="In" Type="String" />
+            <Parameter Name="Cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="Observacion" Mode="In" Type="String" />
+            <Parameter Name="IdUsuario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ValidarUsuario" ReturnType="Collection(DBAutoAdornosCoreModel.sp_ValidarUsuario_Result)">
+            <Parameter Name="NombreUsuario" Mode="In" Type="String" />
+            <Parameter Name="Clave" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="sp_BuscarClientePorCedulaRNC_Result">
+          <Property Type="Int32" Name="IdCliente" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CedulaRNC" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Direccion" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="EsAnonimo" Nullable="false" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+          <Property Type="DateTime" Name="FechaCreacion" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_BuscarClientePorId_Result">
+          <Property Type="Int32" Name="IdCliente" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CedulaRNC" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Direccion" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="EsAnonimo" Nullable="false" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+          <Property Type="DateTime" Name="FechaCreacion" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_BuscarProductoPorId_Result">
+          <Property Type="Int32" Name="IdProducto" Nullable="false" />
+          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
+          <Property Type="Decimal" Name="Precio" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="Existencia" Nullable="false" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+          <Property Type="DateTime" Name="FechaCreacion" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_ConsultarFacturaPorId_Result">
+          <Property Type="Int32" Name="IdFactura" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+          <Property Type="String" Name="CanalVenta" Nullable="false" MaxLength="20" />
+          <Property Type="Decimal" Name="Subtotal" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Impuesto" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Total" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="String" Name="Estado" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="IdCliente" Nullable="false" />
+          <Property Type="String" Name="Cliente" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="IdVehiculo" Nullable="true" />
+          <Property Type="String" Name="Marca" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Modelo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Placa" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="IdUsuario" Nullable="false" />
+          <Property Type="String" Name="Usuario" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="IdSucursal" Nullable="false" />
+          <Property Type="String" Name="Sucursal" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="sp_ListarClientes_Result">
+          <Property Type="Int32" Name="IdCliente" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CedulaRNC" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Direccion" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="EsAnonimo" Nullable="false" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+          <Property Type="DateTime" Name="FechaCreacion" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_ListarFacturas_Result">
+          <Property Type="Int32" Name="IdFactura" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Cliente" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CanalVenta" Nullable="false" MaxLength="20" />
+          <Property Type="Decimal" Name="Total" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="String" Name="Estado" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="sp_ListarProductos_Result">
+          <Property Type="Int32" Name="IdProducto" Nullable="false" />
+          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
+          <Property Type="Decimal" Name="Precio" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="Existencia" Nullable="false" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+          <Property Type="DateTime" Name="FechaCreacion" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_ListarServicios_Result">
+          <Property Type="Int32" Name="IdServicio" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
+          <Property Type="Decimal" Name="Precio" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_ListarSucursales_Result">
+          <Property Type="Int32" Name="IdSucursal" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Direccion" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="20" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+          <Property Type="DateTime" Name="FechaCreacion" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_ListarVehiculosPorCliente_Result">
+          <Property Type="Int32" Name="IdVehiculo" Nullable="false" />
+          <Property Type="Int32" Name="IdCliente" Nullable="false" />
+          <Property Type="String" Name="Marca" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Modelo" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Anio" Nullable="true" />
+          <Property Type="String" Name="Placa" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Color" Nullable="true" MaxLength="30" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_ValidarUsuario_Result">
+          <Property Type="Int32" Name="IdUsuario" Nullable="false" />
+          <Property Type="String" Name="NombreUsuario" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="NombreCompleto" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="IdPerfil" Nullable="false" />
+          <Property Type="String" Name="NombrePerfil" Nullable="false" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBAutoAdornosCoreModelStoreContainer" CdmEntityContainer="DBAutoAdornosCoreEntities">
+          <EntitySetMapping Name="tblAuditorias">
+            <EntityTypeMapping TypeName="DBAutoAdornosCoreModel.tblAuditoria">
+              <MappingFragment StoreEntitySet="tblAuditoria">
+                <ScalarProperty Name="IdAuditoria" ColumnName="IdAuditoria" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Modulo" ColumnName="Modulo" />
+                <ScalarProperty Name="Accion" ColumnName="Accion" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblClientes">
+            <EntityTypeMapping TypeName="DBAutoAdornosCoreModel.tblCliente">
+              <MappingFragment StoreEntitySet="tblCliente">
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="CedulaRNC" ColumnName="CedulaRNC" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EsAnonimo" ColumnName="EsAnonimo" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFacturas">
+            <EntityTypeMapping TypeName="DBAutoAdornosCoreModel.tblFactura">
+              <MappingFragment StoreEntitySet="tblFactura">
+                <ScalarProperty Name="IdFactura" ColumnName="IdFactura" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="IdVehiculo" ColumnName="IdVehiculo" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
+                <ScalarProperty Name="CanalVenta" ColumnName="CanalVenta" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFacturaDetalles">
+            <EntityTypeMapping TypeName="DBAutoAdornosCoreModel.tblFacturaDetalle">
+              <MappingFragment StoreEntitySet="tblFacturaDetalle">
+                <ScalarProperty Name="IdFacturaDetalle" ColumnName="IdFacturaDetalle" />
+                <ScalarProperty Name="IdFactura" ColumnName="IdFactura" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="IdServicio" ColumnName="IdServicio" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Importe" ColumnName="Importe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLogServicios">
+            <EntityTypeMapping TypeName="DBAutoAdornosCoreModel.tblLogServicio">
+              <MappingFragment StoreEntitySet="tblLogServicio">
+                <ScalarProperty Name="IdLogServicio" ColumnName="IdLogServicio" />
+                <ScalarProperty Name="Servicio" ColumnName="Servicio" />
+                <ScalarProperty Name="Parametros" ColumnName="Parametros" />
+                <ScalarProperty Name="Respuesta" ColumnName="Respuesta" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMovimientoInventarios">
+            <EntityTypeMapping TypeName="DBAutoAdornosCoreModel.tblMovimientoInventario">
+              <MappingFragment StoreEntitySet="tblMovimientoInventario">
+                <ScalarProperty Name="IdMovimientoInventario" ColumnName="IdMovimientoInventario" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
+                <ScalarProperty Name="TipoMovimiento" ColumnName="TipoMovimiento" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPerfils">
+            <EntityTypeMapping TypeName="DBAutoAdornosCoreModel.tblPerfil">
+              <MappingFragment StoreEntitySet="tblPerfil">
+                <ScalarProperty Name="IdPerfil" ColumnName="IdPerfil" />
+                <ScalarProperty Name="NombrePerfil" ColumnName="NombrePerfil" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProductoes">
+            <EntityTypeMapping TypeName="DBAutoAdornosCoreModel.tblProducto">
+              <MappingFragment StoreEntitySet="tblProducto">
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Existencia" ColumnName="Existencia" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblServicios">
+            <EntityTypeMapping TypeName="DBAutoAdornosCoreModel.tblServicio">
+              <MappingFragment StoreEntitySet="tblServicio">
+                <ScalarProperty Name="IdServicio" ColumnName="IdServicio" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSucursals">
+            <EntityTypeMapping TypeName="DBAutoAdornosCoreModel.tblSucursal">
+              <MappingFragment StoreEntitySet="tblSucursal">
+                <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSuplidors">
+            <EntityTypeMapping TypeName="DBAutoAdornosCoreModel.tblSuplidor">
+              <MappingFragment StoreEntitySet="tblSuplidor">
+                <ScalarProperty Name="IdSuplidor" ColumnName="IdSuplidor" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="RNC" ColumnName="RNC" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsuarios">
+            <EntityTypeMapping TypeName="DBAutoAdornosCoreModel.tblUsuario">
+              <MappingFragment StoreEntitySet="tblUsuario">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsuarioPerfils">
+            <EntityTypeMapping TypeName="DBAutoAdornosCoreModel.tblUsuarioPerfil">
+              <MappingFragment StoreEntitySet="tblUsuarioPerfil">
+                <ScalarProperty Name="IdUsuarioPerfil" ColumnName="IdUsuarioPerfil" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdPerfil" ColumnName="IdPerfil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVehiculoes">
+            <EntityTypeMapping TypeName="DBAutoAdornosCoreModel.tblVehiculo">
+              <MappingFragment StoreEntitySet="tblVehiculo">
+                <ScalarProperty Name="IdVehiculo" ColumnName="IdVehiculo" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Anio" ColumnName="Anio" />
+                <ScalarProperty Name="Placa" ColumnName="Placa" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_BuscarClientePorCedulaRNC" FunctionName="DBAutoAdornosCoreModel.Store.sp_BuscarClientePorCedulaRNC">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAutoAdornosCoreModel.sp_BuscarClientePorCedulaRNC_Result">
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="CedulaRNC" ColumnName="CedulaRNC" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EsAnonimo" ColumnName="EsAnonimo" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_BuscarClientePorId" FunctionName="DBAutoAdornosCoreModel.Store.sp_BuscarClientePorId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAutoAdornosCoreModel.sp_BuscarClientePorId_Result">
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="CedulaRNC" ColumnName="CedulaRNC" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EsAnonimo" ColumnName="EsAnonimo" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_BuscarProductoPorId" FunctionName="DBAutoAdornosCoreModel.Store.sp_BuscarProductoPorId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAutoAdornosCoreModel.sp_BuscarProductoPorId_Result">
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Existencia" ColumnName="Existencia" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ConsultarFacturaPorId" FunctionName="DBAutoAdornosCoreModel.Store.sp_ConsultarFacturaPorId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAutoAdornosCoreModel.sp_ConsultarFacturaPorId_Result">
+                <ScalarProperty Name="IdFactura" ColumnName="IdFactura" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="CanalVenta" ColumnName="CanalVenta" />
+                <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="IdVehiculo" ColumnName="IdVehiculo" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Placa" ColumnName="Placa" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
+                <ScalarProperty Name="Sucursal" ColumnName="Sucursal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_InsertarAuditoria" FunctionName="DBAutoAdornosCoreModel.Store.sp_InsertarAuditoria" />
+          <FunctionImportMapping FunctionImportName="sp_InsertarCliente" FunctionName="DBAutoAdornosCoreModel.Store.sp_InsertarCliente" />
+          <FunctionImportMapping FunctionImportName="sp_InsertarFactura" FunctionName="DBAutoAdornosCoreModel.Store.sp_InsertarFactura" />
+          <FunctionImportMapping FunctionImportName="sp_InsertarFacturaDetalle" FunctionName="DBAutoAdornosCoreModel.Store.sp_InsertarFacturaDetalle" />
+          <FunctionImportMapping FunctionImportName="sp_InsertarLogServicio" FunctionName="DBAutoAdornosCoreModel.Store.sp_InsertarLogServicio" />
+          <FunctionImportMapping FunctionImportName="sp_InsertarVehiculo" FunctionName="DBAutoAdornosCoreModel.Store.sp_InsertarVehiculo" />
+          <FunctionImportMapping FunctionImportName="sp_ListarClientes" FunctionName="DBAutoAdornosCoreModel.Store.sp_ListarClientes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAutoAdornosCoreModel.sp_ListarClientes_Result">
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="CedulaRNC" ColumnName="CedulaRNC" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EsAnonimo" ColumnName="EsAnonimo" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ListarFacturas" FunctionName="DBAutoAdornosCoreModel.Store.sp_ListarFacturas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAutoAdornosCoreModel.sp_ListarFacturas_Result">
+                <ScalarProperty Name="IdFactura" ColumnName="IdFactura" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="CanalVenta" ColumnName="CanalVenta" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ListarProductos" FunctionName="DBAutoAdornosCoreModel.Store.sp_ListarProductos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAutoAdornosCoreModel.sp_ListarProductos_Result">
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Existencia" ColumnName="Existencia" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ListarServicios" FunctionName="DBAutoAdornosCoreModel.Store.sp_ListarServicios">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAutoAdornosCoreModel.sp_ListarServicios_Result">
+                <ScalarProperty Name="IdServicio" ColumnName="IdServicio" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ListarSucursales" FunctionName="DBAutoAdornosCoreModel.Store.sp_ListarSucursales">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAutoAdornosCoreModel.sp_ListarSucursales_Result">
+                <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ListarVehiculosPorCliente" FunctionName="DBAutoAdornosCoreModel.Store.sp_ListarVehiculosPorCliente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAutoAdornosCoreModel.sp_ListarVehiculosPorCliente_Result">
+                <ScalarProperty Name="IdVehiculo" ColumnName="IdVehiculo" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Anio" ColumnName="Anio" />
+                <ScalarProperty Name="Placa" ColumnName="Placa" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_RegistrarMovimientoInventario" FunctionName="DBAutoAdornosCoreModel.Store.sp_RegistrarMovimientoInventario" />
+          <FunctionImportMapping FunctionImportName="sp_ValidarUsuario" FunctionName="DBAutoAdornosCoreModel.Store.sp_ValidarUsuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAutoAdornosCoreModel.sp_ValidarUsuario_Result">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="IdPerfil" ColumnName="IdPerfil" />
+                <ScalarProperty Name="NombrePerfil" ColumnName="NombrePerfil" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

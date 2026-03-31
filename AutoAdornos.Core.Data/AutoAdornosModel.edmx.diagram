@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3b2d3a39595b4ef898388d6997a427d5" Name="Diagram1">
+        <EntityTypeShape EntityType="DBAutoAdornosCoreModel.tblAuditoria" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAutoAdornosCoreModel.tblCliente" Width="1.5" PointX="3.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAutoAdornosCoreModel.tblFactura" Width="1.5" PointX="6" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAutoAdornosCoreModel.tblFacturaDetalle" Width="1.5" PointX="8.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAutoAdornosCoreModel.tblLogServicio" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAutoAdornosCoreModel.tblMovimientoInventario" Width="1.5" PointX="2.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAutoAdornosCoreModel.tblPerfil" Width="1.5" PointX="0.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAutoAdornosCoreModel.tblProducto" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAutoAdornosCoreModel.tblServicio" Width="1.5" PointX="6" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAutoAdornosCoreModel.tblSucursal" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAutoAdornosCoreModel.tblSuplidor" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAutoAdornosCoreModel.tblUsuario" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAutoAdornosCoreModel.tblUsuarioPerfil" Width="1.5" PointX="3.125" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAutoAdornosCoreModel.tblVehiculo" Width="1.5" PointX="3.75" PointY="17.875" IsExpanded="true" />
+        <AssociationConnector Association="DBAutoAdornosCoreModel.FK_tblAuditoria_tblUsuario" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAutoAdornosCoreModel.FK_tblFactura_tblCliente" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAutoAdornosCoreModel.FK_tblVehiculo_tblCliente" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAutoAdornosCoreModel.FK_tblFactura_tblSucursal" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAutoAdornosCoreModel.FK_tblFactura_tblUsuario" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAutoAdornosCoreModel.FK_tblFactura_tblVehiculo" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAutoAdornosCoreModel.FK_tblFacturaDetalle_tblFactura" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAutoAdornosCoreModel.FK_tblFacturaDetalle_tblProducto" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAutoAdornosCoreModel.FK_tblFacturaDetalle_tblServicio" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAutoAdornosCoreModel.FK_tblMovimientoInventario_tblProducto" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAutoAdornosCoreModel.FK_tblMovimientoInventario_tblSucursal" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAutoAdornosCoreModel.FK_tblMovimientoInventario_tblUsuario" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAutoAdornosCoreModel.FK_tblUsuarioPerfil_tblPerfil" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAutoAdornosCoreModel.FK_tblUsuarioPerfil_tblUsuario" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

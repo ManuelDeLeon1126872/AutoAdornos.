@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_IntegracionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cache_tblCliente">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="150" />
+          <Property Name="CedulaRNC" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Cache_tblProducto">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdProducto" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+          <Property Name="Precio" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Existencia" Type="int" />
+        </EntityType>
+        <EntityType Name="Cache_tblServicio">
+          <Key>
+            <PropertyRef Name="IdServicio" />
+          </Key>
+          <Property Name="IdServicio" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+          <Property Name="Precio" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Cola_tblFactura">
+          <Key>
+            <PropertyRef Name="IdFacturaLocal" />
+          </Key>
+          <Property Name="IdFacturaLocal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCliente" Type="int" />
+          <Property Name="IdVehiculo" Type="int" />
+          <Property Name="IdUsuario" Type="int" />
+          <Property Name="IdSucursal" Type="int" />
+          <Property Name="CanalVenta" Type="varchar" MaxLength="50" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Subtotal" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Impuesto" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Sincronizado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Cola_tblFacturaDetalle">
+          <Key>
+            <PropertyRef Name="IdDetalleLocal" />
+          </Key>
+          <Property Name="IdDetalleLocal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdFacturaLocal" Type="int" />
+          <Property Name="IdProducto" Type="int" />
+          <Property Name="IdServicio" Type="int" />
+          <Property Name="Cantidad" Type="int" />
+          <Property Name="Precio" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Importe" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="tblLogServicio">
+          <Key>
+            <PropertyRef Name="IdLog" />
+          </Key>
+          <Property Name="IdLog" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Servicio" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Parametros" Type="varchar(max)" />
+          <Property Name="Respuesta" Type="varchar(max)" />
+          <Property Name="Fecha" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__Cola_tblF__IdFac__3A81B327">
+          <End Role="Cola_tblFactura" Type="Self.Cola_tblFactura" Multiplicity="0..1" />
+          <End Role="Cola_tblFacturaDetalle" Type="Self.Cola_tblFacturaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cola_tblFactura">
+              <PropertyRef Name="IdFacturaLocal" />
+            </Principal>
+            <Dependent Role="Cola_tblFacturaDetalle">
+              <PropertyRef Name="IdFacturaLocal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_IntegracionModelStoreContainer">
+          <EntitySet Name="Cache_tblCliente" EntityType="Self.Cache_tblCliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cache_tblProducto" EntityType="Self.Cache_tblProducto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cache_tblServicio" EntityType="Self.Cache_tblServicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cola_tblFactura" EntityType="Self.Cola_tblFactura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cola_tblFacturaDetalle" EntityType="Self.Cola_tblFacturaDetalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLogServicio" EntityType="Self.tblLogServicio" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Cola_tblF__IdFac__3A81B327" Association="Self.FK__Cola_tblF__IdFac__3A81B327">
+            <End Role="Cola_tblFactura" EntitySet="Cola_tblFactura" />
+            <End Role="Cola_tblFacturaDetalle" EntitySet="Cola_tblFacturaDetalle" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_IntegracionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cache_tblCliente">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="CedulaRNC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Cache_tblProducto">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Existencia" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Cache_tblServicio">
+          <Key>
+            <PropertyRef Name="IdServicio" />
+          </Key>
+          <Property Name="IdServicio" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Cola_tblFactura">
+          <Key>
+            <PropertyRef Name="IdFacturaLocal" />
+          </Key>
+          <Property Name="IdFacturaLocal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCliente" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Total" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Sincronizado" Type="Boolean" />
+          <NavigationProperty Name="Cola_tblFacturaDetalle" Relationship="Self.FK__Cola_tblF__IdFac__30F848ED" FromRole="Cola_tblFactura" ToRole="Cola_tblFacturaDetalle" />
+          <Property Name="IdVehiculo" Type="Int32" />
+          <Property Name="IdUsuario" Type="Int32" />
+          <Property Name="IdSucursal" Type="Int32" />
+          <Property Name="CanalVenta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Subtotal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Impuesto" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Cola_tblFacturaDetalle">
+          <Key>
+            <PropertyRef Name="IdDetalleLocal" />
+          </Key>
+          <Property Name="IdDetalleLocal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdFacturaLocal" Type="Int32" />
+          <Property Name="IdProducto" Type="Int32" />
+          <Property Name="IdServicio" Type="Int32" />
+          <Property Name="Cantidad" Type="Int32" />
+          <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Importe" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="Cola_tblFactura" Relationship="Self.FK__Cola_tblF__IdFac__30F848ED" FromRole="Cola_tblFacturaDetalle" ToRole="Cola_tblFactura" />
+        </EntityType>
+        <EntityType Name="tblLogServicio">
+          <Key>
+            <PropertyRef Name="IdLog" />
+          </Key>
+          <Property Name="IdLog" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Servicio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Parametros" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Respuesta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK__Cola_tblF__IdFac__30F848ED">
+          <End Role="Cola_tblFactura" Type="Self.Cola_tblFactura" Multiplicity="0..1" />
+          <End Role="Cola_tblFacturaDetalle" Type="Self.Cola_tblFacturaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cola_tblFactura">
+              <PropertyRef Name="IdFacturaLocal" />
+            </Principal>
+            <Dependent Role="Cola_tblFacturaDetalle">
+              <PropertyRef Name="IdFacturaLocal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_IntegracionEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cache_tblCliente" EntityType="Self.Cache_tblCliente" />
+          <EntitySet Name="Cache_tblProducto" EntityType="Self.Cache_tblProducto" />
+          <EntitySet Name="Cache_tblServicio" EntityType="Self.Cache_tblServicio" />
+          <EntitySet Name="Cola_tblFactura" EntityType="Self.Cola_tblFactura" />
+          <EntitySet Name="Cola_tblFacturaDetalle" EntityType="Self.Cola_tblFacturaDetalle" />
+          <EntitySet Name="tblLogServicios" EntityType="Self.tblLogServicio" />
+          <AssociationSet Name="FK__Cola_tblF__IdFac__30F848ED" Association="Self.FK__Cola_tblF__IdFac__30F848ED">
+            <End Role="Cola_tblFactura" EntitySet="Cola_tblFactura" />
+            <End Role="Cola_tblFacturaDetalle" EntitySet="Cola_tblFacturaDetalle" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_IntegracionModelStoreContainer" CdmEntityContainer="DB_IntegracionEntities">
+          <EntitySetMapping Name="Cache_tblCliente">
+            <EntityTypeMapping TypeName="DB_IntegracionModel.Cache_tblCliente">
+              <MappingFragment StoreEntitySet="Cache_tblCliente">
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="CedulaRNC" ColumnName="CedulaRNC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cache_tblProducto">
+            <EntityTypeMapping TypeName="DB_IntegracionModel.Cache_tblProducto">
+              <MappingFragment StoreEntitySet="Cache_tblProducto">
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Existencia" ColumnName="Existencia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cache_tblServicio">
+            <EntityTypeMapping TypeName="DB_IntegracionModel.Cache_tblServicio">
+              <MappingFragment StoreEntitySet="Cache_tblServicio">
+                <ScalarProperty Name="IdServicio" ColumnName="IdServicio" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cola_tblFactura">
+            <EntityTypeMapping TypeName="DB_IntegracionModel.Cola_tblFactura">
+              <MappingFragment StoreEntitySet="Cola_tblFactura">
+                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+                <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+                <ScalarProperty Name="CanalVenta" ColumnName="CanalVenta" />
+                <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdVehiculo" ColumnName="IdVehiculo" />
+                <ScalarProperty Name="IdFacturaLocal" ColumnName="IdFacturaLocal" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Sincronizado" ColumnName="Sincronizado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cola_tblFacturaDetalle">
+            <EntityTypeMapping TypeName="DB_IntegracionModel.Cola_tblFacturaDetalle">
+              <MappingFragment StoreEntitySet="Cola_tblFacturaDetalle">
+                <ScalarProperty Name="IdDetalleLocal" ColumnName="IdDetalleLocal" />
+                <ScalarProperty Name="IdFacturaLocal" ColumnName="IdFacturaLocal" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="IdServicio" ColumnName="IdServicio" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Importe" ColumnName="Importe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLogServicios">
+            <EntityTypeMapping TypeName="DB_IntegracionModel.tblLogServicio">
+              <MappingFragment StoreEntitySet="tblLogServicio">
+                <ScalarProperty Name="IdLog" ColumnName="IdLog" />
+                <ScalarProperty Name="Servicio" ColumnName="Servicio" />
+                <ScalarProperty Name="Parametros" ColumnName="Parametros" />
+                <ScalarProperty Name="Respuesta" ColumnName="Respuesta" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
