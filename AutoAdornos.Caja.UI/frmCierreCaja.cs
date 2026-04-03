@@ -57,5 +57,10 @@ namespace AutoAdornos.Caja.UI
             MessageBox.Show("Turno cerrado. El sistema se apagará.", "Fin del día", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Application.Exit();
         }
+
+        private void frmCierreCaja_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
