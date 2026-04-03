@@ -103,6 +103,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Integracion.API", "Integracion.WebServices\Integracion.API.csproj", "{AB7AFF21-9440-447C-9DA2-8F3FB61A667F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoAdornos.Caja.UI", "AutoAdornos.Caja.UI\AutoAdornos.Caja.UI.csproj", "{C856CE0F-7BA2-49A6-9D15-306AAD184FDC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AB7AFF21-9440-447C-9DA2-8F3FB61A667F} = {AB7AFF21-9440-447C-9DA2-8F3FB61A667F}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -42,7 +42,11 @@
             this.lblTotal = new System.Windows.Forms.Label();
             this.btnFacturar = new System.Windows.Forms.Button();
             this.btnSincronizar = new System.Windows.Forms.Button();
+            this.dgvCarrito = new System.Windows.Forms.DataGridView();
+            this.btnCerrarTurno = new System.Windows.Forms.Button();
+            this.btnSincronizarVentas = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCarrito)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -69,6 +73,7 @@
             this.btnBuscarCliente.TabIndex = 2;
             this.btnBuscarCliente.Text = "Buscar";
             this.btnBuscarCliente.UseVisualStyleBackColor = true;
+            this.btnBuscarCliente.Click += new System.EventHandler(this.btnBuscarCliente_Click);
             // 
             // label2
             // 
@@ -94,6 +99,7 @@
             this.btnBuscarProducto.TabIndex = 5;
             this.btnBuscarProducto.Text = "Buscar en Caché";
             this.btnBuscarProducto.UseVisualStyleBackColor = true;
+            this.btnBuscarProducto.Click += new System.EventHandler(this.btnBuscarProducto_Click);
             // 
             // label3
             // 
@@ -136,6 +142,7 @@
             this.btnAgregar.TabIndex = 10;
             this.btnAgregar.Text = "Agregar al Carrito";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // lblTotal
             // 
@@ -154,6 +161,7 @@
             this.btnFacturar.TabIndex = 12;
             this.btnFacturar.Text = "FACTURAR / COBRAR";
             this.btnFacturar.UseVisualStyleBackColor = true;
+            this.btnFacturar.Click += new System.EventHandler(this.btnFacturar_Click);
             // 
             // btnSincronizar
             // 
@@ -165,11 +173,44 @@
             this.btnSincronizar.UseVisualStyleBackColor = true;
             this.btnSincronizar.Click += new System.EventHandler(this.btnSincronizar_Click);
             // 
+            // dgvCarrito
+            // 
+            this.dgvCarrito.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCarrito.Location = new System.Drawing.Point(474, 151);
+            this.dgvCarrito.Name = "dgvCarrito";
+            this.dgvCarrito.RowHeadersWidth = 51;
+            this.dgvCarrito.RowTemplate.Height = 24;
+            this.dgvCarrito.Size = new System.Drawing.Size(602, 174);
+            this.dgvCarrito.TabIndex = 14;
+            // 
+            // btnCerrarTurno
+            // 
+            this.btnCerrarTurno.Location = new System.Drawing.Point(1012, 416);
+            this.btnCerrarTurno.Name = "btnCerrarTurno";
+            this.btnCerrarTurno.Size = new System.Drawing.Size(137, 50);
+            this.btnCerrarTurno.TabIndex = 15;
+            this.btnCerrarTurno.Text = "CERRAR TURNO";
+            this.btnCerrarTurno.UseVisualStyleBackColor = true;
+            this.btnCerrarTurno.Click += new System.EventHandler(this.btnCerrarTurno_Click);
+            // 
+            // btnSincronizarVentas
+            // 
+            this.btnSincronizarVentas.Location = new System.Drawing.Point(977, 94);
+            this.btnSincronizarVentas.Name = "btnSincronizarVentas";
+            this.btnSincronizarVentas.Size = new System.Drawing.Size(194, 23);
+            this.btnSincronizarVentas.TabIndex = 16;
+            this.btnSincronizarVentas.Text = "Subir Ventas Offline";
+            this.btnSincronizarVentas.UseVisualStyleBackColor = true;
+            this.btnSincronizarVentas.Click += new System.EventHandler(this.btnSincronizarVentas_Click);
+            // 
             // frmFacturacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1434, 546);
+            this.Controls.Add(this.btnSincronizarVentas);
+            this.Controls.Add(this.btnCerrarTurno);
+            this.Controls.Add(this.dgvCarrito);
             this.Controls.Add(this.btnSincronizar);
             this.Controls.Add(this.btnFacturar);
             this.Controls.Add(this.lblTotal);
@@ -187,6 +228,7 @@
             this.Name = "frmFacturacion";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCarrito)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -208,6 +250,9 @@
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Button btnFacturar;
         private System.Windows.Forms.Button btnSincronizar;
+        private System.Windows.Forms.DataGridView dgvCarrito;
+        private System.Windows.Forms.Button btnCerrarTurno;
+        private System.Windows.Forms.Button btnSincronizarVentas;
     }
 }
 

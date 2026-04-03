@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://autoadornos.com/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://autoadornos.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://autoadornos.com/">
+      <s:element name="ListarProductos">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListarProductosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarProductosResult" type="tns:ArrayOfCache_tblProducto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCache_tblProducto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Cache_tblProducto" nillable="true" type="tns:Cache_tblProducto" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Cache_tblProducto">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdProducto" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Codigo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Precio" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Existencia" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ValidarUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="clave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidarUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ValidarUsuarioResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarVenta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idCliente" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idVehiculo" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idUsuario" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idSucursal" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="canalVenta" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="total" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="detalles" type="tns:ArrayOfItemVenta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfItemVenta">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ItemVenta" nillable="true" type="tns:ItemVenta" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ItemVenta">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdProducto" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdServicio" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Cantidad" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Precio" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RegistrarVentaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistrarVentaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SincronizarVentasOffline">
+        <s:complexType />
+      </s:element>
+      <s:element name="SincronizarVentasOfflineResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SincronizarVentasOfflineResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ListarProductosSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarProductos" />
+  </wsdl:message>
+  <wsdl:message name="ListarProductosSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarProductosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidarUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ValidarUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarVentaSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistrarVenta" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarVentaSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistrarVentaResponse" />
+  </wsdl:message>
+  <wsdl:message name="SincronizarVentasOfflineSoapIn">
+    <wsdl:part name="parameters" element="tns:SincronizarVentasOffline" />
+  </wsdl:message>
+  <wsdl:message name="SincronizarVentasOfflineSoapOut">
+    <wsdl:part name="parameters" element="tns:SincronizarVentasOfflineResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IntegracionServiceSoap">
+    <wsdl:operation name="ListarProductos">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Obtiene el catálogo. Si el CORE falla, usa el Cache local.</wsdl:documentation>
+      <wsdl:input message="tns:ListarProductosSoapIn" />
+      <wsdl:output message="tns:ListarProductosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidarUsuario">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Valida el acceso del usuario contra el CORE.</wsdl:documentation>
+      <wsdl:input message="tns:ValidarUsuarioSoapIn" />
+      <wsdl:output message="tns:ValidarUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarVenta">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Envía la factura al CORE. Si falla, la guarda completa en la cola local.</wsdl:documentation>
+      <wsdl:input message="tns:RegistrarVentaSoapIn" />
+      <wsdl:output message="tns:RegistrarVentaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SincronizarVentasOffline">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sincroniza las ventas guardadas localmente hacia el CORE.</wsdl:documentation>
+      <wsdl:input message="tns:SincronizarVentasOfflineSoapIn" />
+      <wsdl:output message="tns:SincronizarVentasOfflineSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IntegracionServiceSoap" type="tns:IntegracionServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListarProductos">
+      <soap:operation soapAction="http://autoadornos.com/ListarProductos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarUsuario">
+      <soap:operation soapAction="http://autoadornos.com/ValidarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarVenta">
+      <soap:operation soapAction="http://autoadornos.com/RegistrarVenta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SincronizarVentasOffline">
+      <soap:operation soapAction="http://autoadornos.com/SincronizarVentasOffline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="IntegracionServiceSoap12" type="tns:IntegracionServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListarProductos">
+      <soap12:operation soapAction="http://autoadornos.com/ListarProductos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarUsuario">
+      <soap12:operation soapAction="http://autoadornos.com/ValidarUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarVenta">
+      <soap12:operation soapAction="http://autoadornos.com/RegistrarVenta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SincronizarVentasOffline">
+      <soap12:operation soapAction="http://autoadornos.com/SincronizarVentasOffline" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IntegracionService">
+    <wsdl:port name="IntegracionServiceSoap" binding="tns:IntegracionServiceSoap">
+      <soap:address location="https://localhost:44376/IntegracionService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="IntegracionServiceSoap12" binding="tns:IntegracionServiceSoap12">
+      <soap12:address location="https://localhost:44376/IntegracionService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -16,7 +16,7 @@ namespace AutoAdornos.Caja.UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmFacturacion());
+            Application.Run(new frmLogin());
         }
     }
 }
