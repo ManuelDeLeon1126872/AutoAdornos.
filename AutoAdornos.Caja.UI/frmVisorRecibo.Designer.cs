@@ -33,24 +33,26 @@
             // 
             // reportViewer1
             // 
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "AutoAdornos.Caja.UI.rptFactura.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(234, 69);
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(784, 369);
+            this.reportViewer1.Size = new System.Drawing.Size(1301, 450);
             this.reportViewer1.TabIndex = 0;
             // 
             // frmVisorRecibo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(246)))), ((int)(((byte)(249)))));
             this.ClientSize = new System.Drawing.Size(1301, 450);
             this.Controls.Add(this.reportViewer1);
             this.Name = "frmVisorRecibo";
-            this.Text = "frmVisorRecibo";
+            this.Text = "Visor de Recibo";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmVisorRecibo_Load);
             this.ResumeLayout(false);
-
         }
 
         #endregion
