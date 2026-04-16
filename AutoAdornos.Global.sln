@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 18
-VisualStudioVersion = 18.4.11620.152
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36811.4 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AutoAdornos.Core.Database", "AutoAdornos.Core.Database\AutoAdornos.Core.Database.sqlproj", "{618E5697-A538-45FF-A4F3-0EDBFF471554}"
 EndProject
@@ -99,6 +99,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Integracion.Datos", "Integracion.Datos\Integracion.Datos.csproj", "{E07EFD3D-B9EB-4436-B074-168F90A33C22}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Integracion.Sincronizador", "Integracion.Sincronizador\Integracion.Sincronizador.csproj", "{3F4DF348-B95B-437A-B112-2B9D476DBAA7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8E254AC6-C11A-4A9D-BB78-91679D7B3984} = {8E254AC6-C11A-4A9D-BB78-91679D7B3984}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Integracion.API", "Integracion.WebServices\Integracion.API.csproj", "{AB7AFF21-9440-447C-9DA2-8F3FB61A667F}"
 EndProject
