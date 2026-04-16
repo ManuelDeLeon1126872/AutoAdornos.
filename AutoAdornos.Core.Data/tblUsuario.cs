@@ -29,6 +29,7 @@ namespace AutoAdornos.Core.Data
         public string NombreCompleto { get; set; }
         public bool Estado { get; set; }
         public System.DateTime FechaCreacion { get; set; }
+        public Nullable<int> IdSucursal { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblAuditoria> tblAuditorias { get; set; }
@@ -38,5 +39,6 @@ namespace AutoAdornos.Core.Data
         public virtual ICollection<tblMovimientoInventario> tblMovimientoInventarios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblUsuarioPerfil> tblUsuarioPerfils { get; set; }
+        public virtual tblSucursal tblSucursal { get; set; }
     }
 }

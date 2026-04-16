@@ -1,52 +1,98 @@
-CORE - Instrucciones de instalaci�n y uso
+﻿CORE - Instrucciones de instalación
 
-1. Requisitos
-- Visual Studio
-- SQL Server LocalDB ((localdb)\MSSQLLocalDB)
-- .NET Framework 4.7.2
-- Restaurar paquetes NuGet
+1. Restaurar paquetes NuGet.
+2. Crear base DBAutoAdornosCore en (localdb)\MSSQLLocalDB.
+3. Ejecutar scripts en este orden:
+   - Tables
+   - Scripts
+   - Seed
+   - Stored Procedures
+4. Verificar connection strings en TestApp y Services.
+5. Startup project: AutoAdornos.Core.Services
+6. Ejecutar CoreService.asmx
 
-2. Base de datos
-Crear la base de datos:
-DBAutoAdornosCore
+Usuario de prueba:
+admin / 1234
 
-Ejecutar scripts en este orden:
-1. Tables
-2. Scripts
-3. Seed
-4. Stored Procedures
-
-3. Connection string
-Verificar que AutoAdornos.Core.Data, AutoAdornos.Core.TestApp y AutoAdornos.Core.Services apunten a:
-Server: (localdb)\MSSQLLocalDB
-Database: DBAutoAdornosCore
-
-4. Proyecto de inicio
-Para probar el servicio:
-AutoAdornos.Core.Services
-
-5. URL del servicio
-http://localhost:PUERTO/CoreService.asmx
-
-6. M�todos principales para Integraci�n
+Métodos finales:
 - ValidarUsuario
 - ListarProductos
 - ListarServicios
 - ListarSucursales
 - ListarClientes
 - BuscarClientePorCedulaRNC
+- ListarVehiculosPorCliente
+- ObtenerVehiculoGenerico
 - InsertarCliente
 - InsertarVehiculo
 - InsertarFactura
 - InsertarFacturaDetalle
 - RegistrarMovimientoInventario
 
-7. Datos de prueba
-Usuario:
-admin / 1234
+Métodos de apoyo para pruebas:
+- InsertarVehiculoPrueba
+- InsertarFacturaPrueba
+- InsertarFacturaDetalleProductoPrueba
+- InsertarFacturaDetalleServicioPrueba
 
-8. Logs
+Logs:
 - Archivo: Logs\CoreService.log
-- Base de datos:
-  - tblLogServicio
-  - tblAuditoria
+- BD: tblLogServicio
+- BD: tblAuditoria
+
+CAMBIOS RECIENTES / NOTAS PARA INTEGRACIÓN
+
+
+1. LOGIN (IMPORTANTE)
+- El método ValidarUsuario ahora devuelve:
+  - IdUsuario
+  - IdSucursal
+  - IdPerfil
+  - NombrePerfil
+- Deben usar IdSucursal para operaciones de caja e inventario.
+
+2. VEHÍCULO GENÉRICO
+- Se implementó soporte para ventas sin vehículo.
+- Existe un vehículo genérico en la BD:
+  Marca: GENERICA
+  Modelo: VENTA RAPIDA
+- Método disponible:
+  - ObtenerVehiculoGenerico
+
+3. FACTURACIÓN (IMPORTANTE)
+- Método final:
+  InsertarFactura
+
+- Regla:
+  - Si no hay vehículo, enviar:
+    idVehiculo = 0
+
+- El CORE convierte:
+  0 → NULL → usa vehículo genérico automáticamente
+
+4. MÉTODOS DE PRUEBA
+- Los métodos con sufijo "Prueba" son solo para testing manual en ASMX.
+- NO deben ser usados por Integración.
+
+5. LOGS
+- Todas las operaciones importantes generan:
+  - Log técnico (archivo)
+  - Log funcional (tblLogServicio)
+  - Auditoría (tblAuditoria)
+
+6. ERRORES COMUNES
+- Si InsertarFactura falla:
+  - verificar IdCliente
+  - verificar IdUsuario
+  - verificar IdSucursal
+- Si no hay vehículo:
+  usar idVehiculo = 0
+
+7. ORDEN DE USO RECOMENDADO
+- ValidarUsuario
+- ObtenerVehiculoGenerico (opcional)
+- InsertarCliente (si no existe)
+- InsertarVehiculo (si aplica)
+- InsertarFactura
+- InsertarFacturaDetalle
+- RegistrarMovimientoInventario

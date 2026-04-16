@@ -5,7 +5,7 @@ namespace AutoAdornos.Core.Business.Seguridad
 {
     public class UsuarioBL
     {
-        public sp_ValidarUsuario_Result ValidarUsuario(string nombreUsuario, string clave)
+        public sp_ValidarUsuario_Result1 ValidarUsuario(string nombreUsuario, string clave)
         {
             using (var db = new DBAutoAdornosCoreEntities())
             {

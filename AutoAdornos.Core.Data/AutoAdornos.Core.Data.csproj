@@ -100,7 +100,13 @@
     <Compile Include="sp_ListarVehiculosPorCliente_Result.cs">
       <DependentUpon>AutoAdornosModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="sp_ObtenerVehiculoGenerico_Result.cs">
+      <DependentUpon>AutoAdornosModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="sp_ValidarUsuario_Result.cs">
+      <DependentUpon>AutoAdornosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ValidarUsuario_Result1.cs">
       <DependentUpon>AutoAdornosModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tblAuditoria.cs">

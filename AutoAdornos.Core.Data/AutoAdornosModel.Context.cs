@@ -299,7 +299,12 @@ namespace AutoAdornos.Core.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_RegistrarMovimientoInventario", idProductoParameter, idSucursalParameter, tipoMovimientoParameter, cantidadParameter, observacionParameter, idUsuarioParameter);
         }
     
-        public virtual ObjectResult<sp_ValidarUsuario_Result> sp_ValidarUsuario(string nombreUsuario, string clave)
+        public virtual ObjectResult<sp_ObtenerVehiculoGenerico_Result> sp_ObtenerVehiculoGenerico()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ObtenerVehiculoGenerico_Result>("sp_ObtenerVehiculoGenerico");
+        }
+    
+        public virtual ObjectResult<sp_ValidarUsuario_Result1> sp_ValidarUsuario(string nombreUsuario, string clave)
         {
             var nombreUsuarioParameter = nombreUsuario != null ?
                 new ObjectParameter("NombreUsuario", nombreUsuario) :
@@ -309,7 +314,7 @@ namespace AutoAdornos.Core.Data
                 new ObjectParameter("Clave", clave) :
                 new ObjectParameter("Clave", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ValidarUsuario_Result>("sp_ValidarUsuario", nombreUsuarioParameter, claveParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ValidarUsuario_Result1>("sp_ValidarUsuario", nombreUsuarioParameter, claveParameter);
         }
     }
 }

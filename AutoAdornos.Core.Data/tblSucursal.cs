@@ -19,6 +19,7 @@ namespace AutoAdornos.Core.Data
         {
             this.tblFacturas = new HashSet<tblFactura>();
             this.tblMovimientoInventarios = new HashSet<tblMovimientoInventario>();
+            this.tblUsuarios = new HashSet<tblUsuario>();
         }
     
         public int IdSucursal { get; set; }
@@ -32,5 +33,7 @@ namespace AutoAdornos.Core.Data
         public virtual ICollection<tblFactura> tblFacturas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblMovimientoInventario> tblMovimientoInventarios { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblUsuario> tblUsuarios { get; set; }
     }
 }

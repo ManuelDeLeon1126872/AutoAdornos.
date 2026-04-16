@@ -1,6 +1,6 @@
-﻿using AutoAdornos.Core.Data;
-using System.Data.Entity.Core.Objects;
+﻿using System;
 using System.Linq;
+using AutoAdornos.Core.Data;
 
 namespace AutoAdornos.Core.Business.Facturacion
 {
@@ -10,7 +10,23 @@ namespace AutoAdornos.Core.Business.Facturacion
         {
             using (var db = new DBAutoAdornosCoreEntities())
             {
-                var resultado = db.sp_InsertarFactura(idCliente, idVehiculo, idUsuario, idSucursal, canalVenta, subtotal, impuesto, total).FirstOrDefault();
+                int? vehiculoFinal = idVehiculo;
+
+                if (!vehiculoFinal.HasValue)
+                {
+                    var vehiculoGenerico = db.tblVehiculoes
+                                             .FirstOrDefault(v => v.Marca == "GENERICA"
+                                                               && v.Modelo == "VENTA RAPIDA"
+                                                               && v.Estado == true);
+
+                    if (vehiculoGenerico == null)
+                        throw new Exception("No existe un vehículo genérico configurado.");
+
+                    vehiculoFinal = vehiculoGenerico.IdVehiculo;
+                }
+
+                var resultado = db.sp_InsertarFactura(idCliente, vehiculoFinal, idUsuario, idSucursal, canalVenta, subtotal, impuesto, total).FirstOrDefault();
+
                 return resultado.HasValue ? (int)resultado.Value : 0;
             }
         }
@@ -20,14 +36,6 @@ namespace AutoAdornos.Core.Business.Facturacion
             using (var db = new DBAutoAdornosCoreEntities())
             {
                 db.sp_InsertarFacturaDetalle(idFactura, idProducto, idServicio, cantidad, precio);
-            }
-        }
-
-        public ObjectResult<sp_ConsultarFacturaPorId_Result> ConsultarFacturaPorId(int idFactura)
-        {
-            using (var db = new DBAutoAdornosCoreEntities())
-            {
-                return db.sp_ConsultarFacturaPorId(idFactura);
             }
         }
     }

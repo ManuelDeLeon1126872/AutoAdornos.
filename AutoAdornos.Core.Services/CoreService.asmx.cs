@@ -47,7 +47,7 @@ namespace AutoAdornos.Core.Services
         }
 
         [WebMethod]
-        public sp_ValidarUsuario_Result ValidarUsuario(string nombreUsuario, string clave)
+        public sp_ValidarUsuario_Result1 ValidarUsuario(string nombreUsuario, string clave)
         {
             string servicio = "ValidarUsuario";
             string parametros = $"nombreUsuario={nombreUsuario}";
@@ -106,29 +106,97 @@ namespace AutoAdornos.Core.Services
         [WebMethod]
         public List<sp_ListarServicios_Result> ListarServicios()
         {
-            ServicioBL bl = new ServicioBL();
-            return bl.ListarServicios();
+            string servicio = "ListarServicios";
+            string parametros = "Sin parámetros";
+
+            try
+            {
+                ServicioBL bl = new ServicioBL();
+                var resultado = bl.ListarServicios();
+
+                log.Info($"{servicio} ejecutado correctamente. Total registros: {resultado.Count}");
+                RegistrarLogServicio(servicio, parametros, $"OK - {resultado.Count} servicios");
+
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                log.Error($"Error en {servicio}", ex);
+                RegistrarLogServicio(servicio, parametros, $"ERROR - {ex.Message}");
+                throw;
+            }
         }
 
         [WebMethod]
         public List<sp_ListarSucursales_Result> ListarSucursales()
         {
-            SucursalBL bl = new SucursalBL();
-            return bl.ListarSucursales();
+            string servicio = "ListarSucursales";
+            string parametros = "Sin parámetros";
+
+            try
+            {
+                SucursalBL bl = new SucursalBL();
+                var resultado = bl.ListarSucursales();
+
+                log.Info($"{servicio} ejecutado correctamente. Total registros: {resultado.Count}");
+                RegistrarLogServicio(servicio, parametros, $"OK - {resultado.Count} sucursales");
+
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                log.Error($"Error en {servicio}", ex);
+                RegistrarLogServicio(servicio, parametros, $"ERROR - {ex.Message}");
+                throw;
+            }
         }
 
         [WebMethod]
         public List<sp_ListarClientes_Result> ListarClientes()
         {
-            ClienteBL bl = new ClienteBL();
-            return bl.ListarClientes();
+            string servicio = "ListarClientes";
+            string parametros = "Sin parámetros";
+
+            try
+            {
+                ClienteBL bl = new ClienteBL();
+                var resultado = bl.ListarClientes();
+
+                log.Info($"{servicio} ejecutado correctamente. Total registros: {resultado.Count}");
+                RegistrarLogServicio(servicio, parametros, $"OK - {resultado.Count} clientes");
+
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                log.Error($"Error en {servicio}", ex);
+                RegistrarLogServicio(servicio, parametros, $"ERROR - {ex.Message}");
+                throw;
+            }
         }
 
         [WebMethod]
         public sp_BuscarClientePorCedulaRNC_Result BuscarClientePorCedulaRNC(string cedulaRnc)
         {
-            ClienteBL bl = new ClienteBL();
-            return bl.BuscarClientePorCedulaRNC(cedulaRnc);
+            string servicio = "BuscarClientePorCedulaRNC";
+            string parametros = $"cedulaRnc={cedulaRnc}";
+
+            try
+            {
+                ClienteBL bl = new ClienteBL();
+                var resultado = bl.BuscarClientePorCedulaRNC(cedulaRnc);
+
+                log.Info($"{servicio} ejecutado correctamente.");
+                RegistrarLogServicio(servicio, parametros, "OK");
+
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                log.Error($"Error en {servicio}", ex);
+                RegistrarLogServicio(servicio, parametros, $"ERROR - {ex.Message}");
+                throw;
+            }
         }
 
         [WebMethod]
@@ -158,8 +226,25 @@ namespace AutoAdornos.Core.Services
         [WebMethod]
         public List<sp_ListarVehiculosPorCliente_Result> ListarVehiculosPorCliente(int idCliente)
         {
-            VehiculoBL bl = new VehiculoBL();
-            return bl.ListarVehiculosPorCliente(idCliente);
+            string servicio = "ListarVehiculosPorCliente";
+            string parametros = $"idCliente={idCliente}";
+
+            try
+            {
+                VehiculoBL bl = new VehiculoBL();
+                var resultado = bl.ListarVehiculosPorCliente(idCliente);
+
+                log.Info($"{servicio} ejecutado correctamente. Total registros: {resultado.Count}");
+                RegistrarLogServicio(servicio, parametros, $"OK - {resultado.Count} vehículos");
+
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                log.Error($"Error en {servicio}", ex);
+                RegistrarLogServicio(servicio, parametros, $"ERROR - {ex.Message}");
+                throw;
+            }
         }
 
         [WebMethod]
@@ -186,7 +271,131 @@ namespace AutoAdornos.Core.Services
             }
         }
 
+        // Metodo final para Integracion. Permite idVehiculo = null y usa vehiculo generico. (InsertarFactura)
+        [WebMethod]
+        public int InsertarFactura(int idCliente, int idVehiculo, int idUsuario, int idSucursal, string canalVenta, decimal subtotal, decimal impuesto, decimal total)
+        {
+            string servicio = "InsertarFactura";
+            string parametros = $"idCliente={idCliente}, idVehiculo={idVehiculo}, idUsuario={idUsuario}, idSucursal={idSucursal}, canalVenta={canalVenta}, subtotal={subtotal}, impuesto={impuesto}, total={total}";
 
+            try
+            {
+                int? vehiculoFinal = idVehiculo == 0 ? (int?)null : idVehiculo;
+
+                FacturaBL bl = new FacturaBL();
+                int idFactura = bl.InsertarFactura(idCliente, vehiculoFinal, idUsuario, idSucursal, canalVenta, subtotal, impuesto, total);
+
+                log.Info($"Factura insertada correctamente. IdFactura={idFactura}");
+                RegistrarLogServicio(servicio, parametros, $"OK - IdFactura={idFactura}");
+                RegistrarAuditoria(idUsuario, "FACTURACION", "INSERTAR", $"Se creó la factura {idFactura}");
+
+                return idFactura;
+            }
+            catch (Exception ex)
+            {
+                log.Error($"Error en {servicio}", ex);
+                RegistrarLogServicio(servicio, parametros, $"ERROR - {ex.Message}");
+                throw;
+            }
+        }
+
+        [WebMethod]
+        public string InsertarFacturaDetalleServicioPrueba(int idFactura, int idServicio, int cantidad, decimal precio)
+        {
+            string servicio = "InsertarFacturaDetalleServicioPrueba";
+            string parametros = $"idFactura={idFactura}, idServicio={idServicio}, cantidad={cantidad}, precio={precio}";
+
+            try
+            {
+                FacturaBL bl = new FacturaBL();
+                bl.InsertarFacturaDetalle(idFactura, null, idServicio, cantidad, precio);
+
+                log.Info($"Detalle de servicio insertado correctamente para factura {idFactura}");
+                RegistrarLogServicio(servicio, parametros, "OK - Detalle servicio insertado");
+
+                return "OK - Detalle de servicio insertado correctamente";
+            }
+            catch (Exception ex)
+            {
+                log.Error($"Error en {servicio}", ex);
+                RegistrarLogServicio(servicio, parametros, $"ERROR - {ex.Message}");
+                throw;
+            }
+        }
+
+        [WebMethod]
+        public void RegistrarMovimientoInventario(int idProducto, int idSucursal, string tipoMovimiento, int cantidad, string observacion, int idUsuario)
+        {
+            string servicio = "RegistrarMovimientoInventario";
+            string parametros = $"idProducto={idProducto}, idSucursal={idSucursal}, tipoMovimiento={tipoMovimiento}, cantidad={cantidad}, observacion={observacion}, idUsuario={idUsuario}";
+
+            try
+            {
+                InventarioBL bl = new InventarioBL();
+                bl.RegistrarMovimientoInventario(idProducto, idSucursal, tipoMovimiento, cantidad, observacion, idUsuario);
+
+                log.Info($"{servicio} ejecutado correctamente.");
+                RegistrarLogServicio(servicio, parametros, "OK");
+                RegistrarAuditoria(idUsuario, "INVENTARIO", "MOVIMIENTO", $"Movimiento {tipoMovimiento} del producto {idProducto}");
+            }
+            catch (Exception ex)
+            {
+                log.Error($"Error en {servicio}", ex);
+                RegistrarLogServicio(servicio, parametros, $"ERROR - {ex.Message}");
+                throw;
+            }
+        }
+
+        [WebMethod]
+        public string InsertarFacturaDetalleProductoPrueba(int idFactura, int idProducto, int cantidad, decimal precio)
+        {
+            string servicio = "InsertarFacturaDetalleProductoPrueba";
+            string parametros = $"idFactura={idFactura}, idProducto={idProducto}, cantidad={cantidad}, precio={precio}";
+
+            try
+            {
+                FacturaBL bl = new FacturaBL();
+                bl.InsertarFacturaDetalle(idFactura, idProducto, null, cantidad, precio);
+
+                log.Info($"Detalle de producto insertado correctamente para factura {idFactura}");
+                RegistrarLogServicio(servicio, parametros, "OK - Detalle producto insertado");
+
+                return "OK - Detalle de producto insertado correctamente";
+            }
+            catch (Exception ex)
+            {
+                log.Error($"Error en {servicio}", ex);
+                RegistrarLogServicio(servicio, parametros, $"ERROR - {ex.Message}");
+                throw;
+            }
+        }
+
+        [WebMethod]
+        public sp_ObtenerVehiculoGenerico_Result ObtenerVehiculoGenerico()
+        {
+            string servicio = "ObtenerVehiculoGenerico";
+            string parametros = "Sin parámetros";
+
+            try
+            {
+                VehiculoBL bl = new VehiculoBL();
+                var resultado = bl.ObtenerVehiculoGenerico();
+
+                log.Info($"{servicio} ejecutado correctamente.");
+                RegistrarLogServicio(servicio, parametros, "OK");
+
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                log.Error($"Error en {servicio}", ex);
+                RegistrarLogServicio(servicio, parametros, $"ERROR - {ex.Message}");
+                throw;
+            }
+        }
+
+        // Metodo temporal de prueba para la página ASMX.
+        // Usar solo para pruebas manuales y evidencias. (InsertarFacturaPrueba)
         [WebMethod]
         public int InsertarFacturaPrueba(int idCliente, int idVehiculo, int idUsuario, int idSucursal, string canalVenta, decimal subtotal, decimal impuesto, decimal total)
         {
@@ -211,58 +420,5 @@ namespace AutoAdornos.Core.Services
                 throw;
             }
         }
-
-        [WebMethod]
-        public void InsertarFacturaDetalleServicioPrueba(int idFactura, int idServicio, int cantidad, decimal precio)
-        {
-            string servicio = "InsertarFacturaDetalleServicioPrueba";
-            string parametros = $"idFactura={idFactura}, idServicio={idServicio}, cantidad={cantidad}, precio={precio}";
-
-            try
-            {
-                FacturaBL bl = new FacturaBL();
-                bl.InsertarFacturaDetalle(idFactura, null, idServicio, cantidad, precio);
-
-                log.Info($"Detalle de servicio insertado correctamente para factura {idFactura}");
-                RegistrarLogServicio(servicio, parametros, "OK - Detalle servicio insertado");
-            }
-            catch (Exception ex)
-            {
-                log.Error($"Error en {servicio}", ex);
-                RegistrarLogServicio(servicio, parametros, $"ERROR - {ex.Message}");
-                throw;
-            }
-        }
-
-        [WebMethod]
-        public void RegistrarMovimientoInventario(int idProducto, int idSucursal, string tipoMovimiento, int cantidad, string observacion, int idUsuario)
-        {
-            InventarioBL bl = new InventarioBL();
-            bl.RegistrarMovimientoInventario(idProducto, idSucursal, tipoMovimiento, cantidad, observacion, idUsuario);
-        }
-
-        [WebMethod]
-        public void InsertarFacturaDetalleProductoPrueba(int idFactura, int idProducto, int cantidad, decimal precio)
-        {
-            string servicio = "InsertarFacturaDetalleProductoPrueba";
-            string parametros = $"idFactura={idFactura}, idProducto={idProducto}, cantidad={cantidad}, precio={precio}";
-
-            try
-            {
-                FacturaBL bl = new FacturaBL();
-                bl.InsertarFacturaDetalle(idFactura, idProducto, null, cantidad, precio);
-
-                log.Info($"Detalle de producto insertado correctamente para factura {idFactura}");
-                RegistrarLogServicio(servicio, parametros, "OK - Detalle producto insertado");
-            }
-            catch (Exception ex)
-            {
-                log.Error($"Error en {servicio}", ex);
-                RegistrarLogServicio(servicio, parametros, $"ERROR - {ex.Message}");
-                throw;
-            }
-        }
-
-
     }
 }

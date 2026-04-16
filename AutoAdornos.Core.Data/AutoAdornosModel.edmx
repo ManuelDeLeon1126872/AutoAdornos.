@@ -145,6 +145,7 @@
           <Property Name="NombreCompleto" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Estado" Type="bit" Nullable="false" />
           <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="IdSucursal" Type="int" />
         </EntityType>
         <EntityType Name="tblUsuarioPerfil">
           <Key>
@@ -299,6 +300,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblUsuario_tblSucursal">
+          <End Role="tblSucursal" Type="Self.tblSucursal" Multiplicity="0..1" />
+          <End Role="tblUsuario" Type="Self.tblUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSucursal">
+              <PropertyRef Name="IdSucursal" />
+            </Principal>
+            <Dependent Role="tblUsuario">
+              <PropertyRef Name="IdSucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblUsuarioPerfil_tblPerfil">
           <End Role="tblPerfil" Type="Self.tblPerfil" Multiplicity="1" />
           <End Role="tblUsuarioPerfil" Type="Self.tblUsuarioPerfil" Multiplicity="*" />
@@ -399,6 +412,7 @@
         <Function Name="sp_ListarVehiculosPorCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IdCliente" Type="int" Mode="In" />
         </Function>
+        <Function Name="sp_ObtenerVehiculoGenerico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_RegistrarMovimientoInventario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IdProducto" Type="int" Mode="In" />
           <Parameter Name="IdSucursal" Type="int" Mode="In" />
@@ -469,6 +483,10 @@
           <AssociationSet Name="FK_tblMovimientoInventario_tblUsuario" Association="Self.FK_tblMovimientoInventario_tblUsuario">
             <End Role="tblUsuario" EntitySet="tblUsuario" />
             <End Role="tblMovimientoInventario" EntitySet="tblMovimientoInventario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUsuario_tblSucursal" Association="Self.FK_tblUsuario_tblSucursal">
+            <End Role="tblSucursal" EntitySet="tblSucursal" />
+            <End Role="tblUsuario" EntitySet="tblUsuario" />
           </AssociationSet>
           <AssociationSet Name="FK_tblUsuarioPerfil_tblPerfil" Association="Self.FK_tblUsuarioPerfil_tblPerfil">
             <End Role="tblPerfil" EntitySet="tblPerfil" />
@@ -623,6 +641,7 @@
           <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="tblFacturas" Relationship="Self.FK_tblFactura_tblSucursal" FromRole="tblSucursal" ToRole="tblFactura" />
           <NavigationProperty Name="tblMovimientoInventarios" Relationship="Self.FK_tblMovimientoInventario_tblSucursal" FromRole="tblSucursal" ToRole="tblMovimientoInventario" />
+          <NavigationProperty Name="tblUsuarios" Relationship="DBAutoAdornosCoreModel.FK_tblUsuario_tblSucursal" FromRole="tblSucursal" ToRole="tblUsuario" />
         </EntityType>
         <EntityType Name="tblSuplidor">
           <Key>
@@ -651,6 +670,8 @@
           <NavigationProperty Name="tblFacturas" Relationship="Self.FK_tblFactura_tblUsuario" FromRole="tblUsuario" ToRole="tblFactura" />
           <NavigationProperty Name="tblMovimientoInventarios" Relationship="Self.FK_tblMovimientoInventario_tblUsuario" FromRole="tblUsuario" ToRole="tblMovimientoInventario" />
           <NavigationProperty Name="tblUsuarioPerfils" Relationship="Self.FK_tblUsuarioPerfil_tblUsuario" FromRole="tblUsuario" ToRole="tblUsuarioPerfil" />
+          <Property Name="IdSucursal" Type="Int32" />
+          <NavigationProperty Name="tblSucursal" Relationship="DBAutoAdornosCoreModel.FK_tblUsuario_tblSucursal" FromRole="tblUsuario" ToRole="tblSucursal" />
         </EntityType>
         <EntityType Name="tblUsuarioPerfil">
           <Key>
@@ -988,7 +1009,12 @@
             <Parameter Name="Observacion" Mode="In" Type="String" />
             <Parameter Name="IdUsuario" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_ValidarUsuario" ReturnType="Collection(DBAutoAdornosCoreModel.sp_ValidarUsuario_Result)">
+          <AssociationSet Name="FK_tblUsuario_tblSucursal" Association="DBAutoAdornosCoreModel.FK_tblUsuario_tblSucursal">
+            <End Role="tblSucursal" EntitySet="tblSucursals" />
+            <End Role="tblUsuario" EntitySet="tblUsuarios" />
+          </AssociationSet>
+          <FunctionImport Name="sp_ObtenerVehiculoGenerico" ReturnType="Collection(DBAutoAdornosCoreModel.sp_ObtenerVehiculoGenerico_Result)" />
+          <FunctionImport Name="sp_ValidarUsuario" ReturnType="Collection(DBAutoAdornosCoreModel.sp_ValidarUsuario_Result1)">
             <Parameter Name="NombreUsuario" Mode="In" Type="String" />
             <Parameter Name="Clave" Mode="In" Type="String" />
           </FunctionImport>
@@ -1099,6 +1125,36 @@
           <Property Type="Int32" Name="IdUsuario" Nullable="false" />
           <Property Type="String" Name="NombreUsuario" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="NombreCompleto" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="IdPerfil" Nullable="false" />
+          <Property Type="String" Name="NombrePerfil" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <Association Name="FK_tblUsuario_tblSucursal">
+          <End Type="DBAutoAdornosCoreModel.tblSucursal" Role="tblSucursal" Multiplicity="0..1" />
+          <End Type="DBAutoAdornosCoreModel.tblUsuario" Role="tblUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSucursal">
+              <PropertyRef Name="IdSucursal" />
+            </Principal>
+            <Dependent Role="tblUsuario">
+              <PropertyRef Name="IdSucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="sp_ObtenerVehiculoGenerico_Result">
+          <Property Type="Int32" Name="IdVehiculo" Nullable="false" />
+          <Property Type="Int32" Name="IdCliente" Nullable="false" />
+          <Property Type="String" Name="Marca" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Modelo" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Anio" Nullable="true" />
+          <Property Type="String" Name="Placa" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Color" Nullable="true" MaxLength="30" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_ValidarUsuario_Result1">
+          <Property Type="Int32" Name="IdUsuario" Nullable="false" />
+          <Property Type="String" Name="NombreUsuario" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="NombreCompleto" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="IdSucursal" Nullable="true" />
           <Property Type="Int32" Name="IdPerfil" Nullable="false" />
           <Property Type="String" Name="NombrePerfil" Nullable="false" MaxLength="50" />
         </ComplexType>
@@ -1252,6 +1308,7 @@
           <EntitySetMapping Name="tblUsuarios">
             <EntityTypeMapping TypeName="DBAutoAdornosCoreModel.tblUsuario">
               <MappingFragment StoreEntitySet="tblUsuario">
+                <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
                 <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
                 <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
                 <ScalarProperty Name="Clave" ColumnName="Clave" />
@@ -1433,12 +1490,27 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_RegistrarMovimientoInventario" FunctionName="DBAutoAdornosCoreModel.Store.sp_RegistrarMovimientoInventario" />
+          <FunctionImportMapping FunctionImportName="sp_ObtenerVehiculoGenerico" FunctionName="DBAutoAdornosCoreModel.Store.sp_ObtenerVehiculoGenerico">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAutoAdornosCoreModel.sp_ObtenerVehiculoGenerico_Result">
+                <ScalarProperty Name="IdVehiculo" ColumnName="IdVehiculo" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Anio" ColumnName="Anio" />
+                <ScalarProperty Name="Placa" ColumnName="Placa" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_ValidarUsuario" FunctionName="DBAutoAdornosCoreModel.Store.sp_ValidarUsuario">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="DBAutoAdornosCoreModel.sp_ValidarUsuario_Result">
+              <ComplexTypeMapping TypeName="DBAutoAdornosCoreModel.sp_ValidarUsuario_Result1">
                 <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
                 <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
                 <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
                 <ScalarProperty Name="IdPerfil" ColumnName="IdPerfil" />
                 <ScalarProperty Name="NombrePerfil" ColumnName="NombrePerfil" />
               </ComplexTypeMapping>

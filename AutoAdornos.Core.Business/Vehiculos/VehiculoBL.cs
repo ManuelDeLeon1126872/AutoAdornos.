@@ -22,5 +22,13 @@ namespace AutoAdornos.Core.Business.Vehiculos
                 return resultado.HasValue ? (int)resultado.Value : 0;
             }
         }
+        public sp_ObtenerVehiculoGenerico_Result ObtenerVehiculoGenerico()
+        {
+            using (var db = new DBAutoAdornosCoreEntities())
+            {
+                return db.sp_ObtenerVehiculoGenerico().FirstOrDefault();
+            }
+        }
+
     }
 }

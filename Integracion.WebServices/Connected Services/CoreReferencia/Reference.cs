@@ -15,9 +15,9 @@ namespace Integracion.WebServices.CoreReferencia {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="sp_ValidarUsuario_Result", Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="sp_ValidarUsuario_Result1", Namespace="http://tempuri.org/")]
     [System.SerializableAttribute()]
-    public partial class sp_ValidarUsuario_Result : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class sp_ValidarUsuario_Result1 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -29,6 +29,8 @@ namespace Integracion.WebServices.CoreReferencia {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NombreCompletoField;
+        
+        private System.Nullable<int> IdSucursalField;
         
         private int IdPerfilField;
         
@@ -85,6 +87,19 @@ namespace Integracion.WebServices.CoreReferencia {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public System.Nullable<int> IdSucursal {
+            get {
+                return this.IdSucursalField;
+            }
+            set {
+                if ((this.IdSucursalField.Equals(value) != true)) {
+                    this.IdSucursalField = value;
+                    this.RaisePropertyChanged("IdSucursal");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
         public int IdPerfil {
             get {
                 return this.IdPerfilField;
@@ -97,7 +112,7 @@ namespace Integracion.WebServices.CoreReferencia {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
         public string NombrePerfil {
             get {
                 return this.NombrePerfilField;
@@ -994,6 +1009,159 @@ namespace Integracion.WebServices.CoreReferencia {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="sp_ObtenerVehiculoGenerico_Result", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class sp_ObtenerVehiculoGenerico_Result : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IdVehiculoField;
+        
+        private int IdClienteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MarcaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ModeloField;
+        
+        private System.Nullable<int> AnioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PlacaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ColorField;
+        
+        private bool EstadoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int IdVehiculo {
+            get {
+                return this.IdVehiculoField;
+            }
+            set {
+                if ((this.IdVehiculoField.Equals(value) != true)) {
+                    this.IdVehiculoField = value;
+                    this.RaisePropertyChanged("IdVehiculo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=1)]
+        public int IdCliente {
+            get {
+                return this.IdClienteField;
+            }
+            set {
+                if ((this.IdClienteField.Equals(value) != true)) {
+                    this.IdClienteField = value;
+                    this.RaisePropertyChanged("IdCliente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string Marca {
+            get {
+                return this.MarcaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MarcaField, value) != true)) {
+                    this.MarcaField = value;
+                    this.RaisePropertyChanged("Marca");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string Modelo {
+            get {
+                return this.ModeloField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ModeloField, value) != true)) {
+                    this.ModeloField = value;
+                    this.RaisePropertyChanged("Modelo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public System.Nullable<int> Anio {
+            get {
+                return this.AnioField;
+            }
+            set {
+                if ((this.AnioField.Equals(value) != true)) {
+                    this.AnioField = value;
+                    this.RaisePropertyChanged("Anio");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public string Placa {
+            get {
+                return this.PlacaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PlacaField, value) != true)) {
+                    this.PlacaField = value;
+                    this.RaisePropertyChanged("Placa");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=6)]
+        public string Color {
+            get {
+                return this.ColorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ColorField, value) != true)) {
+                    this.ColorField = value;
+                    this.RaisePropertyChanged("Color");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=7)]
+        public bool Estado {
+            get {
+                return this.EstadoField;
+            }
+            set {
+                if ((this.EstadoField.Equals(value) != true)) {
+                    this.EstadoField = value;
+                    this.RaisePropertyChanged("Estado");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="CoreReferencia.CoreServiceSoap")]
     public interface CoreServiceSoap {
@@ -1062,17 +1230,18 @@ namespace Integracion.WebServices.CoreReferencia {
         System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.InsertarVehiculoPruebaResponse> InsertarVehiculoPruebaAsync(Integracion.WebServices.CoreReferencia.InsertarVehiculoPruebaRequest request);
         
         // CODEGEN: Generating message contract since element name canalVenta from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarFacturaPrueba", ReplyAction="*")]
-        Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaResponse InsertarFacturaPrueba(Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarFactura", ReplyAction="*")]
+        Integracion.WebServices.CoreReferencia.InsertarFacturaResponse InsertarFactura(Integracion.WebServices.CoreReferencia.InsertarFacturaRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarFacturaPrueba", ReplyAction="*")]
-        System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaResponse> InsertarFacturaPruebaAsync(Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarFactura", ReplyAction="*")]
+        System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.InsertarFacturaResponse> InsertarFacturaAsync(Integracion.WebServices.CoreReferencia.InsertarFacturaRequest request);
+        
+        // CODEGEN: Generating message contract since element name InsertarFacturaDetalleServicioPruebaResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarFacturaDetalleServicioPrueba", ReplyAction="*")]
+        Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleServicioPruebaResponse InsertarFacturaDetalleServicioPrueba(Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleServicioPruebaRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarFacturaDetalleServicioPrueba", ReplyAction="*")]
-        void InsertarFacturaDetalleServicioPrueba(int idFactura, int idServicio, int cantidad, decimal precio);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarFacturaDetalleServicioPrueba", ReplyAction="*")]
-        System.Threading.Tasks.Task InsertarFacturaDetalleServicioPruebaAsync(int idFactura, int idServicio, int cantidad, decimal precio);
+        System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleServicioPruebaResponse> InsertarFacturaDetalleServicioPruebaAsync(Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleServicioPruebaRequest request);
         
         // CODEGEN: Generating message contract since element name tipoMovimiento from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/RegistrarMovimientoInventario", ReplyAction="*")]
@@ -1081,11 +1250,26 @@ namespace Integracion.WebServices.CoreReferencia {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/RegistrarMovimientoInventario", ReplyAction="*")]
         System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.RegistrarMovimientoInventarioResponse> RegistrarMovimientoInventarioAsync(Integracion.WebServices.CoreReferencia.RegistrarMovimientoInventarioRequest request);
         
+        // CODEGEN: Generating message contract since element name InsertarFacturaDetalleProductoPruebaResult from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarFacturaDetalleProductoPrueba", ReplyAction="*")]
-        void InsertarFacturaDetalleProductoPrueba(int idFactura, int idProducto, int cantidad, decimal precio);
+        Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleProductoPruebaResponse InsertarFacturaDetalleProductoPrueba(Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleProductoPruebaRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarFacturaDetalleProductoPrueba", ReplyAction="*")]
-        System.Threading.Tasks.Task InsertarFacturaDetalleProductoPruebaAsync(int idFactura, int idProducto, int cantidad, decimal precio);
+        System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleProductoPruebaResponse> InsertarFacturaDetalleProductoPruebaAsync(Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleProductoPruebaRequest request);
+        
+        // CODEGEN: Generating message contract since element name ObtenerVehiculoGenericoResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerVehiculoGenerico", ReplyAction="*")]
+        Integracion.WebServices.CoreReferencia.ObtenerVehiculoGenericoResponse ObtenerVehiculoGenerico(Integracion.WebServices.CoreReferencia.ObtenerVehiculoGenericoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerVehiculoGenerico", ReplyAction="*")]
+        System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.ObtenerVehiculoGenericoResponse> ObtenerVehiculoGenericoAsync(Integracion.WebServices.CoreReferencia.ObtenerVehiculoGenericoRequest request);
+        
+        // CODEGEN: Generating message contract since element name canalVenta from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarFacturaPrueba", ReplyAction="*")]
+        Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaResponse InsertarFacturaPrueba(Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarFacturaPrueba", ReplyAction="*")]
+        System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaResponse> InsertarFacturaPruebaAsync(Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1150,12 +1334,12 @@ namespace Integracion.WebServices.CoreReferencia {
     public partial class ValidarUsuarioResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public Integracion.WebServices.CoreReferencia.sp_ValidarUsuario_Result ValidarUsuarioResult;
+        public Integracion.WebServices.CoreReferencia.sp_ValidarUsuario_Result1 ValidarUsuarioResult;
         
         public ValidarUsuarioResponseBody() {
         }
         
-        public ValidarUsuarioResponseBody(Integracion.WebServices.CoreReferencia.sp_ValidarUsuario_Result ValidarUsuarioResult) {
+        public ValidarUsuarioResponseBody(Integracion.WebServices.CoreReferencia.sp_ValidarUsuario_Result1 ValidarUsuarioResult) {
             this.ValidarUsuarioResult = ValidarUsuarioResult;
         }
     }
@@ -1720,6 +1904,404 @@ namespace Integracion.WebServices.CoreReferencia {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class InsertarFacturaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertarFactura", Namespace="http://tempuri.org/", Order=0)]
+        public Integracion.WebServices.CoreReferencia.InsertarFacturaRequestBody Body;
+        
+        public InsertarFacturaRequest() {
+        }
+        
+        public InsertarFacturaRequest(Integracion.WebServices.CoreReferencia.InsertarFacturaRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class InsertarFacturaRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int idCliente;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+        public int idVehiculo;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public int idUsuario;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public int idSucursal;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string canalVenta;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+        public decimal subtotal;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=6)]
+        public decimal impuesto;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=7)]
+        public decimal total;
+        
+        public InsertarFacturaRequestBody() {
+        }
+        
+        public InsertarFacturaRequestBody(int idCliente, int idVehiculo, int idUsuario, int idSucursal, string canalVenta, decimal subtotal, decimal impuesto, decimal total) {
+            this.idCliente = idCliente;
+            this.idVehiculo = idVehiculo;
+            this.idUsuario = idUsuario;
+            this.idSucursal = idSucursal;
+            this.canalVenta = canalVenta;
+            this.subtotal = subtotal;
+            this.impuesto = impuesto;
+            this.total = total;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class InsertarFacturaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertarFacturaResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Integracion.WebServices.CoreReferencia.InsertarFacturaResponseBody Body;
+        
+        public InsertarFacturaResponse() {
+        }
+        
+        public InsertarFacturaResponse(Integracion.WebServices.CoreReferencia.InsertarFacturaResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class InsertarFacturaResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int InsertarFacturaResult;
+        
+        public InsertarFacturaResponseBody() {
+        }
+        
+        public InsertarFacturaResponseBody(int InsertarFacturaResult) {
+            this.InsertarFacturaResult = InsertarFacturaResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class InsertarFacturaDetalleServicioPruebaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertarFacturaDetalleServicioPrueba", Namespace="http://tempuri.org/", Order=0)]
+        public Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleServicioPruebaRequestBody Body;
+        
+        public InsertarFacturaDetalleServicioPruebaRequest() {
+        }
+        
+        public InsertarFacturaDetalleServicioPruebaRequest(Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleServicioPruebaRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class InsertarFacturaDetalleServicioPruebaRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int idFactura;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+        public int idServicio;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public int cantidad;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public decimal precio;
+        
+        public InsertarFacturaDetalleServicioPruebaRequestBody() {
+        }
+        
+        public InsertarFacturaDetalleServicioPruebaRequestBody(int idFactura, int idServicio, int cantidad, decimal precio) {
+            this.idFactura = idFactura;
+            this.idServicio = idServicio;
+            this.cantidad = cantidad;
+            this.precio = precio;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class InsertarFacturaDetalleServicioPruebaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertarFacturaDetalleServicioPruebaResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleServicioPruebaResponseBody Body;
+        
+        public InsertarFacturaDetalleServicioPruebaResponse() {
+        }
+        
+        public InsertarFacturaDetalleServicioPruebaResponse(Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleServicioPruebaResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class InsertarFacturaDetalleServicioPruebaResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string InsertarFacturaDetalleServicioPruebaResult;
+        
+        public InsertarFacturaDetalleServicioPruebaResponseBody() {
+        }
+        
+        public InsertarFacturaDetalleServicioPruebaResponseBody(string InsertarFacturaDetalleServicioPruebaResult) {
+            this.InsertarFacturaDetalleServicioPruebaResult = InsertarFacturaDetalleServicioPruebaResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class RegistrarMovimientoInventarioRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="RegistrarMovimientoInventario", Namespace="http://tempuri.org/", Order=0)]
+        public Integracion.WebServices.CoreReferencia.RegistrarMovimientoInventarioRequestBody Body;
+        
+        public RegistrarMovimientoInventarioRequest() {
+        }
+        
+        public RegistrarMovimientoInventarioRequest(Integracion.WebServices.CoreReferencia.RegistrarMovimientoInventarioRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class RegistrarMovimientoInventarioRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int idProducto;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+        public int idSucursal;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string tipoMovimiento;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public int cantidad;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string observacion;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+        public int idUsuario;
+        
+        public RegistrarMovimientoInventarioRequestBody() {
+        }
+        
+        public RegistrarMovimientoInventarioRequestBody(int idProducto, int idSucursal, string tipoMovimiento, int cantidad, string observacion, int idUsuario) {
+            this.idProducto = idProducto;
+            this.idSucursal = idSucursal;
+            this.tipoMovimiento = tipoMovimiento;
+            this.cantidad = cantidad;
+            this.observacion = observacion;
+            this.idUsuario = idUsuario;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class RegistrarMovimientoInventarioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="RegistrarMovimientoInventarioResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Integracion.WebServices.CoreReferencia.RegistrarMovimientoInventarioResponseBody Body;
+        
+        public RegistrarMovimientoInventarioResponse() {
+        }
+        
+        public RegistrarMovimientoInventarioResponse(Integracion.WebServices.CoreReferencia.RegistrarMovimientoInventarioResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class RegistrarMovimientoInventarioResponseBody {
+        
+        public RegistrarMovimientoInventarioResponseBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class InsertarFacturaDetalleProductoPruebaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertarFacturaDetalleProductoPrueba", Namespace="http://tempuri.org/", Order=0)]
+        public Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleProductoPruebaRequestBody Body;
+        
+        public InsertarFacturaDetalleProductoPruebaRequest() {
+        }
+        
+        public InsertarFacturaDetalleProductoPruebaRequest(Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleProductoPruebaRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class InsertarFacturaDetalleProductoPruebaRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int idFactura;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+        public int idProducto;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public int cantidad;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public decimal precio;
+        
+        public InsertarFacturaDetalleProductoPruebaRequestBody() {
+        }
+        
+        public InsertarFacturaDetalleProductoPruebaRequestBody(int idFactura, int idProducto, int cantidad, decimal precio) {
+            this.idFactura = idFactura;
+            this.idProducto = idProducto;
+            this.cantidad = cantidad;
+            this.precio = precio;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class InsertarFacturaDetalleProductoPruebaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertarFacturaDetalleProductoPruebaResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleProductoPruebaResponseBody Body;
+        
+        public InsertarFacturaDetalleProductoPruebaResponse() {
+        }
+        
+        public InsertarFacturaDetalleProductoPruebaResponse(Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleProductoPruebaResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class InsertarFacturaDetalleProductoPruebaResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string InsertarFacturaDetalleProductoPruebaResult;
+        
+        public InsertarFacturaDetalleProductoPruebaResponseBody() {
+        }
+        
+        public InsertarFacturaDetalleProductoPruebaResponseBody(string InsertarFacturaDetalleProductoPruebaResult) {
+            this.InsertarFacturaDetalleProductoPruebaResult = InsertarFacturaDetalleProductoPruebaResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ObtenerVehiculoGenericoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ObtenerVehiculoGenerico", Namespace="http://tempuri.org/", Order=0)]
+        public Integracion.WebServices.CoreReferencia.ObtenerVehiculoGenericoRequestBody Body;
+        
+        public ObtenerVehiculoGenericoRequest() {
+        }
+        
+        public ObtenerVehiculoGenericoRequest(Integracion.WebServices.CoreReferencia.ObtenerVehiculoGenericoRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class ObtenerVehiculoGenericoRequestBody {
+        
+        public ObtenerVehiculoGenericoRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ObtenerVehiculoGenericoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ObtenerVehiculoGenericoResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Integracion.WebServices.CoreReferencia.ObtenerVehiculoGenericoResponseBody Body;
+        
+        public ObtenerVehiculoGenericoResponse() {
+        }
+        
+        public ObtenerVehiculoGenericoResponse(Integracion.WebServices.CoreReferencia.ObtenerVehiculoGenericoResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ObtenerVehiculoGenericoResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Integracion.WebServices.CoreReferencia.sp_ObtenerVehiculoGenerico_Result ObtenerVehiculoGenericoResult;
+        
+        public ObtenerVehiculoGenericoResponseBody() {
+        }
+        
+        public ObtenerVehiculoGenericoResponseBody(Integracion.WebServices.CoreReferencia.sp_ObtenerVehiculoGenerico_Result ObtenerVehiculoGenericoResult) {
+            this.ObtenerVehiculoGenericoResult = ObtenerVehiculoGenericoResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class InsertarFacturaPruebaRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertarFacturaPrueba", Namespace="http://tempuri.org/", Order=0)]
@@ -1812,87 +2394,6 @@ namespace Integracion.WebServices.CoreReferencia {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class RegistrarMovimientoInventarioRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="RegistrarMovimientoInventario", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.WebServices.CoreReferencia.RegistrarMovimientoInventarioRequestBody Body;
-        
-        public RegistrarMovimientoInventarioRequest() {
-        }
-        
-        public RegistrarMovimientoInventarioRequest(Integracion.WebServices.CoreReferencia.RegistrarMovimientoInventarioRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class RegistrarMovimientoInventarioRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public int idProducto;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
-        public int idSucursal;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public string tipoMovimiento;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
-        public int cantidad;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
-        public string observacion;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=5)]
-        public int idUsuario;
-        
-        public RegistrarMovimientoInventarioRequestBody() {
-        }
-        
-        public RegistrarMovimientoInventarioRequestBody(int idProducto, int idSucursal, string tipoMovimiento, int cantidad, string observacion, int idUsuario) {
-            this.idProducto = idProducto;
-            this.idSucursal = idSucursal;
-            this.tipoMovimiento = tipoMovimiento;
-            this.cantidad = cantidad;
-            this.observacion = observacion;
-            this.idUsuario = idUsuario;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class RegistrarMovimientoInventarioResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="RegistrarMovimientoInventarioResponse", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.WebServices.CoreReferencia.RegistrarMovimientoInventarioResponseBody Body;
-        
-        public RegistrarMovimientoInventarioResponse() {
-        }
-        
-        public RegistrarMovimientoInventarioResponse(Integracion.WebServices.CoreReferencia.RegistrarMovimientoInventarioResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class RegistrarMovimientoInventarioResponseBody {
-        
-        public RegistrarMovimientoInventarioResponseBody() {
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface CoreServiceSoapChannel : Integracion.WebServices.CoreReferencia.CoreServiceSoap, System.ServiceModel.IClientChannel {
     }
@@ -1925,7 +2426,7 @@ namespace Integracion.WebServices.CoreReferencia {
             return base.Channel.ValidarUsuario(request);
         }
         
-        public Integracion.WebServices.CoreReferencia.sp_ValidarUsuario_Result ValidarUsuario(string nombreUsuario, string clave) {
+        public Integracion.WebServices.CoreReferencia.sp_ValidarUsuario_Result1 ValidarUsuario(string nombreUsuario, string clave) {
             Integracion.WebServices.CoreReferencia.ValidarUsuarioRequest inValue = new Integracion.WebServices.CoreReferencia.ValidarUsuarioRequest();
             inValue.Body = new Integracion.WebServices.CoreReferencia.ValidarUsuarioRequestBody();
             inValue.Body.nombreUsuario = nombreUsuario;
@@ -2160,13 +2661,13 @@ namespace Integracion.WebServices.CoreReferencia {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaResponse Integracion.WebServices.CoreReferencia.CoreServiceSoap.InsertarFacturaPrueba(Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaRequest request) {
-            return base.Channel.InsertarFacturaPrueba(request);
+        Integracion.WebServices.CoreReferencia.InsertarFacturaResponse Integracion.WebServices.CoreReferencia.CoreServiceSoap.InsertarFactura(Integracion.WebServices.CoreReferencia.InsertarFacturaRequest request) {
+            return base.Channel.InsertarFactura(request);
         }
         
-        public int InsertarFacturaPrueba(int idCliente, int idVehiculo, int idUsuario, int idSucursal, string canalVenta, decimal subtotal, decimal impuesto, decimal total) {
-            Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaRequest inValue = new Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaRequest();
-            inValue.Body = new Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaRequestBody();
+        public int InsertarFactura(int idCliente, int idVehiculo, int idUsuario, int idSucursal, string canalVenta, decimal subtotal, decimal impuesto, decimal total) {
+            Integracion.WebServices.CoreReferencia.InsertarFacturaRequest inValue = new Integracion.WebServices.CoreReferencia.InsertarFacturaRequest();
+            inValue.Body = new Integracion.WebServices.CoreReferencia.InsertarFacturaRequestBody();
             inValue.Body.idCliente = idCliente;
             inValue.Body.idVehiculo = idVehiculo;
             inValue.Body.idUsuario = idUsuario;
@@ -2175,18 +2676,18 @@ namespace Integracion.WebServices.CoreReferencia {
             inValue.Body.subtotal = subtotal;
             inValue.Body.impuesto = impuesto;
             inValue.Body.total = total;
-            Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaResponse retVal = ((Integracion.WebServices.CoreReferencia.CoreServiceSoap)(this)).InsertarFacturaPrueba(inValue);
-            return retVal.Body.InsertarFacturaPruebaResult;
+            Integracion.WebServices.CoreReferencia.InsertarFacturaResponse retVal = ((Integracion.WebServices.CoreReferencia.CoreServiceSoap)(this)).InsertarFactura(inValue);
+            return retVal.Body.InsertarFacturaResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaResponse> Integracion.WebServices.CoreReferencia.CoreServiceSoap.InsertarFacturaPruebaAsync(Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaRequest request) {
-            return base.Channel.InsertarFacturaPruebaAsync(request);
+        System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.InsertarFacturaResponse> Integracion.WebServices.CoreReferencia.CoreServiceSoap.InsertarFacturaAsync(Integracion.WebServices.CoreReferencia.InsertarFacturaRequest request) {
+            return base.Channel.InsertarFacturaAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaResponse> InsertarFacturaPruebaAsync(int idCliente, int idVehiculo, int idUsuario, int idSucursal, string canalVenta, decimal subtotal, decimal impuesto, decimal total) {
-            Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaRequest inValue = new Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaRequest();
-            inValue.Body = new Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaRequestBody();
+        public System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.InsertarFacturaResponse> InsertarFacturaAsync(int idCliente, int idVehiculo, int idUsuario, int idSucursal, string canalVenta, decimal subtotal, decimal impuesto, decimal total) {
+            Integracion.WebServices.CoreReferencia.InsertarFacturaRequest inValue = new Integracion.WebServices.CoreReferencia.InsertarFacturaRequest();
+            inValue.Body = new Integracion.WebServices.CoreReferencia.InsertarFacturaRequestBody();
             inValue.Body.idCliente = idCliente;
             inValue.Body.idVehiculo = idVehiculo;
             inValue.Body.idUsuario = idUsuario;
@@ -2195,15 +2696,38 @@ namespace Integracion.WebServices.CoreReferencia {
             inValue.Body.subtotal = subtotal;
             inValue.Body.impuesto = impuesto;
             inValue.Body.total = total;
-            return ((Integracion.WebServices.CoreReferencia.CoreServiceSoap)(this)).InsertarFacturaPruebaAsync(inValue);
+            return ((Integracion.WebServices.CoreReferencia.CoreServiceSoap)(this)).InsertarFacturaAsync(inValue);
         }
         
-        public void InsertarFacturaDetalleServicioPrueba(int idFactura, int idServicio, int cantidad, decimal precio) {
-            base.Channel.InsertarFacturaDetalleServicioPrueba(idFactura, idServicio, cantidad, precio);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleServicioPruebaResponse Integracion.WebServices.CoreReferencia.CoreServiceSoap.InsertarFacturaDetalleServicioPrueba(Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleServicioPruebaRequest request) {
+            return base.Channel.InsertarFacturaDetalleServicioPrueba(request);
         }
         
-        public System.Threading.Tasks.Task InsertarFacturaDetalleServicioPruebaAsync(int idFactura, int idServicio, int cantidad, decimal precio) {
-            return base.Channel.InsertarFacturaDetalleServicioPruebaAsync(idFactura, idServicio, cantidad, precio);
+        public string InsertarFacturaDetalleServicioPrueba(int idFactura, int idServicio, int cantidad, decimal precio) {
+            Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleServicioPruebaRequest inValue = new Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleServicioPruebaRequest();
+            inValue.Body = new Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleServicioPruebaRequestBody();
+            inValue.Body.idFactura = idFactura;
+            inValue.Body.idServicio = idServicio;
+            inValue.Body.cantidad = cantidad;
+            inValue.Body.precio = precio;
+            Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleServicioPruebaResponse retVal = ((Integracion.WebServices.CoreReferencia.CoreServiceSoap)(this)).InsertarFacturaDetalleServicioPrueba(inValue);
+            return retVal.Body.InsertarFacturaDetalleServicioPruebaResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleServicioPruebaResponse> Integracion.WebServices.CoreReferencia.CoreServiceSoap.InsertarFacturaDetalleServicioPruebaAsync(Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleServicioPruebaRequest request) {
+            return base.Channel.InsertarFacturaDetalleServicioPruebaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleServicioPruebaResponse> InsertarFacturaDetalleServicioPruebaAsync(int idFactura, int idServicio, int cantidad, decimal precio) {
+            Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleServicioPruebaRequest inValue = new Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleServicioPruebaRequest();
+            inValue.Body = new Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleServicioPruebaRequestBody();
+            inValue.Body.idFactura = idFactura;
+            inValue.Body.idServicio = idServicio;
+            inValue.Body.cantidad = cantidad;
+            inValue.Body.precio = precio;
+            return ((Integracion.WebServices.CoreReferencia.CoreServiceSoap)(this)).InsertarFacturaDetalleServicioPruebaAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -2240,12 +2764,97 @@ namespace Integracion.WebServices.CoreReferencia {
             return ((Integracion.WebServices.CoreReferencia.CoreServiceSoap)(this)).RegistrarMovimientoInventarioAsync(inValue);
         }
         
-        public void InsertarFacturaDetalleProductoPrueba(int idFactura, int idProducto, int cantidad, decimal precio) {
-            base.Channel.InsertarFacturaDetalleProductoPrueba(idFactura, idProducto, cantidad, precio);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleProductoPruebaResponse Integracion.WebServices.CoreReferencia.CoreServiceSoap.InsertarFacturaDetalleProductoPrueba(Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleProductoPruebaRequest request) {
+            return base.Channel.InsertarFacturaDetalleProductoPrueba(request);
         }
         
-        public System.Threading.Tasks.Task InsertarFacturaDetalleProductoPruebaAsync(int idFactura, int idProducto, int cantidad, decimal precio) {
-            return base.Channel.InsertarFacturaDetalleProductoPruebaAsync(idFactura, idProducto, cantidad, precio);
+        public string InsertarFacturaDetalleProductoPrueba(int idFactura, int idProducto, int cantidad, decimal precio) {
+            Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleProductoPruebaRequest inValue = new Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleProductoPruebaRequest();
+            inValue.Body = new Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleProductoPruebaRequestBody();
+            inValue.Body.idFactura = idFactura;
+            inValue.Body.idProducto = idProducto;
+            inValue.Body.cantidad = cantidad;
+            inValue.Body.precio = precio;
+            Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleProductoPruebaResponse retVal = ((Integracion.WebServices.CoreReferencia.CoreServiceSoap)(this)).InsertarFacturaDetalleProductoPrueba(inValue);
+            return retVal.Body.InsertarFacturaDetalleProductoPruebaResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleProductoPruebaResponse> Integracion.WebServices.CoreReferencia.CoreServiceSoap.InsertarFacturaDetalleProductoPruebaAsync(Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleProductoPruebaRequest request) {
+            return base.Channel.InsertarFacturaDetalleProductoPruebaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleProductoPruebaResponse> InsertarFacturaDetalleProductoPruebaAsync(int idFactura, int idProducto, int cantidad, decimal precio) {
+            Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleProductoPruebaRequest inValue = new Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleProductoPruebaRequest();
+            inValue.Body = new Integracion.WebServices.CoreReferencia.InsertarFacturaDetalleProductoPruebaRequestBody();
+            inValue.Body.idFactura = idFactura;
+            inValue.Body.idProducto = idProducto;
+            inValue.Body.cantidad = cantidad;
+            inValue.Body.precio = precio;
+            return ((Integracion.WebServices.CoreReferencia.CoreServiceSoap)(this)).InsertarFacturaDetalleProductoPruebaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Integracion.WebServices.CoreReferencia.ObtenerVehiculoGenericoResponse Integracion.WebServices.CoreReferencia.CoreServiceSoap.ObtenerVehiculoGenerico(Integracion.WebServices.CoreReferencia.ObtenerVehiculoGenericoRequest request) {
+            return base.Channel.ObtenerVehiculoGenerico(request);
+        }
+        
+        public Integracion.WebServices.CoreReferencia.sp_ObtenerVehiculoGenerico_Result ObtenerVehiculoGenerico() {
+            Integracion.WebServices.CoreReferencia.ObtenerVehiculoGenericoRequest inValue = new Integracion.WebServices.CoreReferencia.ObtenerVehiculoGenericoRequest();
+            inValue.Body = new Integracion.WebServices.CoreReferencia.ObtenerVehiculoGenericoRequestBody();
+            Integracion.WebServices.CoreReferencia.ObtenerVehiculoGenericoResponse retVal = ((Integracion.WebServices.CoreReferencia.CoreServiceSoap)(this)).ObtenerVehiculoGenerico(inValue);
+            return retVal.Body.ObtenerVehiculoGenericoResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.ObtenerVehiculoGenericoResponse> Integracion.WebServices.CoreReferencia.CoreServiceSoap.ObtenerVehiculoGenericoAsync(Integracion.WebServices.CoreReferencia.ObtenerVehiculoGenericoRequest request) {
+            return base.Channel.ObtenerVehiculoGenericoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.ObtenerVehiculoGenericoResponse> ObtenerVehiculoGenericoAsync() {
+            Integracion.WebServices.CoreReferencia.ObtenerVehiculoGenericoRequest inValue = new Integracion.WebServices.CoreReferencia.ObtenerVehiculoGenericoRequest();
+            inValue.Body = new Integracion.WebServices.CoreReferencia.ObtenerVehiculoGenericoRequestBody();
+            return ((Integracion.WebServices.CoreReferencia.CoreServiceSoap)(this)).ObtenerVehiculoGenericoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaResponse Integracion.WebServices.CoreReferencia.CoreServiceSoap.InsertarFacturaPrueba(Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaRequest request) {
+            return base.Channel.InsertarFacturaPrueba(request);
+        }
+        
+        public int InsertarFacturaPrueba(int idCliente, int idVehiculo, int idUsuario, int idSucursal, string canalVenta, decimal subtotal, decimal impuesto, decimal total) {
+            Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaRequest inValue = new Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaRequest();
+            inValue.Body = new Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaRequestBody();
+            inValue.Body.idCliente = idCliente;
+            inValue.Body.idVehiculo = idVehiculo;
+            inValue.Body.idUsuario = idUsuario;
+            inValue.Body.idSucursal = idSucursal;
+            inValue.Body.canalVenta = canalVenta;
+            inValue.Body.subtotal = subtotal;
+            inValue.Body.impuesto = impuesto;
+            inValue.Body.total = total;
+            Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaResponse retVal = ((Integracion.WebServices.CoreReferencia.CoreServiceSoap)(this)).InsertarFacturaPrueba(inValue);
+            return retVal.Body.InsertarFacturaPruebaResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaResponse> Integracion.WebServices.CoreReferencia.CoreServiceSoap.InsertarFacturaPruebaAsync(Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaRequest request) {
+            return base.Channel.InsertarFacturaPruebaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaResponse> InsertarFacturaPruebaAsync(int idCliente, int idVehiculo, int idUsuario, int idSucursal, string canalVenta, decimal subtotal, decimal impuesto, decimal total) {
+            Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaRequest inValue = new Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaRequest();
+            inValue.Body = new Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaRequestBody();
+            inValue.Body.idCliente = idCliente;
+            inValue.Body.idVehiculo = idVehiculo;
+            inValue.Body.idUsuario = idUsuario;
+            inValue.Body.idSucursal = idSucursal;
+            inValue.Body.canalVenta = canalVenta;
+            inValue.Body.subtotal = subtotal;
+            inValue.Body.impuesto = impuesto;
+            inValue.Body.total = total;
+            return ((Integracion.WebServices.CoreReferencia.CoreServiceSoap)(this)).InsertarFacturaPruebaAsync(inValue);
         }
     }
 }

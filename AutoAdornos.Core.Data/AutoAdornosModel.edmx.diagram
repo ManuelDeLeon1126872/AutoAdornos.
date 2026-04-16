@@ -33,6 +33,7 @@
         <AssociationConnector Association="DBAutoAdornosCoreModel.FK_tblMovimientoInventario_tblUsuario" ManuallyRouted="false" />
         <AssociationConnector Association="DBAutoAdornosCoreModel.FK_tblUsuarioPerfil_tblPerfil" ManuallyRouted="false" />
         <AssociationConnector Association="DBAutoAdornosCoreModel.FK_tblUsuarioPerfil_tblUsuario" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAutoAdornosCoreModel.FK_tblUsuario_tblSucursal" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
