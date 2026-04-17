@@ -420,5 +420,29 @@ namespace AutoAdornos.Core.Services
                 throw;
             }
         }
+
+        [WebMethod]
+        public bool RecibirFacturaOffline(string idLocal, string cliente, decimal total, string canal)
+        {
+            string servicio = "RecibirFacturaOffline";
+            string parametros = $"idLocal={idLocal}, cliente={cliente}, total={total}, canal={canal}";
+
+            try
+            {
+                OfflineBL bl = new OfflineBL();
+                bool resultado = bl.RecibirFacturaOffline(idLocal, cliente, total, canal);
+
+                log.Info($"{servicio} ejecutado correctamente. Resultado={resultado}");
+                RegistrarLogServicio(servicio, parametros, $"OK - Resultado={resultado}");
+
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                log.Error($"Error en {servicio}", ex);
+                RegistrarLogServicio(servicio, parametros, $"ERROR - {ex.Message}");
+                return false;
+            }
+        }
     }
 }
