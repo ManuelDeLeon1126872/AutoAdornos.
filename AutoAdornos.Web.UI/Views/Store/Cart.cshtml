@@ -1,0 +1,47 @@
+@model List<AutoAdornos.Web.UI.Models.CartItemViewModel>
+@{
+    ViewBag.Title = "Carrito";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var total = Model.Sum(x => x.Subtotal);
+}
+
+<section class="card">
+    <div class="section-header">
+        <div class="section-title">Carrito de compra</div>
+        <a href="@Url.Action("Index", "Checkout")" class="btn btn-primary">Ir al checkout</a>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <p class="muted">Todavía no hay productos en el carrito.</p>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.IdProducto</td>
+                        <td>@item.Descripcion</td>
+                        <td>RD$ @item.Precio.ToString("N2")</td>
+                        <td>@item.Cantidad</td>
+                        <td>RD$ @item.Subtotal.ToString("N2")</td>
+                        <td><a href="@Url.Action("Remove", "Store", new { id = item.IdProducto })" class="link-danger">Quitar</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="total-box">Total: RD$ @total.ToString("N2")</div>
+    }
+</section>

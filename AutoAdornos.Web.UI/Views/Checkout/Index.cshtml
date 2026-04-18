@@ -1,0 +1,56 @@
+@model AutoAdornos.Web.UI.Models.CheckoutViewModel
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="grid-checkout">
+    <article class="card">
+        <div class="section-title">Resumen de la venta</div>
+        <table class="table compact-table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Items)
+                {
+                    <tr>
+                        <td>@item.Descripcion</td>
+                        <td>@item.Cantidad</td>
+                        <td>RD$ @item.Subtotal.ToString("N2")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="total-box">Total a facturar: RD$ @Model.Total.ToString("N2")</div>
+    </article>
+
+    <article class="card">
+        <div class="section-title">Datos del cliente</div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "validation-summary-errors" })
+
+            <div class="form-row">
+                @Html.LabelFor(m => m.CedulaRnc)
+                @Html.TextBoxFor(m => m.CedulaRnc, new { @class = "form-control", placeholder = "Ej. 40212345678" })
+                @Html.ValidationMessageFor(m => m.CedulaRnc, "", new { @class = "field-validation-error" })
+            </div>
+            <div class="form-row">
+                @Html.LabelFor(m => m.NombreCliente)
+                @Html.TextBoxFor(m => m.NombreCliente, new { @class = "form-control", placeholder = "Nombre completo" })
+                @Html.ValidationMessageFor(m => m.NombreCliente, "", new { @class = "field-validation-error" })
+            </div>
+            <div class="form-row">
+                @Html.LabelFor(m => m.Observacion)
+                @Html.TextAreaFor(m => m.Observacion, new { @class = "form-control", rows = 4, placeholder = "Observación opcional" })
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Confirmar y registrar venta</button>
+        }
+    </article>
+</section>

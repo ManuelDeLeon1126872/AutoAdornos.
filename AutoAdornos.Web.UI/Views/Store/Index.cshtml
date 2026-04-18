@@ -1,0 +1,42 @@
+@model IEnumerable<AutoAdornos.Web.UI.Models.ProductoViewModel>
+@{
+    ViewBag.Title = "Catálogo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="hero-strip">
+    <div>
+        <h1>Catálogo de productos</h1>
+        <p>Consulta el inventario disponible y agrega productos al carrito para registrar la venta por el canal WEB.</p>
+    </div>
+    <form method="get" class="search-box">
+        <input type="text" name="q" value="@ViewBag.Search" class="form-control" placeholder="Buscar por código, descripción o ID" />
+        <button type="submit" class="btn btn-secondary">Buscar</button>
+    </form>
+</section>
+
+<section class="grid-products">
+@foreach (var item in Model)
+{
+    <article class="card product-card">
+        <div class="badge">ID @item.IdProducto</div>
+        <h3>@item.Descripcion</h3>
+        <p class="muted">Código: @(string.IsNullOrWhiteSpace(item.Codigo) ? "N/A" : item.Codigo)</p>
+        <p class="price">RD$ @item.Precio.ToString("N2")</p>
+        <p class="stock">Existencia: @item.Existencia</p>
+
+        @using (Html.BeginForm("Add", "Store", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="idProducto" value="@item.IdProducto" />
+            <input type="hidden" name="codigo" value="@item.Codigo" />
+            <input type="hidden" name="descripcion" value="@item.Descripcion" />
+            <input type="hidden" name="precio" value="@item.Precio" />
+            <div class="inline-row">
+                <input type="number" name="cantidad" value="1" min="1" class="qty-input" />
+                <button type="submit" class="btn btn-primary">Agregar</button>
+            </div>
+        }
+    </article>
+}
+</section>
