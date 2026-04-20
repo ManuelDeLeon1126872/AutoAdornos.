@@ -34,6 +34,7 @@
         <AssociationConnector Association="DBAutoAdornosCoreModel.FK_tblUsuarioPerfil_tblPerfil" ManuallyRouted="false" />
         <AssociationConnector Association="DBAutoAdornosCoreModel.FK_tblUsuarioPerfil_tblUsuario" ManuallyRouted="false" />
         <AssociationConnector Association="DBAutoAdornosCoreModel.FK_tblUsuario_tblSucursal" />
+        <EntityTypeShape EntityType="DBAutoAdornosCoreModel.tblFacturaOfflineRecibida" Width="1.5" PointX="10.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

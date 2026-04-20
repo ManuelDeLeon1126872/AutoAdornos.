@@ -41,6 +41,7 @@ namespace AutoAdornos.Core.Data
         public virtual DbSet<tblUsuario> tblUsuarios { get; set; }
         public virtual DbSet<tblUsuarioPerfil> tblUsuarioPerfils { get; set; }
         public virtual DbSet<tblVehiculo> tblVehiculoes { get; set; }
+        public virtual DbSet<tblFacturaOfflineRecibida> tblFacturaOfflineRecibidas { get; set; }
     
         public virtual ObjectResult<sp_BuscarClientePorCedulaRNC_Result> sp_BuscarClientePorCedulaRNC(string cedulaRNC)
         {
@@ -315,6 +316,48 @@ namespace AutoAdornos.Core.Data
                 new ObjectParameter("Clave", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ValidarUsuario_Result1>("sp_ValidarUsuario", nombreUsuarioParameter, claveParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> sp_RecibirFacturaOffline(string idLocal, string cliente, Nullable<decimal> total, string canal)
+        {
+            var idLocalParameter = idLocal != null ?
+                new ObjectParameter("IdLocal", idLocal) :
+                new ObjectParameter("IdLocal", typeof(string));
+    
+            var clienteParameter = cliente != null ?
+                new ObjectParameter("Cliente", cliente) :
+                new ObjectParameter("Cliente", typeof(string));
+    
+            var totalParameter = total.HasValue ?
+                new ObjectParameter("Total", total) :
+                new ObjectParameter("Total", typeof(decimal));
+    
+            var canalParameter = canal != null ?
+                new ObjectParameter("Canal", canal) :
+                new ObjectParameter("Canal", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("sp_RecibirFacturaOffline", idLocalParameter, clienteParameter, totalParameter, canalParameter);
+        }
+    
+        public virtual ObjectResult<sp_RecibirFacturaOffline_Result> sp_RecibirFacturaOffline_Result(string idLocal, string cliente, Nullable<decimal> total, string canal)
+        {
+            var idLocalParameter = idLocal != null ?
+                new ObjectParameter("IdLocal", idLocal) :
+                new ObjectParameter("IdLocal", typeof(string));
+    
+            var clienteParameter = cliente != null ?
+                new ObjectParameter("Cliente", cliente) :
+                new ObjectParameter("Cliente", typeof(string));
+    
+            var totalParameter = total.HasValue ?
+                new ObjectParameter("Total", total) :
+                new ObjectParameter("Total", typeof(decimal));
+    
+            var canalParameter = canal != null ?
+                new ObjectParameter("Canal", canal) :
+                new ObjectParameter("Canal", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RecibirFacturaOffline_Result>("sp_RecibirFacturaOffline_Result", idLocalParameter, clienteParameter, totalParameter, canalParameter);
         }
     }
 }

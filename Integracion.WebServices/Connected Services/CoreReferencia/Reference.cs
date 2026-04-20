@@ -1270,6 +1270,13 @@ namespace Integracion.WebServices.CoreReferencia {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarFacturaPrueba", ReplyAction="*")]
         System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaResponse> InsertarFacturaPruebaAsync(Integracion.WebServices.CoreReferencia.InsertarFacturaPruebaRequest request);
+        
+        // CODEGEN: Generating message contract since element name idLocal from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/RecibirFacturaOffline", ReplyAction="*")]
+        Integracion.WebServices.CoreReferencia.RecibirFacturaOfflineResponse RecibirFacturaOffline(Integracion.WebServices.CoreReferencia.RecibirFacturaOfflineRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/RecibirFacturaOffline", ReplyAction="*")]
+        System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.RecibirFacturaOfflineResponse> RecibirFacturaOfflineAsync(Integracion.WebServices.CoreReferencia.RecibirFacturaOfflineRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -2394,6 +2401,86 @@ namespace Integracion.WebServices.CoreReferencia {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class RecibirFacturaOfflineRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="RecibirFacturaOffline", Namespace="http://tempuri.org/", Order=0)]
+        public Integracion.WebServices.CoreReferencia.RecibirFacturaOfflineRequestBody Body;
+        
+        public RecibirFacturaOfflineRequest() {
+        }
+        
+        public RecibirFacturaOfflineRequest(Integracion.WebServices.CoreReferencia.RecibirFacturaOfflineRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class RecibirFacturaOfflineRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string idLocal;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string cliente;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public decimal total;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string canal;
+        
+        public RecibirFacturaOfflineRequestBody() {
+        }
+        
+        public RecibirFacturaOfflineRequestBody(string idLocal, string cliente, decimal total, string canal) {
+            this.idLocal = idLocal;
+            this.cliente = cliente;
+            this.total = total;
+            this.canal = canal;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class RecibirFacturaOfflineResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="RecibirFacturaOfflineResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Integracion.WebServices.CoreReferencia.RecibirFacturaOfflineResponseBody Body;
+        
+        public RecibirFacturaOfflineResponse() {
+        }
+        
+        public RecibirFacturaOfflineResponse(Integracion.WebServices.CoreReferencia.RecibirFacturaOfflineResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class RecibirFacturaOfflineResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool RecibirFacturaOfflineResult;
+        
+        public RecibirFacturaOfflineResponseBody() {
+        }
+        
+        public RecibirFacturaOfflineResponseBody(bool RecibirFacturaOfflineResult) {
+            this.RecibirFacturaOfflineResult = RecibirFacturaOfflineResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface CoreServiceSoapChannel : Integracion.WebServices.CoreReferencia.CoreServiceSoap, System.ServiceModel.IClientChannel {
     }
@@ -2855,6 +2942,37 @@ namespace Integracion.WebServices.CoreReferencia {
             inValue.Body.impuesto = impuesto;
             inValue.Body.total = total;
             return ((Integracion.WebServices.CoreReferencia.CoreServiceSoap)(this)).InsertarFacturaPruebaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Integracion.WebServices.CoreReferencia.RecibirFacturaOfflineResponse Integracion.WebServices.CoreReferencia.CoreServiceSoap.RecibirFacturaOffline(Integracion.WebServices.CoreReferencia.RecibirFacturaOfflineRequest request) {
+            return base.Channel.RecibirFacturaOffline(request);
+        }
+        
+        public bool RecibirFacturaOffline(string idLocal, string cliente, decimal total, string canal) {
+            Integracion.WebServices.CoreReferencia.RecibirFacturaOfflineRequest inValue = new Integracion.WebServices.CoreReferencia.RecibirFacturaOfflineRequest();
+            inValue.Body = new Integracion.WebServices.CoreReferencia.RecibirFacturaOfflineRequestBody();
+            inValue.Body.idLocal = idLocal;
+            inValue.Body.cliente = cliente;
+            inValue.Body.total = total;
+            inValue.Body.canal = canal;
+            Integracion.WebServices.CoreReferencia.RecibirFacturaOfflineResponse retVal = ((Integracion.WebServices.CoreReferencia.CoreServiceSoap)(this)).RecibirFacturaOffline(inValue);
+            return retVal.Body.RecibirFacturaOfflineResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.RecibirFacturaOfflineResponse> Integracion.WebServices.CoreReferencia.CoreServiceSoap.RecibirFacturaOfflineAsync(Integracion.WebServices.CoreReferencia.RecibirFacturaOfflineRequest request) {
+            return base.Channel.RecibirFacturaOfflineAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.RecibirFacturaOfflineResponse> RecibirFacturaOfflineAsync(string idLocal, string cliente, decimal total, string canal) {
+            Integracion.WebServices.CoreReferencia.RecibirFacturaOfflineRequest inValue = new Integracion.WebServices.CoreReferencia.RecibirFacturaOfflineRequest();
+            inValue.Body = new Integracion.WebServices.CoreReferencia.RecibirFacturaOfflineRequestBody();
+            inValue.Body.idLocal = idLocal;
+            inValue.Body.cliente = cliente;
+            inValue.Body.total = total;
+            inValue.Body.canal = canal;
+            return ((Integracion.WebServices.CoreReferencia.CoreServiceSoap)(this)).RecibirFacturaOfflineAsync(inValue);
         }
     }
 }

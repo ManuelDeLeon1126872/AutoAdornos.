@@ -338,6 +338,23 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="RecibirFacturaOffline">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idLocal" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cliente" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="total" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="canal" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecibirFacturaOfflineResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RecibirFacturaOfflineResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="ValidarUsuarioSoapIn">
@@ -430,6 +447,12 @@
   <wsdl:message name="InsertarFacturaPruebaSoapOut">
     <wsdl:part name="parameters" element="tns:InsertarFacturaPruebaResponse" />
   </wsdl:message>
+  <wsdl:message name="RecibirFacturaOfflineSoapIn">
+    <wsdl:part name="parameters" element="tns:RecibirFacturaOffline" />
+  </wsdl:message>
+  <wsdl:message name="RecibirFacturaOfflineSoapOut">
+    <wsdl:part name="parameters" element="tns:RecibirFacturaOfflineResponse" />
+  </wsdl:message>
   <wsdl:portType name="CoreServiceSoap">
     <wsdl:operation name="ValidarUsuario">
       <wsdl:input message="tns:ValidarUsuarioSoapIn" />
@@ -490,6 +513,10 @@
     <wsdl:operation name="InsertarFacturaPrueba">
       <wsdl:input message="tns:InsertarFacturaPruebaSoapIn" />
       <wsdl:output message="tns:InsertarFacturaPruebaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RecibirFacturaOffline">
+      <wsdl:input message="tns:RecibirFacturaOfflineSoapIn" />
+      <wsdl:output message="tns:RecibirFacturaOfflineSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="CoreServiceSoap" type="tns:CoreServiceSoap">
@@ -629,6 +656,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="RecibirFacturaOffline">
+      <soap:operation soapAction="http://tempuri.org/RecibirFacturaOffline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="CoreServiceSoap12" type="tns:CoreServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -760,6 +796,15 @@
     </wsdl:operation>
     <wsdl:operation name="InsertarFacturaPrueba">
       <soap12:operation soapAction="http://tempuri.org/InsertarFacturaPrueba" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecibirFacturaOffline">
+      <soap12:operation soapAction="http://tempuri.org/RecibirFacturaOffline" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

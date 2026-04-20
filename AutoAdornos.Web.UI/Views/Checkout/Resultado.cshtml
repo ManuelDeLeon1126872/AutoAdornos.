@@ -1,0 +1,14 @@
+@{
+    ViewBag.Title = "Resultado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="card card-sm center-card">
+    <div class="section-title">Venta procesada</div>
+    <p class="big-response">@ViewBag.Respuesta</p>
+    <p class="muted">Monto enviado a la Integración: RD$ @(((decimal)ViewBag.Total).ToString("N2"))</p>
+    <div class="button-group">
+        <a class="btn btn-primary" href="@Url.Action("Index", "Store")">Volver al catálogo</a>
+        <a class="btn btn-secondary" href="@Url.Action("Cart", "Store")">Ver carrito</a>
+    </div>
+</section>

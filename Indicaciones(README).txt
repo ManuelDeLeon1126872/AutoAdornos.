@@ -96,3 +96,76 @@ CAMBIOS RECIENTES / NOTAS PARA INTEGRACIÓN
 - InsertarFactura
 - InsertarFacturaDetalle
 - RegistrarMovimientoInventario
+
+===========================================
+FACTURAS OFFLINE (COLA)
+===========================================
+
+Se implementó soporte para recepción de facturas generadas en modo offline por el módulo de Integración.
+
+OBJETIVO
+Permitir que Integración envíe facturas pendientes (en cola) cuando se restablezca la conexión con el CORE.
+
+MÉTODO DISPONIBLE
+- RecibirFacturaOffline
+
+PARÁMETROS
+- idLocal (string)
+  Identificador local de la factura en el sistema de Integración (cola offline)
+
+- cliente (string)
+  Nombre o referencia del cliente
+
+- total (decimal)
+  Monto total de la factura
+
+- canal (string)
+  Canal de origen de la venta
+  Valores válidos:
+    - WEB
+    - CAJA
+
+COMPORTAMIENTO
+- El CORE almacena la información recibida en una tabla independiente:
+  - tblFacturaOfflineRecibida
+
+- No se mezcla con la facturación principal del sistema.
+- Se guarda como registro de respaldo para trazabilidad.
+
+RESPUESTA DEL MÉTODO
+- true  → la factura fue recibida correctamente y puede eliminarse de la cola en Integración
+- false → ocurrió un error y NO debe eliminarse de la cola
+
+REGLAS IMPORTANTES
+- El campo "canal" solo acepta:
+  - WEB
+  - CAJA
+- Cualquier otro valor devolverá false
+
+TABLA UTILIZADA
+- tblFacturaOfflineRecibida
+
+Campos:
+- IdFacturaOfflineRecibida (PK)
+- IdLocal
+- Cliente
+- Total
+- Canal
+- FechaRecepcion
+- Estado
+
+LOGS
+- Se registran eventos en:
+  - Logs\CoreService.log
+  - tblLogServicio
+
+USO RECOMENDADO (INTEGRACIÓN)
+1. Intentar enviar factura offline
+2. Si el CORE devuelve true:
+   → eliminar de la cola
+3. Si devuelve false:
+   → mantener en cola y reintentar
+
+NOTA
+Este método es independiente del flujo normal de facturación (InsertarFactura).
+Se utiliza exclusivamente para sincronización offline.

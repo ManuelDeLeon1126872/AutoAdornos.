@@ -65,6 +65,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Clientes\ClientesBL.cs" />
     <Compile Include="Facturacion\FacturaBL.cs" />
+    <Compile Include="Facturacion\OfflineBL.cs" />
     <Compile Include="Inventario\InventarioBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seguridad\UsuarioBL.cs" />

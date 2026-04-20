@@ -103,6 +103,9 @@
     <Compile Include="sp_ObtenerVehiculoGenerico_Result.cs">
       <DependentUpon>AutoAdornosModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="sp_RecibirFacturaOffline_Result.cs">
+      <DependentUpon>AutoAdornosModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="sp_ValidarUsuario_Result.cs">
       <DependentUpon>AutoAdornosModel.tt</DependentUpon>
     </Compile>
@@ -119,6 +122,9 @@
       <DependentUpon>AutoAdornosModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tblFacturaDetalle.cs">
+      <DependentUpon>AutoAdornosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblFacturaOfflineRecibida.cs">
       <DependentUpon>AutoAdornosModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tblLogServicio.cs">
