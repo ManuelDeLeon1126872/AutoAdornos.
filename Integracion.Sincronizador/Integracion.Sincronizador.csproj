@@ -155,7 +155,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected Services\ReferenciaCore\Reference.cs">
+    <Compile Include="Connected Services\CoreReferencia\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -171,74 +171,77 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Connected Services\ReferenciaCore\CoreService.wsdl" />
-    <None Include="Connected Services\ReferenciaCore\Integracion.Sincronizador.ReferenciaCore.ArrayOfSp_ListarClientes_Result.datasource">
+    <None Include="Connected Services\CoreReferencia\CoreService.wsdl" />
+    <None Include="Connected Services\CoreReferencia\Integracion.Sincronizador.CoreReferencia.ArrayOfSp_ListarClientes_Result.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ReferenciaCore\Integracion.Sincronizador.ReferenciaCore.ArrayOfSp_ListarProductos_Result.datasource">
+    <None Include="Connected Services\CoreReferencia\Integracion.Sincronizador.CoreReferencia.ArrayOfSp_ListarProductos_Result.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ReferenciaCore\Integracion.Sincronizador.ReferenciaCore.ArrayOfSp_ListarServicios_Result.datasource">
+    <None Include="Connected Services\CoreReferencia\Integracion.Sincronizador.CoreReferencia.ArrayOfSp_ListarServicios_Result.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ReferenciaCore\Integracion.Sincronizador.ReferenciaCore.ArrayOfSp_ListarSucursales_Result.datasource">
+    <None Include="Connected Services\CoreReferencia\Integracion.Sincronizador.CoreReferencia.ArrayOfSp_ListarSucursales_Result.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ReferenciaCore\Integracion.Sincronizador.ReferenciaCore.ArrayOfSp_ListarVehiculosPorCliente_Result.datasource">
+    <None Include="Connected Services\CoreReferencia\Integracion.Sincronizador.CoreReferencia.ArrayOfSp_ListarVehiculosPorCliente_Result.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ReferenciaCore\Integracion.Sincronizador.ReferenciaCore.BuscarClientePorCedulaRNCResponse.datasource">
+    <None Include="Connected Services\CoreReferencia\Integracion.Sincronizador.CoreReferencia.BuscarClientePorCedulaRNCResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ReferenciaCore\Integracion.Sincronizador.ReferenciaCore.InsertarClienteResponse.datasource">
+    <None Include="Connected Services\CoreReferencia\Integracion.Sincronizador.CoreReferencia.InsertarClienteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ReferenciaCore\Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleProductoPruebaResponse.datasource">
+    <None Include="Connected Services\CoreReferencia\Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleProductoPruebaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ReferenciaCore\Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleServicioPruebaResponse.datasource">
+    <None Include="Connected Services\CoreReferencia\Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleServicioPruebaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ReferenciaCore\Integracion.Sincronizador.ReferenciaCore.InsertarFacturaPruebaResponse.datasource">
+    <None Include="Connected Services\CoreReferencia\Integracion.Sincronizador.CoreReferencia.InsertarFacturaPruebaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ReferenciaCore\Integracion.Sincronizador.ReferenciaCore.InsertarFacturaResponse.datasource">
+    <None Include="Connected Services\CoreReferencia\Integracion.Sincronizador.CoreReferencia.InsertarFacturaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ReferenciaCore\Integracion.Sincronizador.ReferenciaCore.InsertarVehiculoPruebaResponse.datasource">
+    <None Include="Connected Services\CoreReferencia\Integracion.Sincronizador.CoreReferencia.InsertarVehiculoPruebaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ReferenciaCore\Integracion.Sincronizador.ReferenciaCore.ListarClientesResponse.datasource">
+    <None Include="Connected Services\CoreReferencia\Integracion.Sincronizador.CoreReferencia.ListarClientesResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ReferenciaCore\Integracion.Sincronizador.ReferenciaCore.ListarProductosResponse.datasource">
+    <None Include="Connected Services\CoreReferencia\Integracion.Sincronizador.CoreReferencia.ListarProductosResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ReferenciaCore\Integracion.Sincronizador.ReferenciaCore.ListarServiciosResponse.datasource">
+    <None Include="Connected Services\CoreReferencia\Integracion.Sincronizador.CoreReferencia.ListarServiciosResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ReferenciaCore\Integracion.Sincronizador.ReferenciaCore.ListarSucursalesResponse.datasource">
+    <None Include="Connected Services\CoreReferencia\Integracion.Sincronizador.CoreReferencia.ListarSucursalesResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ReferenciaCore\Integracion.Sincronizador.ReferenciaCore.ListarVehiculosPorClienteResponse.datasource">
+    <None Include="Connected Services\CoreReferencia\Integracion.Sincronizador.CoreReferencia.ListarVehiculosPorClienteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ReferenciaCore\Integracion.Sincronizador.ReferenciaCore.ObtenerVehiculoGenericoResponse.datasource">
+    <None Include="Connected Services\CoreReferencia\Integracion.Sincronizador.CoreReferencia.ObtenerVehiculoGenericoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ReferenciaCore\Integracion.Sincronizador.ReferenciaCore.RegistrarMovimientoInventarioResponse.datasource">
+    <None Include="Connected Services\CoreReferencia\Integracion.Sincronizador.CoreReferencia.RecibirFacturaOfflineResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ReferenciaCore\Integracion.Sincronizador.ReferenciaCore.sp_BuscarClientePorCedulaRNC_Result.datasource">
+    <None Include="Connected Services\CoreReferencia\Integracion.Sincronizador.CoreReferencia.RegistrarMovimientoInventarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ReferenciaCore\Integracion.Sincronizador.ReferenciaCore.sp_ObtenerVehiculoGenerico_Result.datasource">
+    <None Include="Connected Services\CoreReferencia\Integracion.Sincronizador.CoreReferencia.sp_BuscarClientePorCedulaRNC_Result.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ReferenciaCore\Integracion.Sincronizador.ReferenciaCore.sp_ValidarUsuario_Result1.datasource">
+    <None Include="Connected Services\CoreReferencia\Integracion.Sincronizador.CoreReferencia.sp_ObtenerVehiculoGenerico_Result.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ReferenciaCore\Integracion.Sincronizador.ReferenciaCore.ValidarUsuarioResponse.datasource">
+    <None Include="Connected Services\CoreReferencia\Integracion.Sincronizador.CoreReferencia.sp_ValidarUsuario_Result1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CoreReferencia\Integracion.Sincronizador.CoreReferencia.ValidarUsuarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -247,19 +250,19 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\ReferenciaCore\" />
+    <WCFMetadataStorage Include="Connected Services\CoreReferencia\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ReferenciaCore\CoreService.disco" />
+    <None Include="Connected Services\CoreReferencia\CoreService.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ReferenciaCore\configuration91.svcinfo" />
+    <None Include="Connected Services\CoreReferencia\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ReferenciaCore\configuration.svcinfo" />
+    <None Include="Connected Services\CoreReferencia\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ReferenciaCore\Reference.svcmap">
+    <None Include="Connected Services\CoreReferencia\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

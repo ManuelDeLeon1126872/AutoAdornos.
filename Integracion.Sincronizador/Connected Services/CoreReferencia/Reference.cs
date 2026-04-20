@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Integracion.Sincronizador.ReferenciaCore {
+namespace Integracion.Sincronizador.CoreReferencia {
     using System.Runtime.Serialization;
     using System;
     
@@ -139,7 +139,7 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.CollectionDataContractAttribute(Name="ArrayOfSp_ListarProductos_Result", Namespace="http://tempuri.org/", ItemName="sp_ListarProductos_Result")]
     [System.SerializableAttribute()]
-    public class ArrayOfSp_ListarProductos_Result : System.Collections.Generic.List<Integracion.Sincronizador.ReferenciaCore.sp_ListarProductos_Result> {
+    public class ArrayOfSp_ListarProductos_Result : System.Collections.Generic.List<Integracion.Sincronizador.CoreReferencia.sp_ListarProductos_Result> {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -282,7 +282,7 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.CollectionDataContractAttribute(Name="ArrayOfSp_ListarServicios_Result", Namespace="http://tempuri.org/", ItemName="sp_ListarServicios_Result")]
     [System.SerializableAttribute()]
-    public class ArrayOfSp_ListarServicios_Result : System.Collections.Generic.List<Integracion.Sincronizador.ReferenciaCore.sp_ListarServicios_Result> {
+    public class ArrayOfSp_ListarServicios_Result : System.Collections.Generic.List<Integracion.Sincronizador.CoreReferencia.sp_ListarServicios_Result> {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -379,7 +379,7 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.CollectionDataContractAttribute(Name="ArrayOfSp_ListarSucursales_Result", Namespace="http://tempuri.org/", ItemName="sp_ListarSucursales_Result")]
     [System.SerializableAttribute()]
-    public class ArrayOfSp_ListarSucursales_Result : System.Collections.Generic.List<Integracion.Sincronizador.ReferenciaCore.sp_ListarSucursales_Result> {
+    public class ArrayOfSp_ListarSucursales_Result : System.Collections.Generic.List<Integracion.Sincronizador.CoreReferencia.sp_ListarSucursales_Result> {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -508,7 +508,7 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.CollectionDataContractAttribute(Name="ArrayOfSp_ListarClientes_Result", Namespace="http://tempuri.org/", ItemName="sp_ListarClientes_Result")]
     [System.SerializableAttribute()]
-    public class ArrayOfSp_ListarClientes_Result : System.Collections.Generic.List<Integracion.Sincronizador.ReferenciaCore.sp_ListarClientes_Result> {
+    public class ArrayOfSp_ListarClientes_Result : System.Collections.Generic.List<Integracion.Sincronizador.CoreReferencia.sp_ListarClientes_Result> {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -853,7 +853,7 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.CollectionDataContractAttribute(Name="ArrayOfSp_ListarVehiculosPorCliente_Result", Namespace="http://tempuri.org/", ItemName="sp_ListarVehiculosPorCliente_Result")]
     [System.SerializableAttribute()]
-    public class ArrayOfSp_ListarVehiculosPorCliente_Result : System.Collections.Generic.List<Integracion.Sincronizador.ReferenciaCore.sp_ListarVehiculosPorCliente_Result> {
+    public class ArrayOfSp_ListarVehiculosPorCliente_Result : System.Collections.Generic.List<Integracion.Sincronizador.CoreReferencia.sp_ListarVehiculosPorCliente_Result> {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1163,113 +1163,120 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ReferenciaCore.CoreServiceSoap")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="CoreReferencia.CoreServiceSoap")]
     public interface CoreServiceSoap {
         
         // CODEGEN: Generating message contract since element name nombreUsuario from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ValidarUsuario", ReplyAction="*")]
-        Integracion.Sincronizador.ReferenciaCore.ValidarUsuarioResponse ValidarUsuario(Integracion.Sincronizador.ReferenciaCore.ValidarUsuarioRequest request);
+        Integracion.Sincronizador.CoreReferencia.ValidarUsuarioResponse ValidarUsuario(Integracion.Sincronizador.CoreReferencia.ValidarUsuarioRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ValidarUsuario", ReplyAction="*")]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.ValidarUsuarioResponse> ValidarUsuarioAsync(Integracion.Sincronizador.ReferenciaCore.ValidarUsuarioRequest request);
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.ValidarUsuarioResponse> ValidarUsuarioAsync(Integracion.Sincronizador.CoreReferencia.ValidarUsuarioRequest request);
         
         // CODEGEN: Generating message contract since element name ListarProductosResult from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListarProductos", ReplyAction="*")]
-        Integracion.Sincronizador.ReferenciaCore.ListarProductosResponse ListarProductos(Integracion.Sincronizador.ReferenciaCore.ListarProductosRequest request);
+        Integracion.Sincronizador.CoreReferencia.ListarProductosResponse ListarProductos(Integracion.Sincronizador.CoreReferencia.ListarProductosRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListarProductos", ReplyAction="*")]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.ListarProductosResponse> ListarProductosAsync(Integracion.Sincronizador.ReferenciaCore.ListarProductosRequest request);
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.ListarProductosResponse> ListarProductosAsync(Integracion.Sincronizador.CoreReferencia.ListarProductosRequest request);
         
         // CODEGEN: Generating message contract since element name ListarServiciosResult from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListarServicios", ReplyAction="*")]
-        Integracion.Sincronizador.ReferenciaCore.ListarServiciosResponse ListarServicios(Integracion.Sincronizador.ReferenciaCore.ListarServiciosRequest request);
+        Integracion.Sincronizador.CoreReferencia.ListarServiciosResponse ListarServicios(Integracion.Sincronizador.CoreReferencia.ListarServiciosRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListarServicios", ReplyAction="*")]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.ListarServiciosResponse> ListarServiciosAsync(Integracion.Sincronizador.ReferenciaCore.ListarServiciosRequest request);
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.ListarServiciosResponse> ListarServiciosAsync(Integracion.Sincronizador.CoreReferencia.ListarServiciosRequest request);
         
         // CODEGEN: Generating message contract since element name ListarSucursalesResult from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListarSucursales", ReplyAction="*")]
-        Integracion.Sincronizador.ReferenciaCore.ListarSucursalesResponse ListarSucursales(Integracion.Sincronizador.ReferenciaCore.ListarSucursalesRequest request);
+        Integracion.Sincronizador.CoreReferencia.ListarSucursalesResponse ListarSucursales(Integracion.Sincronizador.CoreReferencia.ListarSucursalesRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListarSucursales", ReplyAction="*")]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.ListarSucursalesResponse> ListarSucursalesAsync(Integracion.Sincronizador.ReferenciaCore.ListarSucursalesRequest request);
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.ListarSucursalesResponse> ListarSucursalesAsync(Integracion.Sincronizador.CoreReferencia.ListarSucursalesRequest request);
         
         // CODEGEN: Generating message contract since element name ListarClientesResult from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListarClientes", ReplyAction="*")]
-        Integracion.Sincronizador.ReferenciaCore.ListarClientesResponse ListarClientes(Integracion.Sincronizador.ReferenciaCore.ListarClientesRequest request);
+        Integracion.Sincronizador.CoreReferencia.ListarClientesResponse ListarClientes(Integracion.Sincronizador.CoreReferencia.ListarClientesRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListarClientes", ReplyAction="*")]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.ListarClientesResponse> ListarClientesAsync(Integracion.Sincronizador.ReferenciaCore.ListarClientesRequest request);
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.ListarClientesResponse> ListarClientesAsync(Integracion.Sincronizador.CoreReferencia.ListarClientesRequest request);
         
         // CODEGEN: Generating message contract since element name cedulaRnc from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/BuscarClientePorCedulaRNC", ReplyAction="*")]
-        Integracion.Sincronizador.ReferenciaCore.BuscarClientePorCedulaRNCResponse BuscarClientePorCedulaRNC(Integracion.Sincronizador.ReferenciaCore.BuscarClientePorCedulaRNCRequest request);
+        Integracion.Sincronizador.CoreReferencia.BuscarClientePorCedulaRNCResponse BuscarClientePorCedulaRNC(Integracion.Sincronizador.CoreReferencia.BuscarClientePorCedulaRNCRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/BuscarClientePorCedulaRNC", ReplyAction="*")]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.BuscarClientePorCedulaRNCResponse> BuscarClientePorCedulaRNCAsync(Integracion.Sincronizador.ReferenciaCore.BuscarClientePorCedulaRNCRequest request);
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.BuscarClientePorCedulaRNCResponse> BuscarClientePorCedulaRNCAsync(Integracion.Sincronizador.CoreReferencia.BuscarClientePorCedulaRNCRequest request);
         
         // CODEGEN: Generating message contract since element name nombre from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarCliente", ReplyAction="*")]
-        Integracion.Sincronizador.ReferenciaCore.InsertarClienteResponse InsertarCliente(Integracion.Sincronizador.ReferenciaCore.InsertarClienteRequest request);
+        Integracion.Sincronizador.CoreReferencia.InsertarClienteResponse InsertarCliente(Integracion.Sincronizador.CoreReferencia.InsertarClienteRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarCliente", ReplyAction="*")]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.InsertarClienteResponse> InsertarClienteAsync(Integracion.Sincronizador.ReferenciaCore.InsertarClienteRequest request);
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.InsertarClienteResponse> InsertarClienteAsync(Integracion.Sincronizador.CoreReferencia.InsertarClienteRequest request);
         
         // CODEGEN: Generating message contract since element name ListarVehiculosPorClienteResult from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListarVehiculosPorCliente", ReplyAction="*")]
-        Integracion.Sincronizador.ReferenciaCore.ListarVehiculosPorClienteResponse ListarVehiculosPorCliente(Integracion.Sincronizador.ReferenciaCore.ListarVehiculosPorClienteRequest request);
+        Integracion.Sincronizador.CoreReferencia.ListarVehiculosPorClienteResponse ListarVehiculosPorCliente(Integracion.Sincronizador.CoreReferencia.ListarVehiculosPorClienteRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListarVehiculosPorCliente", ReplyAction="*")]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.ListarVehiculosPorClienteResponse> ListarVehiculosPorClienteAsync(Integracion.Sincronizador.ReferenciaCore.ListarVehiculosPorClienteRequest request);
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.ListarVehiculosPorClienteResponse> ListarVehiculosPorClienteAsync(Integracion.Sincronizador.CoreReferencia.ListarVehiculosPorClienteRequest request);
         
         // CODEGEN: Generating message contract since element name marca from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarVehiculoPrueba", ReplyAction="*")]
-        Integracion.Sincronizador.ReferenciaCore.InsertarVehiculoPruebaResponse InsertarVehiculoPrueba(Integracion.Sincronizador.ReferenciaCore.InsertarVehiculoPruebaRequest request);
+        Integracion.Sincronizador.CoreReferencia.InsertarVehiculoPruebaResponse InsertarVehiculoPrueba(Integracion.Sincronizador.CoreReferencia.InsertarVehiculoPruebaRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarVehiculoPrueba", ReplyAction="*")]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.InsertarVehiculoPruebaResponse> InsertarVehiculoPruebaAsync(Integracion.Sincronizador.ReferenciaCore.InsertarVehiculoPruebaRequest request);
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.InsertarVehiculoPruebaResponse> InsertarVehiculoPruebaAsync(Integracion.Sincronizador.CoreReferencia.InsertarVehiculoPruebaRequest request);
         
         // CODEGEN: Generating message contract since element name canalVenta from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarFactura", ReplyAction="*")]
-        Integracion.Sincronizador.ReferenciaCore.InsertarFacturaResponse InsertarFactura(Integracion.Sincronizador.ReferenciaCore.InsertarFacturaRequest request);
+        Integracion.Sincronizador.CoreReferencia.InsertarFacturaResponse InsertarFactura(Integracion.Sincronizador.CoreReferencia.InsertarFacturaRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarFactura", ReplyAction="*")]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.InsertarFacturaResponse> InsertarFacturaAsync(Integracion.Sincronizador.ReferenciaCore.InsertarFacturaRequest request);
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.InsertarFacturaResponse> InsertarFacturaAsync(Integracion.Sincronizador.CoreReferencia.InsertarFacturaRequest request);
         
         // CODEGEN: Generating message contract since element name InsertarFacturaDetalleServicioPruebaResult from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarFacturaDetalleServicioPrueba", ReplyAction="*")]
-        Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleServicioPruebaResponse InsertarFacturaDetalleServicioPrueba(Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleServicioPruebaRequest request);
+        Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleServicioPruebaResponse InsertarFacturaDetalleServicioPrueba(Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleServicioPruebaRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarFacturaDetalleServicioPrueba", ReplyAction="*")]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleServicioPruebaResponse> InsertarFacturaDetalleServicioPruebaAsync(Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleServicioPruebaRequest request);
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleServicioPruebaResponse> InsertarFacturaDetalleServicioPruebaAsync(Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleServicioPruebaRequest request);
         
         // CODEGEN: Generating message contract since element name tipoMovimiento from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/RegistrarMovimientoInventario", ReplyAction="*")]
-        Integracion.Sincronizador.ReferenciaCore.RegistrarMovimientoInventarioResponse RegistrarMovimientoInventario(Integracion.Sincronizador.ReferenciaCore.RegistrarMovimientoInventarioRequest request);
+        Integracion.Sincronizador.CoreReferencia.RegistrarMovimientoInventarioResponse RegistrarMovimientoInventario(Integracion.Sincronizador.CoreReferencia.RegistrarMovimientoInventarioRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/RegistrarMovimientoInventario", ReplyAction="*")]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.RegistrarMovimientoInventarioResponse> RegistrarMovimientoInventarioAsync(Integracion.Sincronizador.ReferenciaCore.RegistrarMovimientoInventarioRequest request);
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.RegistrarMovimientoInventarioResponse> RegistrarMovimientoInventarioAsync(Integracion.Sincronizador.CoreReferencia.RegistrarMovimientoInventarioRequest request);
         
         // CODEGEN: Generating message contract since element name InsertarFacturaDetalleProductoPruebaResult from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarFacturaDetalleProductoPrueba", ReplyAction="*")]
-        Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleProductoPruebaResponse InsertarFacturaDetalleProductoPrueba(Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleProductoPruebaRequest request);
+        Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleProductoPruebaResponse InsertarFacturaDetalleProductoPrueba(Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleProductoPruebaRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarFacturaDetalleProductoPrueba", ReplyAction="*")]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleProductoPruebaResponse> InsertarFacturaDetalleProductoPruebaAsync(Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleProductoPruebaRequest request);
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleProductoPruebaResponse> InsertarFacturaDetalleProductoPruebaAsync(Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleProductoPruebaRequest request);
         
         // CODEGEN: Generating message contract since element name ObtenerVehiculoGenericoResult from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerVehiculoGenerico", ReplyAction="*")]
-        Integracion.Sincronizador.ReferenciaCore.ObtenerVehiculoGenericoResponse ObtenerVehiculoGenerico(Integracion.Sincronizador.ReferenciaCore.ObtenerVehiculoGenericoRequest request);
+        Integracion.Sincronizador.CoreReferencia.ObtenerVehiculoGenericoResponse ObtenerVehiculoGenerico(Integracion.Sincronizador.CoreReferencia.ObtenerVehiculoGenericoRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerVehiculoGenerico", ReplyAction="*")]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.ObtenerVehiculoGenericoResponse> ObtenerVehiculoGenericoAsync(Integracion.Sincronizador.ReferenciaCore.ObtenerVehiculoGenericoRequest request);
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.ObtenerVehiculoGenericoResponse> ObtenerVehiculoGenericoAsync(Integracion.Sincronizador.CoreReferencia.ObtenerVehiculoGenericoRequest request);
         
         // CODEGEN: Generating message contract since element name canalVenta from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarFacturaPrueba", ReplyAction="*")]
-        Integracion.Sincronizador.ReferenciaCore.InsertarFacturaPruebaResponse InsertarFacturaPrueba(Integracion.Sincronizador.ReferenciaCore.InsertarFacturaPruebaRequest request);
+        Integracion.Sincronizador.CoreReferencia.InsertarFacturaPruebaResponse InsertarFacturaPrueba(Integracion.Sincronizador.CoreReferencia.InsertarFacturaPruebaRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarFacturaPrueba", ReplyAction="*")]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.InsertarFacturaPruebaResponse> InsertarFacturaPruebaAsync(Integracion.Sincronizador.ReferenciaCore.InsertarFacturaPruebaRequest request);
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.InsertarFacturaPruebaResponse> InsertarFacturaPruebaAsync(Integracion.Sincronizador.CoreReferencia.InsertarFacturaPruebaRequest request);
+        
+        // CODEGEN: Generating message contract since element name idLocal from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/RecibirFacturaOffline", ReplyAction="*")]
+        Integracion.Sincronizador.CoreReferencia.RecibirFacturaOfflineResponse RecibirFacturaOffline(Integracion.Sincronizador.CoreReferencia.RecibirFacturaOfflineRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/RecibirFacturaOffline", ReplyAction="*")]
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.RecibirFacturaOfflineResponse> RecibirFacturaOfflineAsync(Integracion.Sincronizador.CoreReferencia.RecibirFacturaOfflineRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1279,12 +1286,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class ValidarUsuarioRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="ValidarUsuario", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.ValidarUsuarioRequestBody Body;
+        public Integracion.Sincronizador.CoreReferencia.ValidarUsuarioRequestBody Body;
         
         public ValidarUsuarioRequest() {
         }
         
-        public ValidarUsuarioRequest(Integracion.Sincronizador.ReferenciaCore.ValidarUsuarioRequestBody Body) {
+        public ValidarUsuarioRequest(Integracion.Sincronizador.CoreReferencia.ValidarUsuarioRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -1317,12 +1324,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class ValidarUsuarioResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="ValidarUsuarioResponse", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.ValidarUsuarioResponseBody Body;
+        public Integracion.Sincronizador.CoreReferencia.ValidarUsuarioResponseBody Body;
         
         public ValidarUsuarioResponse() {
         }
         
-        public ValidarUsuarioResponse(Integracion.Sincronizador.ReferenciaCore.ValidarUsuarioResponseBody Body) {
+        public ValidarUsuarioResponse(Integracion.Sincronizador.CoreReferencia.ValidarUsuarioResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -1334,12 +1341,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class ValidarUsuarioResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.sp_ValidarUsuario_Result1 ValidarUsuarioResult;
+        public Integracion.Sincronizador.CoreReferencia.sp_ValidarUsuario_Result1 ValidarUsuarioResult;
         
         public ValidarUsuarioResponseBody() {
         }
         
-        public ValidarUsuarioResponseBody(Integracion.Sincronizador.ReferenciaCore.sp_ValidarUsuario_Result1 ValidarUsuarioResult) {
+        public ValidarUsuarioResponseBody(Integracion.Sincronizador.CoreReferencia.sp_ValidarUsuario_Result1 ValidarUsuarioResult) {
             this.ValidarUsuarioResult = ValidarUsuarioResult;
         }
     }
@@ -1351,12 +1358,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class ListarProductosRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="ListarProductos", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.ListarProductosRequestBody Body;
+        public Integracion.Sincronizador.CoreReferencia.ListarProductosRequestBody Body;
         
         public ListarProductosRequest() {
         }
         
-        public ListarProductosRequest(Integracion.Sincronizador.ReferenciaCore.ListarProductosRequestBody Body) {
+        public ListarProductosRequest(Integracion.Sincronizador.CoreReferencia.ListarProductosRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -1378,12 +1385,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class ListarProductosResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="ListarProductosResponse", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.ListarProductosResponseBody Body;
+        public Integracion.Sincronizador.CoreReferencia.ListarProductosResponseBody Body;
         
         public ListarProductosResponse() {
         }
         
-        public ListarProductosResponse(Integracion.Sincronizador.ReferenciaCore.ListarProductosResponseBody Body) {
+        public ListarProductosResponse(Integracion.Sincronizador.CoreReferencia.ListarProductosResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -1395,12 +1402,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class ListarProductosResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.ArrayOfSp_ListarProductos_Result ListarProductosResult;
+        public Integracion.Sincronizador.CoreReferencia.ArrayOfSp_ListarProductos_Result ListarProductosResult;
         
         public ListarProductosResponseBody() {
         }
         
-        public ListarProductosResponseBody(Integracion.Sincronizador.ReferenciaCore.ArrayOfSp_ListarProductos_Result ListarProductosResult) {
+        public ListarProductosResponseBody(Integracion.Sincronizador.CoreReferencia.ArrayOfSp_ListarProductos_Result ListarProductosResult) {
             this.ListarProductosResult = ListarProductosResult;
         }
     }
@@ -1412,12 +1419,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class ListarServiciosRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="ListarServicios", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.ListarServiciosRequestBody Body;
+        public Integracion.Sincronizador.CoreReferencia.ListarServiciosRequestBody Body;
         
         public ListarServiciosRequest() {
         }
         
-        public ListarServiciosRequest(Integracion.Sincronizador.ReferenciaCore.ListarServiciosRequestBody Body) {
+        public ListarServiciosRequest(Integracion.Sincronizador.CoreReferencia.ListarServiciosRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -1439,12 +1446,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class ListarServiciosResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="ListarServiciosResponse", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.ListarServiciosResponseBody Body;
+        public Integracion.Sincronizador.CoreReferencia.ListarServiciosResponseBody Body;
         
         public ListarServiciosResponse() {
         }
         
-        public ListarServiciosResponse(Integracion.Sincronizador.ReferenciaCore.ListarServiciosResponseBody Body) {
+        public ListarServiciosResponse(Integracion.Sincronizador.CoreReferencia.ListarServiciosResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -1456,12 +1463,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class ListarServiciosResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.ArrayOfSp_ListarServicios_Result ListarServiciosResult;
+        public Integracion.Sincronizador.CoreReferencia.ArrayOfSp_ListarServicios_Result ListarServiciosResult;
         
         public ListarServiciosResponseBody() {
         }
         
-        public ListarServiciosResponseBody(Integracion.Sincronizador.ReferenciaCore.ArrayOfSp_ListarServicios_Result ListarServiciosResult) {
+        public ListarServiciosResponseBody(Integracion.Sincronizador.CoreReferencia.ArrayOfSp_ListarServicios_Result ListarServiciosResult) {
             this.ListarServiciosResult = ListarServiciosResult;
         }
     }
@@ -1473,12 +1480,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class ListarSucursalesRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="ListarSucursales", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.ListarSucursalesRequestBody Body;
+        public Integracion.Sincronizador.CoreReferencia.ListarSucursalesRequestBody Body;
         
         public ListarSucursalesRequest() {
         }
         
-        public ListarSucursalesRequest(Integracion.Sincronizador.ReferenciaCore.ListarSucursalesRequestBody Body) {
+        public ListarSucursalesRequest(Integracion.Sincronizador.CoreReferencia.ListarSucursalesRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -1500,12 +1507,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class ListarSucursalesResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="ListarSucursalesResponse", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.ListarSucursalesResponseBody Body;
+        public Integracion.Sincronizador.CoreReferencia.ListarSucursalesResponseBody Body;
         
         public ListarSucursalesResponse() {
         }
         
-        public ListarSucursalesResponse(Integracion.Sincronizador.ReferenciaCore.ListarSucursalesResponseBody Body) {
+        public ListarSucursalesResponse(Integracion.Sincronizador.CoreReferencia.ListarSucursalesResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -1517,12 +1524,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class ListarSucursalesResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.ArrayOfSp_ListarSucursales_Result ListarSucursalesResult;
+        public Integracion.Sincronizador.CoreReferencia.ArrayOfSp_ListarSucursales_Result ListarSucursalesResult;
         
         public ListarSucursalesResponseBody() {
         }
         
-        public ListarSucursalesResponseBody(Integracion.Sincronizador.ReferenciaCore.ArrayOfSp_ListarSucursales_Result ListarSucursalesResult) {
+        public ListarSucursalesResponseBody(Integracion.Sincronizador.CoreReferencia.ArrayOfSp_ListarSucursales_Result ListarSucursalesResult) {
             this.ListarSucursalesResult = ListarSucursalesResult;
         }
     }
@@ -1534,12 +1541,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class ListarClientesRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="ListarClientes", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.ListarClientesRequestBody Body;
+        public Integracion.Sincronizador.CoreReferencia.ListarClientesRequestBody Body;
         
         public ListarClientesRequest() {
         }
         
-        public ListarClientesRequest(Integracion.Sincronizador.ReferenciaCore.ListarClientesRequestBody Body) {
+        public ListarClientesRequest(Integracion.Sincronizador.CoreReferencia.ListarClientesRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -1561,12 +1568,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class ListarClientesResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="ListarClientesResponse", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.ListarClientesResponseBody Body;
+        public Integracion.Sincronizador.CoreReferencia.ListarClientesResponseBody Body;
         
         public ListarClientesResponse() {
         }
         
-        public ListarClientesResponse(Integracion.Sincronizador.ReferenciaCore.ListarClientesResponseBody Body) {
+        public ListarClientesResponse(Integracion.Sincronizador.CoreReferencia.ListarClientesResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -1578,12 +1585,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class ListarClientesResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.ArrayOfSp_ListarClientes_Result ListarClientesResult;
+        public Integracion.Sincronizador.CoreReferencia.ArrayOfSp_ListarClientes_Result ListarClientesResult;
         
         public ListarClientesResponseBody() {
         }
         
-        public ListarClientesResponseBody(Integracion.Sincronizador.ReferenciaCore.ArrayOfSp_ListarClientes_Result ListarClientesResult) {
+        public ListarClientesResponseBody(Integracion.Sincronizador.CoreReferencia.ArrayOfSp_ListarClientes_Result ListarClientesResult) {
             this.ListarClientesResult = ListarClientesResult;
         }
     }
@@ -1595,12 +1602,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class BuscarClientePorCedulaRNCRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="BuscarClientePorCedulaRNC", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.BuscarClientePorCedulaRNCRequestBody Body;
+        public Integracion.Sincronizador.CoreReferencia.BuscarClientePorCedulaRNCRequestBody Body;
         
         public BuscarClientePorCedulaRNCRequest() {
         }
         
-        public BuscarClientePorCedulaRNCRequest(Integracion.Sincronizador.ReferenciaCore.BuscarClientePorCedulaRNCRequestBody Body) {
+        public BuscarClientePorCedulaRNCRequest(Integracion.Sincronizador.CoreReferencia.BuscarClientePorCedulaRNCRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -1629,12 +1636,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class BuscarClientePorCedulaRNCResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="BuscarClientePorCedulaRNCResponse", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.BuscarClientePorCedulaRNCResponseBody Body;
+        public Integracion.Sincronizador.CoreReferencia.BuscarClientePorCedulaRNCResponseBody Body;
         
         public BuscarClientePorCedulaRNCResponse() {
         }
         
-        public BuscarClientePorCedulaRNCResponse(Integracion.Sincronizador.ReferenciaCore.BuscarClientePorCedulaRNCResponseBody Body) {
+        public BuscarClientePorCedulaRNCResponse(Integracion.Sincronizador.CoreReferencia.BuscarClientePorCedulaRNCResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -1646,12 +1653,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class BuscarClientePorCedulaRNCResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.sp_BuscarClientePorCedulaRNC_Result BuscarClientePorCedulaRNCResult;
+        public Integracion.Sincronizador.CoreReferencia.sp_BuscarClientePorCedulaRNC_Result BuscarClientePorCedulaRNCResult;
         
         public BuscarClientePorCedulaRNCResponseBody() {
         }
         
-        public BuscarClientePorCedulaRNCResponseBody(Integracion.Sincronizador.ReferenciaCore.sp_BuscarClientePorCedulaRNC_Result BuscarClientePorCedulaRNCResult) {
+        public BuscarClientePorCedulaRNCResponseBody(Integracion.Sincronizador.CoreReferencia.sp_BuscarClientePorCedulaRNC_Result BuscarClientePorCedulaRNCResult) {
             this.BuscarClientePorCedulaRNCResult = BuscarClientePorCedulaRNCResult;
         }
     }
@@ -1663,12 +1670,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class InsertarClienteRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertarCliente", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.InsertarClienteRequestBody Body;
+        public Integracion.Sincronizador.CoreReferencia.InsertarClienteRequestBody Body;
         
         public InsertarClienteRequest() {
         }
         
-        public InsertarClienteRequest(Integracion.Sincronizador.ReferenciaCore.InsertarClienteRequestBody Body) {
+        public InsertarClienteRequest(Integracion.Sincronizador.CoreReferencia.InsertarClienteRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -1717,12 +1724,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class InsertarClienteResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertarClienteResponse", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.InsertarClienteResponseBody Body;
+        public Integracion.Sincronizador.CoreReferencia.InsertarClienteResponseBody Body;
         
         public InsertarClienteResponse() {
         }
         
-        public InsertarClienteResponse(Integracion.Sincronizador.ReferenciaCore.InsertarClienteResponseBody Body) {
+        public InsertarClienteResponse(Integracion.Sincronizador.CoreReferencia.InsertarClienteResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -1751,12 +1758,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class ListarVehiculosPorClienteRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="ListarVehiculosPorCliente", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.ListarVehiculosPorClienteRequestBody Body;
+        public Integracion.Sincronizador.CoreReferencia.ListarVehiculosPorClienteRequestBody Body;
         
         public ListarVehiculosPorClienteRequest() {
         }
         
-        public ListarVehiculosPorClienteRequest(Integracion.Sincronizador.ReferenciaCore.ListarVehiculosPorClienteRequestBody Body) {
+        public ListarVehiculosPorClienteRequest(Integracion.Sincronizador.CoreReferencia.ListarVehiculosPorClienteRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -1785,12 +1792,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class ListarVehiculosPorClienteResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="ListarVehiculosPorClienteResponse", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.ListarVehiculosPorClienteResponseBody Body;
+        public Integracion.Sincronizador.CoreReferencia.ListarVehiculosPorClienteResponseBody Body;
         
         public ListarVehiculosPorClienteResponse() {
         }
         
-        public ListarVehiculosPorClienteResponse(Integracion.Sincronizador.ReferenciaCore.ListarVehiculosPorClienteResponseBody Body) {
+        public ListarVehiculosPorClienteResponse(Integracion.Sincronizador.CoreReferencia.ListarVehiculosPorClienteResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -1802,12 +1809,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class ListarVehiculosPorClienteResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.ArrayOfSp_ListarVehiculosPorCliente_Result ListarVehiculosPorClienteResult;
+        public Integracion.Sincronizador.CoreReferencia.ArrayOfSp_ListarVehiculosPorCliente_Result ListarVehiculosPorClienteResult;
         
         public ListarVehiculosPorClienteResponseBody() {
         }
         
-        public ListarVehiculosPorClienteResponseBody(Integracion.Sincronizador.ReferenciaCore.ArrayOfSp_ListarVehiculosPorCliente_Result ListarVehiculosPorClienteResult) {
+        public ListarVehiculosPorClienteResponseBody(Integracion.Sincronizador.CoreReferencia.ArrayOfSp_ListarVehiculosPorCliente_Result ListarVehiculosPorClienteResult) {
             this.ListarVehiculosPorClienteResult = ListarVehiculosPorClienteResult;
         }
     }
@@ -1819,12 +1826,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class InsertarVehiculoPruebaRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertarVehiculoPrueba", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.InsertarVehiculoPruebaRequestBody Body;
+        public Integracion.Sincronizador.CoreReferencia.InsertarVehiculoPruebaRequestBody Body;
         
         public InsertarVehiculoPruebaRequest() {
         }
         
-        public InsertarVehiculoPruebaRequest(Integracion.Sincronizador.ReferenciaCore.InsertarVehiculoPruebaRequestBody Body) {
+        public InsertarVehiculoPruebaRequest(Integracion.Sincronizador.CoreReferencia.InsertarVehiculoPruebaRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -1873,12 +1880,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class InsertarVehiculoPruebaResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertarVehiculoPruebaResponse", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.InsertarVehiculoPruebaResponseBody Body;
+        public Integracion.Sincronizador.CoreReferencia.InsertarVehiculoPruebaResponseBody Body;
         
         public InsertarVehiculoPruebaResponse() {
         }
         
-        public InsertarVehiculoPruebaResponse(Integracion.Sincronizador.ReferenciaCore.InsertarVehiculoPruebaResponseBody Body) {
+        public InsertarVehiculoPruebaResponse(Integracion.Sincronizador.CoreReferencia.InsertarVehiculoPruebaResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -1907,12 +1914,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class InsertarFacturaRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertarFactura", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.InsertarFacturaRequestBody Body;
+        public Integracion.Sincronizador.CoreReferencia.InsertarFacturaRequestBody Body;
         
         public InsertarFacturaRequest() {
         }
         
-        public InsertarFacturaRequest(Integracion.Sincronizador.ReferenciaCore.InsertarFacturaRequestBody Body) {
+        public InsertarFacturaRequest(Integracion.Sincronizador.CoreReferencia.InsertarFacturaRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -1969,12 +1976,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class InsertarFacturaResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertarFacturaResponse", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.InsertarFacturaResponseBody Body;
+        public Integracion.Sincronizador.CoreReferencia.InsertarFacturaResponseBody Body;
         
         public InsertarFacturaResponse() {
         }
         
-        public InsertarFacturaResponse(Integracion.Sincronizador.ReferenciaCore.InsertarFacturaResponseBody Body) {
+        public InsertarFacturaResponse(Integracion.Sincronizador.CoreReferencia.InsertarFacturaResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -2003,12 +2010,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class InsertarFacturaDetalleServicioPruebaRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertarFacturaDetalleServicioPrueba", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleServicioPruebaRequestBody Body;
+        public Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleServicioPruebaRequestBody Body;
         
         public InsertarFacturaDetalleServicioPruebaRequest() {
         }
         
-        public InsertarFacturaDetalleServicioPruebaRequest(Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleServicioPruebaRequestBody Body) {
+        public InsertarFacturaDetalleServicioPruebaRequest(Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleServicioPruebaRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -2049,12 +2056,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class InsertarFacturaDetalleServicioPruebaResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertarFacturaDetalleServicioPruebaResponse", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleServicioPruebaResponseBody Body;
+        public Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleServicioPruebaResponseBody Body;
         
         public InsertarFacturaDetalleServicioPruebaResponse() {
         }
         
-        public InsertarFacturaDetalleServicioPruebaResponse(Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleServicioPruebaResponseBody Body) {
+        public InsertarFacturaDetalleServicioPruebaResponse(Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleServicioPruebaResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -2083,12 +2090,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class RegistrarMovimientoInventarioRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="RegistrarMovimientoInventario", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.RegistrarMovimientoInventarioRequestBody Body;
+        public Integracion.Sincronizador.CoreReferencia.RegistrarMovimientoInventarioRequestBody Body;
         
         public RegistrarMovimientoInventarioRequest() {
         }
         
-        public RegistrarMovimientoInventarioRequest(Integracion.Sincronizador.ReferenciaCore.RegistrarMovimientoInventarioRequestBody Body) {
+        public RegistrarMovimientoInventarioRequest(Integracion.Sincronizador.CoreReferencia.RegistrarMovimientoInventarioRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -2137,12 +2144,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class RegistrarMovimientoInventarioResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="RegistrarMovimientoInventarioResponse", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.RegistrarMovimientoInventarioResponseBody Body;
+        public Integracion.Sincronizador.CoreReferencia.RegistrarMovimientoInventarioResponseBody Body;
         
         public RegistrarMovimientoInventarioResponse() {
         }
         
-        public RegistrarMovimientoInventarioResponse(Integracion.Sincronizador.ReferenciaCore.RegistrarMovimientoInventarioResponseBody Body) {
+        public RegistrarMovimientoInventarioResponse(Integracion.Sincronizador.CoreReferencia.RegistrarMovimientoInventarioResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -2164,12 +2171,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class InsertarFacturaDetalleProductoPruebaRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertarFacturaDetalleProductoPrueba", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleProductoPruebaRequestBody Body;
+        public Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleProductoPruebaRequestBody Body;
         
         public InsertarFacturaDetalleProductoPruebaRequest() {
         }
         
-        public InsertarFacturaDetalleProductoPruebaRequest(Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleProductoPruebaRequestBody Body) {
+        public InsertarFacturaDetalleProductoPruebaRequest(Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleProductoPruebaRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -2210,12 +2217,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class InsertarFacturaDetalleProductoPruebaResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertarFacturaDetalleProductoPruebaResponse", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleProductoPruebaResponseBody Body;
+        public Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleProductoPruebaResponseBody Body;
         
         public InsertarFacturaDetalleProductoPruebaResponse() {
         }
         
-        public InsertarFacturaDetalleProductoPruebaResponse(Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleProductoPruebaResponseBody Body) {
+        public InsertarFacturaDetalleProductoPruebaResponse(Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleProductoPruebaResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -2244,12 +2251,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class ObtenerVehiculoGenericoRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="ObtenerVehiculoGenerico", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.ObtenerVehiculoGenericoRequestBody Body;
+        public Integracion.Sincronizador.CoreReferencia.ObtenerVehiculoGenericoRequestBody Body;
         
         public ObtenerVehiculoGenericoRequest() {
         }
         
-        public ObtenerVehiculoGenericoRequest(Integracion.Sincronizador.ReferenciaCore.ObtenerVehiculoGenericoRequestBody Body) {
+        public ObtenerVehiculoGenericoRequest(Integracion.Sincronizador.CoreReferencia.ObtenerVehiculoGenericoRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -2271,12 +2278,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class ObtenerVehiculoGenericoResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="ObtenerVehiculoGenericoResponse", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.ObtenerVehiculoGenericoResponseBody Body;
+        public Integracion.Sincronizador.CoreReferencia.ObtenerVehiculoGenericoResponseBody Body;
         
         public ObtenerVehiculoGenericoResponse() {
         }
         
-        public ObtenerVehiculoGenericoResponse(Integracion.Sincronizador.ReferenciaCore.ObtenerVehiculoGenericoResponseBody Body) {
+        public ObtenerVehiculoGenericoResponse(Integracion.Sincronizador.CoreReferencia.ObtenerVehiculoGenericoResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -2288,12 +2295,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class ObtenerVehiculoGenericoResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.sp_ObtenerVehiculoGenerico_Result ObtenerVehiculoGenericoResult;
+        public Integracion.Sincronizador.CoreReferencia.sp_ObtenerVehiculoGenerico_Result ObtenerVehiculoGenericoResult;
         
         public ObtenerVehiculoGenericoResponseBody() {
         }
         
-        public ObtenerVehiculoGenericoResponseBody(Integracion.Sincronizador.ReferenciaCore.sp_ObtenerVehiculoGenerico_Result ObtenerVehiculoGenericoResult) {
+        public ObtenerVehiculoGenericoResponseBody(Integracion.Sincronizador.CoreReferencia.sp_ObtenerVehiculoGenerico_Result ObtenerVehiculoGenericoResult) {
             this.ObtenerVehiculoGenericoResult = ObtenerVehiculoGenericoResult;
         }
     }
@@ -2305,12 +2312,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class InsertarFacturaPruebaRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertarFacturaPrueba", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.InsertarFacturaPruebaRequestBody Body;
+        public Integracion.Sincronizador.CoreReferencia.InsertarFacturaPruebaRequestBody Body;
         
         public InsertarFacturaPruebaRequest() {
         }
         
-        public InsertarFacturaPruebaRequest(Integracion.Sincronizador.ReferenciaCore.InsertarFacturaPruebaRequestBody Body) {
+        public InsertarFacturaPruebaRequest(Integracion.Sincronizador.CoreReferencia.InsertarFacturaPruebaRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -2367,12 +2374,12 @@ namespace Integracion.Sincronizador.ReferenciaCore {
     public partial class InsertarFacturaPruebaResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertarFacturaPruebaResponse", Namespace="http://tempuri.org/", Order=0)]
-        public Integracion.Sincronizador.ReferenciaCore.InsertarFacturaPruebaResponseBody Body;
+        public Integracion.Sincronizador.CoreReferencia.InsertarFacturaPruebaResponseBody Body;
         
         public InsertarFacturaPruebaResponse() {
         }
         
-        public InsertarFacturaPruebaResponse(Integracion.Sincronizador.ReferenciaCore.InsertarFacturaPruebaResponseBody Body) {
+        public InsertarFacturaPruebaResponse(Integracion.Sincronizador.CoreReferencia.InsertarFacturaPruebaResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -2394,13 +2401,93 @@ namespace Integracion.Sincronizador.ReferenciaCore {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface CoreServiceSoapChannel : Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap, System.ServiceModel.IClientChannel {
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class RecibirFacturaOfflineRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="RecibirFacturaOffline", Namespace="http://tempuri.org/", Order=0)]
+        public Integracion.Sincronizador.CoreReferencia.RecibirFacturaOfflineRequestBody Body;
+        
+        public RecibirFacturaOfflineRequest() {
+        }
+        
+        public RecibirFacturaOfflineRequest(Integracion.Sincronizador.CoreReferencia.RecibirFacturaOfflineRequestBody Body) {
+            this.Body = Body;
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class CoreServiceSoapClient : System.ServiceModel.ClientBase<Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap>, Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap {
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class RecibirFacturaOfflineRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string idLocal;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string cliente;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public decimal total;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string canal;
+        
+        public RecibirFacturaOfflineRequestBody() {
+        }
+        
+        public RecibirFacturaOfflineRequestBody(string idLocal, string cliente, decimal total, string canal) {
+            this.idLocal = idLocal;
+            this.cliente = cliente;
+            this.total = total;
+            this.canal = canal;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class RecibirFacturaOfflineResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="RecibirFacturaOfflineResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Integracion.Sincronizador.CoreReferencia.RecibirFacturaOfflineResponseBody Body;
+        
+        public RecibirFacturaOfflineResponse() {
+        }
+        
+        public RecibirFacturaOfflineResponse(Integracion.Sincronizador.CoreReferencia.RecibirFacturaOfflineResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class RecibirFacturaOfflineResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool RecibirFacturaOfflineResult;
+        
+        public RecibirFacturaOfflineResponseBody() {
+        }
+        
+        public RecibirFacturaOfflineResponseBody(bool RecibirFacturaOfflineResult) {
+            this.RecibirFacturaOfflineResult = RecibirFacturaOfflineResult;
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface CoreServiceSoapChannel : Integracion.Sincronizador.CoreReferencia.CoreServiceSoap, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class CoreServiceSoapClient : System.ServiceModel.ClientBase<Integracion.Sincronizador.CoreReferencia.CoreServiceSoap>, Integracion.Sincronizador.CoreReferencia.CoreServiceSoap {
         
         public CoreServiceSoapClient() {
         }
@@ -2422,252 +2509,252 @@ namespace Integracion.Sincronizador.ReferenciaCore {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Integracion.Sincronizador.ReferenciaCore.ValidarUsuarioResponse Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.ValidarUsuario(Integracion.Sincronizador.ReferenciaCore.ValidarUsuarioRequest request) {
+        Integracion.Sincronizador.CoreReferencia.ValidarUsuarioResponse Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.ValidarUsuario(Integracion.Sincronizador.CoreReferencia.ValidarUsuarioRequest request) {
             return base.Channel.ValidarUsuario(request);
         }
         
-        public Integracion.Sincronizador.ReferenciaCore.sp_ValidarUsuario_Result1 ValidarUsuario(string nombreUsuario, string clave) {
-            Integracion.Sincronizador.ReferenciaCore.ValidarUsuarioRequest inValue = new Integracion.Sincronizador.ReferenciaCore.ValidarUsuarioRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.ValidarUsuarioRequestBody();
+        public Integracion.Sincronizador.CoreReferencia.sp_ValidarUsuario_Result1 ValidarUsuario(string nombreUsuario, string clave) {
+            Integracion.Sincronizador.CoreReferencia.ValidarUsuarioRequest inValue = new Integracion.Sincronizador.CoreReferencia.ValidarUsuarioRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.ValidarUsuarioRequestBody();
             inValue.Body.nombreUsuario = nombreUsuario;
             inValue.Body.clave = clave;
-            Integracion.Sincronizador.ReferenciaCore.ValidarUsuarioResponse retVal = ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).ValidarUsuario(inValue);
+            Integracion.Sincronizador.CoreReferencia.ValidarUsuarioResponse retVal = ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).ValidarUsuario(inValue);
             return retVal.Body.ValidarUsuarioResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.ValidarUsuarioResponse> Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.ValidarUsuarioAsync(Integracion.Sincronizador.ReferenciaCore.ValidarUsuarioRequest request) {
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.ValidarUsuarioResponse> Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.ValidarUsuarioAsync(Integracion.Sincronizador.CoreReferencia.ValidarUsuarioRequest request) {
             return base.Channel.ValidarUsuarioAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.ValidarUsuarioResponse> ValidarUsuarioAsync(string nombreUsuario, string clave) {
-            Integracion.Sincronizador.ReferenciaCore.ValidarUsuarioRequest inValue = new Integracion.Sincronizador.ReferenciaCore.ValidarUsuarioRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.ValidarUsuarioRequestBody();
+        public System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.ValidarUsuarioResponse> ValidarUsuarioAsync(string nombreUsuario, string clave) {
+            Integracion.Sincronizador.CoreReferencia.ValidarUsuarioRequest inValue = new Integracion.Sincronizador.CoreReferencia.ValidarUsuarioRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.ValidarUsuarioRequestBody();
             inValue.Body.nombreUsuario = nombreUsuario;
             inValue.Body.clave = clave;
-            return ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).ValidarUsuarioAsync(inValue);
+            return ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).ValidarUsuarioAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Integracion.Sincronizador.ReferenciaCore.ListarProductosResponse Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.ListarProductos(Integracion.Sincronizador.ReferenciaCore.ListarProductosRequest request) {
+        Integracion.Sincronizador.CoreReferencia.ListarProductosResponse Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.ListarProductos(Integracion.Sincronizador.CoreReferencia.ListarProductosRequest request) {
             return base.Channel.ListarProductos(request);
         }
         
-        public Integracion.Sincronizador.ReferenciaCore.ArrayOfSp_ListarProductos_Result ListarProductos() {
-            Integracion.Sincronizador.ReferenciaCore.ListarProductosRequest inValue = new Integracion.Sincronizador.ReferenciaCore.ListarProductosRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.ListarProductosRequestBody();
-            Integracion.Sincronizador.ReferenciaCore.ListarProductosResponse retVal = ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).ListarProductos(inValue);
+        public Integracion.Sincronizador.CoreReferencia.ArrayOfSp_ListarProductos_Result ListarProductos() {
+            Integracion.Sincronizador.CoreReferencia.ListarProductosRequest inValue = new Integracion.Sincronizador.CoreReferencia.ListarProductosRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.ListarProductosRequestBody();
+            Integracion.Sincronizador.CoreReferencia.ListarProductosResponse retVal = ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).ListarProductos(inValue);
             return retVal.Body.ListarProductosResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.ListarProductosResponse> Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.ListarProductosAsync(Integracion.Sincronizador.ReferenciaCore.ListarProductosRequest request) {
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.ListarProductosResponse> Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.ListarProductosAsync(Integracion.Sincronizador.CoreReferencia.ListarProductosRequest request) {
             return base.Channel.ListarProductosAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.ListarProductosResponse> ListarProductosAsync() {
-            Integracion.Sincronizador.ReferenciaCore.ListarProductosRequest inValue = new Integracion.Sincronizador.ReferenciaCore.ListarProductosRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.ListarProductosRequestBody();
-            return ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).ListarProductosAsync(inValue);
+        public System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.ListarProductosResponse> ListarProductosAsync() {
+            Integracion.Sincronizador.CoreReferencia.ListarProductosRequest inValue = new Integracion.Sincronizador.CoreReferencia.ListarProductosRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.ListarProductosRequestBody();
+            return ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).ListarProductosAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Integracion.Sincronizador.ReferenciaCore.ListarServiciosResponse Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.ListarServicios(Integracion.Sincronizador.ReferenciaCore.ListarServiciosRequest request) {
+        Integracion.Sincronizador.CoreReferencia.ListarServiciosResponse Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.ListarServicios(Integracion.Sincronizador.CoreReferencia.ListarServiciosRequest request) {
             return base.Channel.ListarServicios(request);
         }
         
-        public Integracion.Sincronizador.ReferenciaCore.ArrayOfSp_ListarServicios_Result ListarServicios() {
-            Integracion.Sincronizador.ReferenciaCore.ListarServiciosRequest inValue = new Integracion.Sincronizador.ReferenciaCore.ListarServiciosRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.ListarServiciosRequestBody();
-            Integracion.Sincronizador.ReferenciaCore.ListarServiciosResponse retVal = ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).ListarServicios(inValue);
+        public Integracion.Sincronizador.CoreReferencia.ArrayOfSp_ListarServicios_Result ListarServicios() {
+            Integracion.Sincronizador.CoreReferencia.ListarServiciosRequest inValue = new Integracion.Sincronizador.CoreReferencia.ListarServiciosRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.ListarServiciosRequestBody();
+            Integracion.Sincronizador.CoreReferencia.ListarServiciosResponse retVal = ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).ListarServicios(inValue);
             return retVal.Body.ListarServiciosResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.ListarServiciosResponse> Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.ListarServiciosAsync(Integracion.Sincronizador.ReferenciaCore.ListarServiciosRequest request) {
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.ListarServiciosResponse> Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.ListarServiciosAsync(Integracion.Sincronizador.CoreReferencia.ListarServiciosRequest request) {
             return base.Channel.ListarServiciosAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.ListarServiciosResponse> ListarServiciosAsync() {
-            Integracion.Sincronizador.ReferenciaCore.ListarServiciosRequest inValue = new Integracion.Sincronizador.ReferenciaCore.ListarServiciosRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.ListarServiciosRequestBody();
-            return ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).ListarServiciosAsync(inValue);
+        public System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.ListarServiciosResponse> ListarServiciosAsync() {
+            Integracion.Sincronizador.CoreReferencia.ListarServiciosRequest inValue = new Integracion.Sincronizador.CoreReferencia.ListarServiciosRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.ListarServiciosRequestBody();
+            return ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).ListarServiciosAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Integracion.Sincronizador.ReferenciaCore.ListarSucursalesResponse Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.ListarSucursales(Integracion.Sincronizador.ReferenciaCore.ListarSucursalesRequest request) {
+        Integracion.Sincronizador.CoreReferencia.ListarSucursalesResponse Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.ListarSucursales(Integracion.Sincronizador.CoreReferencia.ListarSucursalesRequest request) {
             return base.Channel.ListarSucursales(request);
         }
         
-        public Integracion.Sincronizador.ReferenciaCore.ArrayOfSp_ListarSucursales_Result ListarSucursales() {
-            Integracion.Sincronizador.ReferenciaCore.ListarSucursalesRequest inValue = new Integracion.Sincronizador.ReferenciaCore.ListarSucursalesRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.ListarSucursalesRequestBody();
-            Integracion.Sincronizador.ReferenciaCore.ListarSucursalesResponse retVal = ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).ListarSucursales(inValue);
+        public Integracion.Sincronizador.CoreReferencia.ArrayOfSp_ListarSucursales_Result ListarSucursales() {
+            Integracion.Sincronizador.CoreReferencia.ListarSucursalesRequest inValue = new Integracion.Sincronizador.CoreReferencia.ListarSucursalesRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.ListarSucursalesRequestBody();
+            Integracion.Sincronizador.CoreReferencia.ListarSucursalesResponse retVal = ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).ListarSucursales(inValue);
             return retVal.Body.ListarSucursalesResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.ListarSucursalesResponse> Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.ListarSucursalesAsync(Integracion.Sincronizador.ReferenciaCore.ListarSucursalesRequest request) {
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.ListarSucursalesResponse> Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.ListarSucursalesAsync(Integracion.Sincronizador.CoreReferencia.ListarSucursalesRequest request) {
             return base.Channel.ListarSucursalesAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.ListarSucursalesResponse> ListarSucursalesAsync() {
-            Integracion.Sincronizador.ReferenciaCore.ListarSucursalesRequest inValue = new Integracion.Sincronizador.ReferenciaCore.ListarSucursalesRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.ListarSucursalesRequestBody();
-            return ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).ListarSucursalesAsync(inValue);
+        public System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.ListarSucursalesResponse> ListarSucursalesAsync() {
+            Integracion.Sincronizador.CoreReferencia.ListarSucursalesRequest inValue = new Integracion.Sincronizador.CoreReferencia.ListarSucursalesRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.ListarSucursalesRequestBody();
+            return ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).ListarSucursalesAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Integracion.Sincronizador.ReferenciaCore.ListarClientesResponse Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.ListarClientes(Integracion.Sincronizador.ReferenciaCore.ListarClientesRequest request) {
+        Integracion.Sincronizador.CoreReferencia.ListarClientesResponse Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.ListarClientes(Integracion.Sincronizador.CoreReferencia.ListarClientesRequest request) {
             return base.Channel.ListarClientes(request);
         }
         
-        public Integracion.Sincronizador.ReferenciaCore.ArrayOfSp_ListarClientes_Result ListarClientes() {
-            Integracion.Sincronizador.ReferenciaCore.ListarClientesRequest inValue = new Integracion.Sincronizador.ReferenciaCore.ListarClientesRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.ListarClientesRequestBody();
-            Integracion.Sincronizador.ReferenciaCore.ListarClientesResponse retVal = ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).ListarClientes(inValue);
+        public Integracion.Sincronizador.CoreReferencia.ArrayOfSp_ListarClientes_Result ListarClientes() {
+            Integracion.Sincronizador.CoreReferencia.ListarClientesRequest inValue = new Integracion.Sincronizador.CoreReferencia.ListarClientesRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.ListarClientesRequestBody();
+            Integracion.Sincronizador.CoreReferencia.ListarClientesResponse retVal = ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).ListarClientes(inValue);
             return retVal.Body.ListarClientesResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.ListarClientesResponse> Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.ListarClientesAsync(Integracion.Sincronizador.ReferenciaCore.ListarClientesRequest request) {
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.ListarClientesResponse> Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.ListarClientesAsync(Integracion.Sincronizador.CoreReferencia.ListarClientesRequest request) {
             return base.Channel.ListarClientesAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.ListarClientesResponse> ListarClientesAsync() {
-            Integracion.Sincronizador.ReferenciaCore.ListarClientesRequest inValue = new Integracion.Sincronizador.ReferenciaCore.ListarClientesRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.ListarClientesRequestBody();
-            return ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).ListarClientesAsync(inValue);
+        public System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.ListarClientesResponse> ListarClientesAsync() {
+            Integracion.Sincronizador.CoreReferencia.ListarClientesRequest inValue = new Integracion.Sincronizador.CoreReferencia.ListarClientesRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.ListarClientesRequestBody();
+            return ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).ListarClientesAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Integracion.Sincronizador.ReferenciaCore.BuscarClientePorCedulaRNCResponse Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.BuscarClientePorCedulaRNC(Integracion.Sincronizador.ReferenciaCore.BuscarClientePorCedulaRNCRequest request) {
+        Integracion.Sincronizador.CoreReferencia.BuscarClientePorCedulaRNCResponse Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.BuscarClientePorCedulaRNC(Integracion.Sincronizador.CoreReferencia.BuscarClientePorCedulaRNCRequest request) {
             return base.Channel.BuscarClientePorCedulaRNC(request);
         }
         
-        public Integracion.Sincronizador.ReferenciaCore.sp_BuscarClientePorCedulaRNC_Result BuscarClientePorCedulaRNC(string cedulaRnc) {
-            Integracion.Sincronizador.ReferenciaCore.BuscarClientePorCedulaRNCRequest inValue = new Integracion.Sincronizador.ReferenciaCore.BuscarClientePorCedulaRNCRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.BuscarClientePorCedulaRNCRequestBody();
+        public Integracion.Sincronizador.CoreReferencia.sp_BuscarClientePorCedulaRNC_Result BuscarClientePorCedulaRNC(string cedulaRnc) {
+            Integracion.Sincronizador.CoreReferencia.BuscarClientePorCedulaRNCRequest inValue = new Integracion.Sincronizador.CoreReferencia.BuscarClientePorCedulaRNCRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.BuscarClientePorCedulaRNCRequestBody();
             inValue.Body.cedulaRnc = cedulaRnc;
-            Integracion.Sincronizador.ReferenciaCore.BuscarClientePorCedulaRNCResponse retVal = ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).BuscarClientePorCedulaRNC(inValue);
+            Integracion.Sincronizador.CoreReferencia.BuscarClientePorCedulaRNCResponse retVal = ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).BuscarClientePorCedulaRNC(inValue);
             return retVal.Body.BuscarClientePorCedulaRNCResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.BuscarClientePorCedulaRNCResponse> Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.BuscarClientePorCedulaRNCAsync(Integracion.Sincronizador.ReferenciaCore.BuscarClientePorCedulaRNCRequest request) {
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.BuscarClientePorCedulaRNCResponse> Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.BuscarClientePorCedulaRNCAsync(Integracion.Sincronizador.CoreReferencia.BuscarClientePorCedulaRNCRequest request) {
             return base.Channel.BuscarClientePorCedulaRNCAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.BuscarClientePorCedulaRNCResponse> BuscarClientePorCedulaRNCAsync(string cedulaRnc) {
-            Integracion.Sincronizador.ReferenciaCore.BuscarClientePorCedulaRNCRequest inValue = new Integracion.Sincronizador.ReferenciaCore.BuscarClientePorCedulaRNCRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.BuscarClientePorCedulaRNCRequestBody();
+        public System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.BuscarClientePorCedulaRNCResponse> BuscarClientePorCedulaRNCAsync(string cedulaRnc) {
+            Integracion.Sincronizador.CoreReferencia.BuscarClientePorCedulaRNCRequest inValue = new Integracion.Sincronizador.CoreReferencia.BuscarClientePorCedulaRNCRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.BuscarClientePorCedulaRNCRequestBody();
             inValue.Body.cedulaRnc = cedulaRnc;
-            return ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).BuscarClientePorCedulaRNCAsync(inValue);
+            return ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).BuscarClientePorCedulaRNCAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Integracion.Sincronizador.ReferenciaCore.InsertarClienteResponse Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.InsertarCliente(Integracion.Sincronizador.ReferenciaCore.InsertarClienteRequest request) {
+        Integracion.Sincronizador.CoreReferencia.InsertarClienteResponse Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.InsertarCliente(Integracion.Sincronizador.CoreReferencia.InsertarClienteRequest request) {
             return base.Channel.InsertarCliente(request);
         }
         
         public int InsertarCliente(string nombre, string cedulaRnc, string telefono, string direccion, string email, bool esAnonimo) {
-            Integracion.Sincronizador.ReferenciaCore.InsertarClienteRequest inValue = new Integracion.Sincronizador.ReferenciaCore.InsertarClienteRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.InsertarClienteRequestBody();
+            Integracion.Sincronizador.CoreReferencia.InsertarClienteRequest inValue = new Integracion.Sincronizador.CoreReferencia.InsertarClienteRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.InsertarClienteRequestBody();
             inValue.Body.nombre = nombre;
             inValue.Body.cedulaRnc = cedulaRnc;
             inValue.Body.telefono = telefono;
             inValue.Body.direccion = direccion;
             inValue.Body.email = email;
             inValue.Body.esAnonimo = esAnonimo;
-            Integracion.Sincronizador.ReferenciaCore.InsertarClienteResponse retVal = ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).InsertarCliente(inValue);
+            Integracion.Sincronizador.CoreReferencia.InsertarClienteResponse retVal = ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).InsertarCliente(inValue);
             return retVal.Body.InsertarClienteResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.InsertarClienteResponse> Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.InsertarClienteAsync(Integracion.Sincronizador.ReferenciaCore.InsertarClienteRequest request) {
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.InsertarClienteResponse> Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.InsertarClienteAsync(Integracion.Sincronizador.CoreReferencia.InsertarClienteRequest request) {
             return base.Channel.InsertarClienteAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.InsertarClienteResponse> InsertarClienteAsync(string nombre, string cedulaRnc, string telefono, string direccion, string email, bool esAnonimo) {
-            Integracion.Sincronizador.ReferenciaCore.InsertarClienteRequest inValue = new Integracion.Sincronizador.ReferenciaCore.InsertarClienteRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.InsertarClienteRequestBody();
+        public System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.InsertarClienteResponse> InsertarClienteAsync(string nombre, string cedulaRnc, string telefono, string direccion, string email, bool esAnonimo) {
+            Integracion.Sincronizador.CoreReferencia.InsertarClienteRequest inValue = new Integracion.Sincronizador.CoreReferencia.InsertarClienteRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.InsertarClienteRequestBody();
             inValue.Body.nombre = nombre;
             inValue.Body.cedulaRnc = cedulaRnc;
             inValue.Body.telefono = telefono;
             inValue.Body.direccion = direccion;
             inValue.Body.email = email;
             inValue.Body.esAnonimo = esAnonimo;
-            return ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).InsertarClienteAsync(inValue);
+            return ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).InsertarClienteAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Integracion.Sincronizador.ReferenciaCore.ListarVehiculosPorClienteResponse Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.ListarVehiculosPorCliente(Integracion.Sincronizador.ReferenciaCore.ListarVehiculosPorClienteRequest request) {
+        Integracion.Sincronizador.CoreReferencia.ListarVehiculosPorClienteResponse Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.ListarVehiculosPorCliente(Integracion.Sincronizador.CoreReferencia.ListarVehiculosPorClienteRequest request) {
             return base.Channel.ListarVehiculosPorCliente(request);
         }
         
-        public Integracion.Sincronizador.ReferenciaCore.ArrayOfSp_ListarVehiculosPorCliente_Result ListarVehiculosPorCliente(int idCliente) {
-            Integracion.Sincronizador.ReferenciaCore.ListarVehiculosPorClienteRequest inValue = new Integracion.Sincronizador.ReferenciaCore.ListarVehiculosPorClienteRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.ListarVehiculosPorClienteRequestBody();
+        public Integracion.Sincronizador.CoreReferencia.ArrayOfSp_ListarVehiculosPorCliente_Result ListarVehiculosPorCliente(int idCliente) {
+            Integracion.Sincronizador.CoreReferencia.ListarVehiculosPorClienteRequest inValue = new Integracion.Sincronizador.CoreReferencia.ListarVehiculosPorClienteRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.ListarVehiculosPorClienteRequestBody();
             inValue.Body.idCliente = idCliente;
-            Integracion.Sincronizador.ReferenciaCore.ListarVehiculosPorClienteResponse retVal = ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).ListarVehiculosPorCliente(inValue);
+            Integracion.Sincronizador.CoreReferencia.ListarVehiculosPorClienteResponse retVal = ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).ListarVehiculosPorCliente(inValue);
             return retVal.Body.ListarVehiculosPorClienteResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.ListarVehiculosPorClienteResponse> Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.ListarVehiculosPorClienteAsync(Integracion.Sincronizador.ReferenciaCore.ListarVehiculosPorClienteRequest request) {
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.ListarVehiculosPorClienteResponse> Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.ListarVehiculosPorClienteAsync(Integracion.Sincronizador.CoreReferencia.ListarVehiculosPorClienteRequest request) {
             return base.Channel.ListarVehiculosPorClienteAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.ListarVehiculosPorClienteResponse> ListarVehiculosPorClienteAsync(int idCliente) {
-            Integracion.Sincronizador.ReferenciaCore.ListarVehiculosPorClienteRequest inValue = new Integracion.Sincronizador.ReferenciaCore.ListarVehiculosPorClienteRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.ListarVehiculosPorClienteRequestBody();
+        public System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.ListarVehiculosPorClienteResponse> ListarVehiculosPorClienteAsync(int idCliente) {
+            Integracion.Sincronizador.CoreReferencia.ListarVehiculosPorClienteRequest inValue = new Integracion.Sincronizador.CoreReferencia.ListarVehiculosPorClienteRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.ListarVehiculosPorClienteRequestBody();
             inValue.Body.idCliente = idCliente;
-            return ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).ListarVehiculosPorClienteAsync(inValue);
+            return ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).ListarVehiculosPorClienteAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Integracion.Sincronizador.ReferenciaCore.InsertarVehiculoPruebaResponse Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.InsertarVehiculoPrueba(Integracion.Sincronizador.ReferenciaCore.InsertarVehiculoPruebaRequest request) {
+        Integracion.Sincronizador.CoreReferencia.InsertarVehiculoPruebaResponse Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.InsertarVehiculoPrueba(Integracion.Sincronizador.CoreReferencia.InsertarVehiculoPruebaRequest request) {
             return base.Channel.InsertarVehiculoPrueba(request);
         }
         
         public int InsertarVehiculoPrueba(int idCliente, string marca, string modelo, int anio, string placa, string color) {
-            Integracion.Sincronizador.ReferenciaCore.InsertarVehiculoPruebaRequest inValue = new Integracion.Sincronizador.ReferenciaCore.InsertarVehiculoPruebaRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.InsertarVehiculoPruebaRequestBody();
+            Integracion.Sincronizador.CoreReferencia.InsertarVehiculoPruebaRequest inValue = new Integracion.Sincronizador.CoreReferencia.InsertarVehiculoPruebaRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.InsertarVehiculoPruebaRequestBody();
             inValue.Body.idCliente = idCliente;
             inValue.Body.marca = marca;
             inValue.Body.modelo = modelo;
             inValue.Body.anio = anio;
             inValue.Body.placa = placa;
             inValue.Body.color = color;
-            Integracion.Sincronizador.ReferenciaCore.InsertarVehiculoPruebaResponse retVal = ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).InsertarVehiculoPrueba(inValue);
+            Integracion.Sincronizador.CoreReferencia.InsertarVehiculoPruebaResponse retVal = ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).InsertarVehiculoPrueba(inValue);
             return retVal.Body.InsertarVehiculoPruebaResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.InsertarVehiculoPruebaResponse> Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.InsertarVehiculoPruebaAsync(Integracion.Sincronizador.ReferenciaCore.InsertarVehiculoPruebaRequest request) {
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.InsertarVehiculoPruebaResponse> Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.InsertarVehiculoPruebaAsync(Integracion.Sincronizador.CoreReferencia.InsertarVehiculoPruebaRequest request) {
             return base.Channel.InsertarVehiculoPruebaAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.InsertarVehiculoPruebaResponse> InsertarVehiculoPruebaAsync(int idCliente, string marca, string modelo, int anio, string placa, string color) {
-            Integracion.Sincronizador.ReferenciaCore.InsertarVehiculoPruebaRequest inValue = new Integracion.Sincronizador.ReferenciaCore.InsertarVehiculoPruebaRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.InsertarVehiculoPruebaRequestBody();
+        public System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.InsertarVehiculoPruebaResponse> InsertarVehiculoPruebaAsync(int idCliente, string marca, string modelo, int anio, string placa, string color) {
+            Integracion.Sincronizador.CoreReferencia.InsertarVehiculoPruebaRequest inValue = new Integracion.Sincronizador.CoreReferencia.InsertarVehiculoPruebaRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.InsertarVehiculoPruebaRequestBody();
             inValue.Body.idCliente = idCliente;
             inValue.Body.marca = marca;
             inValue.Body.modelo = modelo;
             inValue.Body.anio = anio;
             inValue.Body.placa = placa;
             inValue.Body.color = color;
-            return ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).InsertarVehiculoPruebaAsync(inValue);
+            return ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).InsertarVehiculoPruebaAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Integracion.Sincronizador.ReferenciaCore.InsertarFacturaResponse Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.InsertarFactura(Integracion.Sincronizador.ReferenciaCore.InsertarFacturaRequest request) {
+        Integracion.Sincronizador.CoreReferencia.InsertarFacturaResponse Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.InsertarFactura(Integracion.Sincronizador.CoreReferencia.InsertarFacturaRequest request) {
             return base.Channel.InsertarFactura(request);
         }
         
         public int InsertarFactura(int idCliente, int idVehiculo, int idUsuario, int idSucursal, string canalVenta, decimal subtotal, decimal impuesto, decimal total) {
-            Integracion.Sincronizador.ReferenciaCore.InsertarFacturaRequest inValue = new Integracion.Sincronizador.ReferenciaCore.InsertarFacturaRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.InsertarFacturaRequestBody();
+            Integracion.Sincronizador.CoreReferencia.InsertarFacturaRequest inValue = new Integracion.Sincronizador.CoreReferencia.InsertarFacturaRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.InsertarFacturaRequestBody();
             inValue.Body.idCliente = idCliente;
             inValue.Body.idVehiculo = idVehiculo;
             inValue.Body.idUsuario = idUsuario;
@@ -2676,18 +2763,18 @@ namespace Integracion.Sincronizador.ReferenciaCore {
             inValue.Body.subtotal = subtotal;
             inValue.Body.impuesto = impuesto;
             inValue.Body.total = total;
-            Integracion.Sincronizador.ReferenciaCore.InsertarFacturaResponse retVal = ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).InsertarFactura(inValue);
+            Integracion.Sincronizador.CoreReferencia.InsertarFacturaResponse retVal = ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).InsertarFactura(inValue);
             return retVal.Body.InsertarFacturaResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.InsertarFacturaResponse> Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.InsertarFacturaAsync(Integracion.Sincronizador.ReferenciaCore.InsertarFacturaRequest request) {
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.InsertarFacturaResponse> Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.InsertarFacturaAsync(Integracion.Sincronizador.CoreReferencia.InsertarFacturaRequest request) {
             return base.Channel.InsertarFacturaAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.InsertarFacturaResponse> InsertarFacturaAsync(int idCliente, int idVehiculo, int idUsuario, int idSucursal, string canalVenta, decimal subtotal, decimal impuesto, decimal total) {
-            Integracion.Sincronizador.ReferenciaCore.InsertarFacturaRequest inValue = new Integracion.Sincronizador.ReferenciaCore.InsertarFacturaRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.InsertarFacturaRequestBody();
+        public System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.InsertarFacturaResponse> InsertarFacturaAsync(int idCliente, int idVehiculo, int idUsuario, int idSucursal, string canalVenta, decimal subtotal, decimal impuesto, decimal total) {
+            Integracion.Sincronizador.CoreReferencia.InsertarFacturaRequest inValue = new Integracion.Sincronizador.CoreReferencia.InsertarFacturaRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.InsertarFacturaRequestBody();
             inValue.Body.idCliente = idCliente;
             inValue.Body.idVehiculo = idVehiculo;
             inValue.Body.idUsuario = idUsuario;
@@ -2696,136 +2783,136 @@ namespace Integracion.Sincronizador.ReferenciaCore {
             inValue.Body.subtotal = subtotal;
             inValue.Body.impuesto = impuesto;
             inValue.Body.total = total;
-            return ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).InsertarFacturaAsync(inValue);
+            return ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).InsertarFacturaAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleServicioPruebaResponse Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.InsertarFacturaDetalleServicioPrueba(Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleServicioPruebaRequest request) {
+        Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleServicioPruebaResponse Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.InsertarFacturaDetalleServicioPrueba(Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleServicioPruebaRequest request) {
             return base.Channel.InsertarFacturaDetalleServicioPrueba(request);
         }
         
         public string InsertarFacturaDetalleServicioPrueba(int idFactura, int idServicio, int cantidad, decimal precio) {
-            Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleServicioPruebaRequest inValue = new Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleServicioPruebaRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleServicioPruebaRequestBody();
+            Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleServicioPruebaRequest inValue = new Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleServicioPruebaRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleServicioPruebaRequestBody();
             inValue.Body.idFactura = idFactura;
             inValue.Body.idServicio = idServicio;
             inValue.Body.cantidad = cantidad;
             inValue.Body.precio = precio;
-            Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleServicioPruebaResponse retVal = ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).InsertarFacturaDetalleServicioPrueba(inValue);
+            Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleServicioPruebaResponse retVal = ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).InsertarFacturaDetalleServicioPrueba(inValue);
             return retVal.Body.InsertarFacturaDetalleServicioPruebaResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleServicioPruebaResponse> Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.InsertarFacturaDetalleServicioPruebaAsync(Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleServicioPruebaRequest request) {
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleServicioPruebaResponse> Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.InsertarFacturaDetalleServicioPruebaAsync(Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleServicioPruebaRequest request) {
             return base.Channel.InsertarFacturaDetalleServicioPruebaAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleServicioPruebaResponse> InsertarFacturaDetalleServicioPruebaAsync(int idFactura, int idServicio, int cantidad, decimal precio) {
-            Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleServicioPruebaRequest inValue = new Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleServicioPruebaRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleServicioPruebaRequestBody();
+        public System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleServicioPruebaResponse> InsertarFacturaDetalleServicioPruebaAsync(int idFactura, int idServicio, int cantidad, decimal precio) {
+            Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleServicioPruebaRequest inValue = new Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleServicioPruebaRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleServicioPruebaRequestBody();
             inValue.Body.idFactura = idFactura;
             inValue.Body.idServicio = idServicio;
             inValue.Body.cantidad = cantidad;
             inValue.Body.precio = precio;
-            return ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).InsertarFacturaDetalleServicioPruebaAsync(inValue);
+            return ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).InsertarFacturaDetalleServicioPruebaAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Integracion.Sincronizador.ReferenciaCore.RegistrarMovimientoInventarioResponse Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.RegistrarMovimientoInventario(Integracion.Sincronizador.ReferenciaCore.RegistrarMovimientoInventarioRequest request) {
+        Integracion.Sincronizador.CoreReferencia.RegistrarMovimientoInventarioResponse Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.RegistrarMovimientoInventario(Integracion.Sincronizador.CoreReferencia.RegistrarMovimientoInventarioRequest request) {
             return base.Channel.RegistrarMovimientoInventario(request);
         }
         
         public void RegistrarMovimientoInventario(int idProducto, int idSucursal, string tipoMovimiento, int cantidad, string observacion, int idUsuario) {
-            Integracion.Sincronizador.ReferenciaCore.RegistrarMovimientoInventarioRequest inValue = new Integracion.Sincronizador.ReferenciaCore.RegistrarMovimientoInventarioRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.RegistrarMovimientoInventarioRequestBody();
+            Integracion.Sincronizador.CoreReferencia.RegistrarMovimientoInventarioRequest inValue = new Integracion.Sincronizador.CoreReferencia.RegistrarMovimientoInventarioRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.RegistrarMovimientoInventarioRequestBody();
             inValue.Body.idProducto = idProducto;
             inValue.Body.idSucursal = idSucursal;
             inValue.Body.tipoMovimiento = tipoMovimiento;
             inValue.Body.cantidad = cantidad;
             inValue.Body.observacion = observacion;
             inValue.Body.idUsuario = idUsuario;
-            Integracion.Sincronizador.ReferenciaCore.RegistrarMovimientoInventarioResponse retVal = ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).RegistrarMovimientoInventario(inValue);
+            Integracion.Sincronizador.CoreReferencia.RegistrarMovimientoInventarioResponse retVal = ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).RegistrarMovimientoInventario(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.RegistrarMovimientoInventarioResponse> Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.RegistrarMovimientoInventarioAsync(Integracion.Sincronizador.ReferenciaCore.RegistrarMovimientoInventarioRequest request) {
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.RegistrarMovimientoInventarioResponse> Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.RegistrarMovimientoInventarioAsync(Integracion.Sincronizador.CoreReferencia.RegistrarMovimientoInventarioRequest request) {
             return base.Channel.RegistrarMovimientoInventarioAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.RegistrarMovimientoInventarioResponse> RegistrarMovimientoInventarioAsync(int idProducto, int idSucursal, string tipoMovimiento, int cantidad, string observacion, int idUsuario) {
-            Integracion.Sincronizador.ReferenciaCore.RegistrarMovimientoInventarioRequest inValue = new Integracion.Sincronizador.ReferenciaCore.RegistrarMovimientoInventarioRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.RegistrarMovimientoInventarioRequestBody();
+        public System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.RegistrarMovimientoInventarioResponse> RegistrarMovimientoInventarioAsync(int idProducto, int idSucursal, string tipoMovimiento, int cantidad, string observacion, int idUsuario) {
+            Integracion.Sincronizador.CoreReferencia.RegistrarMovimientoInventarioRequest inValue = new Integracion.Sincronizador.CoreReferencia.RegistrarMovimientoInventarioRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.RegistrarMovimientoInventarioRequestBody();
             inValue.Body.idProducto = idProducto;
             inValue.Body.idSucursal = idSucursal;
             inValue.Body.tipoMovimiento = tipoMovimiento;
             inValue.Body.cantidad = cantidad;
             inValue.Body.observacion = observacion;
             inValue.Body.idUsuario = idUsuario;
-            return ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).RegistrarMovimientoInventarioAsync(inValue);
+            return ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).RegistrarMovimientoInventarioAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleProductoPruebaResponse Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.InsertarFacturaDetalleProductoPrueba(Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleProductoPruebaRequest request) {
+        Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleProductoPruebaResponse Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.InsertarFacturaDetalleProductoPrueba(Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleProductoPruebaRequest request) {
             return base.Channel.InsertarFacturaDetalleProductoPrueba(request);
         }
         
         public string InsertarFacturaDetalleProductoPrueba(int idFactura, int idProducto, int cantidad, decimal precio) {
-            Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleProductoPruebaRequest inValue = new Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleProductoPruebaRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleProductoPruebaRequestBody();
+            Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleProductoPruebaRequest inValue = new Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleProductoPruebaRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleProductoPruebaRequestBody();
             inValue.Body.idFactura = idFactura;
             inValue.Body.idProducto = idProducto;
             inValue.Body.cantidad = cantidad;
             inValue.Body.precio = precio;
-            Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleProductoPruebaResponse retVal = ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).InsertarFacturaDetalleProductoPrueba(inValue);
+            Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleProductoPruebaResponse retVal = ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).InsertarFacturaDetalleProductoPrueba(inValue);
             return retVal.Body.InsertarFacturaDetalleProductoPruebaResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleProductoPruebaResponse> Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.InsertarFacturaDetalleProductoPruebaAsync(Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleProductoPruebaRequest request) {
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleProductoPruebaResponse> Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.InsertarFacturaDetalleProductoPruebaAsync(Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleProductoPruebaRequest request) {
             return base.Channel.InsertarFacturaDetalleProductoPruebaAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleProductoPruebaResponse> InsertarFacturaDetalleProductoPruebaAsync(int idFactura, int idProducto, int cantidad, decimal precio) {
-            Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleProductoPruebaRequest inValue = new Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleProductoPruebaRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.InsertarFacturaDetalleProductoPruebaRequestBody();
+        public System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleProductoPruebaResponse> InsertarFacturaDetalleProductoPruebaAsync(int idFactura, int idProducto, int cantidad, decimal precio) {
+            Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleProductoPruebaRequest inValue = new Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleProductoPruebaRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.InsertarFacturaDetalleProductoPruebaRequestBody();
             inValue.Body.idFactura = idFactura;
             inValue.Body.idProducto = idProducto;
             inValue.Body.cantidad = cantidad;
             inValue.Body.precio = precio;
-            return ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).InsertarFacturaDetalleProductoPruebaAsync(inValue);
+            return ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).InsertarFacturaDetalleProductoPruebaAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Integracion.Sincronizador.ReferenciaCore.ObtenerVehiculoGenericoResponse Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.ObtenerVehiculoGenerico(Integracion.Sincronizador.ReferenciaCore.ObtenerVehiculoGenericoRequest request) {
+        Integracion.Sincronizador.CoreReferencia.ObtenerVehiculoGenericoResponse Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.ObtenerVehiculoGenerico(Integracion.Sincronizador.CoreReferencia.ObtenerVehiculoGenericoRequest request) {
             return base.Channel.ObtenerVehiculoGenerico(request);
         }
         
-        public Integracion.Sincronizador.ReferenciaCore.sp_ObtenerVehiculoGenerico_Result ObtenerVehiculoGenerico() {
-            Integracion.Sincronizador.ReferenciaCore.ObtenerVehiculoGenericoRequest inValue = new Integracion.Sincronizador.ReferenciaCore.ObtenerVehiculoGenericoRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.ObtenerVehiculoGenericoRequestBody();
-            Integracion.Sincronizador.ReferenciaCore.ObtenerVehiculoGenericoResponse retVal = ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).ObtenerVehiculoGenerico(inValue);
+        public Integracion.Sincronizador.CoreReferencia.sp_ObtenerVehiculoGenerico_Result ObtenerVehiculoGenerico() {
+            Integracion.Sincronizador.CoreReferencia.ObtenerVehiculoGenericoRequest inValue = new Integracion.Sincronizador.CoreReferencia.ObtenerVehiculoGenericoRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.ObtenerVehiculoGenericoRequestBody();
+            Integracion.Sincronizador.CoreReferencia.ObtenerVehiculoGenericoResponse retVal = ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).ObtenerVehiculoGenerico(inValue);
             return retVal.Body.ObtenerVehiculoGenericoResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.ObtenerVehiculoGenericoResponse> Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.ObtenerVehiculoGenericoAsync(Integracion.Sincronizador.ReferenciaCore.ObtenerVehiculoGenericoRequest request) {
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.ObtenerVehiculoGenericoResponse> Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.ObtenerVehiculoGenericoAsync(Integracion.Sincronizador.CoreReferencia.ObtenerVehiculoGenericoRequest request) {
             return base.Channel.ObtenerVehiculoGenericoAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.ObtenerVehiculoGenericoResponse> ObtenerVehiculoGenericoAsync() {
-            Integracion.Sincronizador.ReferenciaCore.ObtenerVehiculoGenericoRequest inValue = new Integracion.Sincronizador.ReferenciaCore.ObtenerVehiculoGenericoRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.ObtenerVehiculoGenericoRequestBody();
-            return ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).ObtenerVehiculoGenericoAsync(inValue);
+        public System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.ObtenerVehiculoGenericoResponse> ObtenerVehiculoGenericoAsync() {
+            Integracion.Sincronizador.CoreReferencia.ObtenerVehiculoGenericoRequest inValue = new Integracion.Sincronizador.CoreReferencia.ObtenerVehiculoGenericoRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.ObtenerVehiculoGenericoRequestBody();
+            return ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).ObtenerVehiculoGenericoAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Integracion.Sincronizador.ReferenciaCore.InsertarFacturaPruebaResponse Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.InsertarFacturaPrueba(Integracion.Sincronizador.ReferenciaCore.InsertarFacturaPruebaRequest request) {
+        Integracion.Sincronizador.CoreReferencia.InsertarFacturaPruebaResponse Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.InsertarFacturaPrueba(Integracion.Sincronizador.CoreReferencia.InsertarFacturaPruebaRequest request) {
             return base.Channel.InsertarFacturaPrueba(request);
         }
         
         public int InsertarFacturaPrueba(int idCliente, int idVehiculo, int idUsuario, int idSucursal, string canalVenta, decimal subtotal, decimal impuesto, decimal total) {
-            Integracion.Sincronizador.ReferenciaCore.InsertarFacturaPruebaRequest inValue = new Integracion.Sincronizador.ReferenciaCore.InsertarFacturaPruebaRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.InsertarFacturaPruebaRequestBody();
+            Integracion.Sincronizador.CoreReferencia.InsertarFacturaPruebaRequest inValue = new Integracion.Sincronizador.CoreReferencia.InsertarFacturaPruebaRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.InsertarFacturaPruebaRequestBody();
             inValue.Body.idCliente = idCliente;
             inValue.Body.idVehiculo = idVehiculo;
             inValue.Body.idUsuario = idUsuario;
@@ -2834,18 +2921,18 @@ namespace Integracion.Sincronizador.ReferenciaCore {
             inValue.Body.subtotal = subtotal;
             inValue.Body.impuesto = impuesto;
             inValue.Body.total = total;
-            Integracion.Sincronizador.ReferenciaCore.InsertarFacturaPruebaResponse retVal = ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).InsertarFacturaPrueba(inValue);
+            Integracion.Sincronizador.CoreReferencia.InsertarFacturaPruebaResponse retVal = ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).InsertarFacturaPrueba(inValue);
             return retVal.Body.InsertarFacturaPruebaResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.InsertarFacturaPruebaResponse> Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap.InsertarFacturaPruebaAsync(Integracion.Sincronizador.ReferenciaCore.InsertarFacturaPruebaRequest request) {
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.InsertarFacturaPruebaResponse> Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.InsertarFacturaPruebaAsync(Integracion.Sincronizador.CoreReferencia.InsertarFacturaPruebaRequest request) {
             return base.Channel.InsertarFacturaPruebaAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Integracion.Sincronizador.ReferenciaCore.InsertarFacturaPruebaResponse> InsertarFacturaPruebaAsync(int idCliente, int idVehiculo, int idUsuario, int idSucursal, string canalVenta, decimal subtotal, decimal impuesto, decimal total) {
-            Integracion.Sincronizador.ReferenciaCore.InsertarFacturaPruebaRequest inValue = new Integracion.Sincronizador.ReferenciaCore.InsertarFacturaPruebaRequest();
-            inValue.Body = new Integracion.Sincronizador.ReferenciaCore.InsertarFacturaPruebaRequestBody();
+        public System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.InsertarFacturaPruebaResponse> InsertarFacturaPruebaAsync(int idCliente, int idVehiculo, int idUsuario, int idSucursal, string canalVenta, decimal subtotal, decimal impuesto, decimal total) {
+            Integracion.Sincronizador.CoreReferencia.InsertarFacturaPruebaRequest inValue = new Integracion.Sincronizador.CoreReferencia.InsertarFacturaPruebaRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.InsertarFacturaPruebaRequestBody();
             inValue.Body.idCliente = idCliente;
             inValue.Body.idVehiculo = idVehiculo;
             inValue.Body.idUsuario = idUsuario;
@@ -2854,7 +2941,38 @@ namespace Integracion.Sincronizador.ReferenciaCore {
             inValue.Body.subtotal = subtotal;
             inValue.Body.impuesto = impuesto;
             inValue.Body.total = total;
-            return ((Integracion.Sincronizador.ReferenciaCore.CoreServiceSoap)(this)).InsertarFacturaPruebaAsync(inValue);
+            return ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).InsertarFacturaPruebaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Integracion.Sincronizador.CoreReferencia.RecibirFacturaOfflineResponse Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.RecibirFacturaOffline(Integracion.Sincronizador.CoreReferencia.RecibirFacturaOfflineRequest request) {
+            return base.Channel.RecibirFacturaOffline(request);
+        }
+        
+        public bool RecibirFacturaOffline(string idLocal, string cliente, decimal total, string canal) {
+            Integracion.Sincronizador.CoreReferencia.RecibirFacturaOfflineRequest inValue = new Integracion.Sincronizador.CoreReferencia.RecibirFacturaOfflineRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.RecibirFacturaOfflineRequestBody();
+            inValue.Body.idLocal = idLocal;
+            inValue.Body.cliente = cliente;
+            inValue.Body.total = total;
+            inValue.Body.canal = canal;
+            Integracion.Sincronizador.CoreReferencia.RecibirFacturaOfflineResponse retVal = ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).RecibirFacturaOffline(inValue);
+            return retVal.Body.RecibirFacturaOfflineResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.RecibirFacturaOfflineResponse> Integracion.Sincronizador.CoreReferencia.CoreServiceSoap.RecibirFacturaOfflineAsync(Integracion.Sincronizador.CoreReferencia.RecibirFacturaOfflineRequest request) {
+            return base.Channel.RecibirFacturaOfflineAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Integracion.Sincronizador.CoreReferencia.RecibirFacturaOfflineResponse> RecibirFacturaOfflineAsync(string idLocal, string cliente, decimal total, string canal) {
+            Integracion.Sincronizador.CoreReferencia.RecibirFacturaOfflineRequest inValue = new Integracion.Sincronizador.CoreReferencia.RecibirFacturaOfflineRequest();
+            inValue.Body = new Integracion.Sincronizador.CoreReferencia.RecibirFacturaOfflineRequestBody();
+            inValue.Body.idLocal = idLocal;
+            inValue.Body.cliente = cliente;
+            inValue.Body.total = total;
+            inValue.Body.canal = canal;
+            return ((Integracion.Sincronizador.CoreReferencia.CoreServiceSoap)(this)).RecibirFacturaOfflineAsync(inValue);
         }
     }
 }

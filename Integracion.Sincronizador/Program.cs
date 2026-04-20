@@ -1,4 +1,4 @@
-﻿using Integracion.Sincronizador.ReferenciaCore; 
+﻿using Integracion.Sincronizador.CoreReferencia;
 using System;
 using System.Data.SqlClient;
 using System.Threading;
@@ -36,27 +36,36 @@ namespace Integracion.Sincronizador
                         while (reader.Read())
                         {
                             int idLocal = (int)reader["IdFacturaLocal"];
+                            string idCliente = reader["IdCliente"].ToString();
                             decimal total = (decimal)reader["Total"];
                             string canal = reader["CanalVenta"].ToString();
 
-                            Console.WriteLine($"[INFO] Sincronizando Factura Local #{idLocal} de {canal}...");
+                            Console.WriteLine($"[INFO] Sincronizando Factura Local #{idLocal} del cliente {idCliente}...");
 
                             try
                             {
-                                // 2. Llamamos al CORE
                                 var clienteCore = new CoreServiceSoapClient();
 
-                                bool resultado = clienteCore.RecibirFacturaSincronizada(idLocal, total, canal);
+                                bool resultado = clienteCore.RecibirFacturaOffline(
+                                    idLocal.ToString(),
+                                    idCliente,
+                                    total,
+                                    canal
+                                );
 
                                 if (resultado)
                                 {
                                     Console.WriteLine($"[EXITO] Factura #{idLocal} guardada en CORE.");
-                                    // 3. Borramos de la cola para no duplicar
                                     BorrarFacturaDeCola(idLocal);
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"[ADVERTENCIA] El CORE rechazó la factura #{idLocal}. Se queda en cola.");
                                 }
                             }
                             catch (Exception ex)
                             {
+                                // Si el CORE está apagado, entrará aquí
                                 Console.WriteLine($"[FALLO] CORE inaccesible para factura #{idLocal}. Reintentando luego...");
                             }
                         }
@@ -73,21 +82,27 @@ namespace Integracion.Sincronizador
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                // Primero borramos detalles (por integridad referencial)
-                string sqlDetalle = "DELETE FROM Cola_tblFacturaDetalle WHERE IdFacturaLocal = @id";
-                // Luego la factura
-                string sqlFactura = "DELETE FROM Cola_tblFactura WHERE IdFacturaLocal = @id";
+                try
+                {
+                    conn.Open();
+                    string sqlDetalle = "DELETE FROM Cola_tblFacturaDetalle WHERE IdFacturaLocal = @id";
+                    using (var cmd = new SqlCommand(sqlDetalle, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", idLocal);
+                        cmd.ExecuteNonQuery();
+                    }
 
-                conn.Open();
-                using (var cmd = new SqlCommand(sqlDetalle, conn))
-                {
-                    cmd.Parameters.AddWithValue("@id", idLocal);
-                    cmd.ExecuteNonQuery();
+                    // Luego la factura
+                    string sqlFactura = "DELETE FROM Cola_tblFactura WHERE IdFacturaLocal = @id";
+                    using (var cmd = new SqlCommand(sqlFactura, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", idLocal);
+                        cmd.ExecuteNonQuery();
+                    }
                 }
-                using (var cmd = new SqlCommand(sqlFactura, conn))
+                catch (Exception ex)
                 {
-                    cmd.Parameters.AddWithValue("@id", idLocal);
-                    cmd.ExecuteNonQuery();
+                    Console.WriteLine($"[ERROR] No se pudo limpiar la cola para ID {idLocal}: {ex.Message}");
                 }
             }
         }
