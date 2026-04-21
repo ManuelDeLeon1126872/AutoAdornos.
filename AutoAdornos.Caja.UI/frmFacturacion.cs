@@ -16,22 +16,17 @@ namespace AutoAdornos.Caja.UI
         int stockActual = 0;
 
         public static List<DetalleCarrito> VentasDelTurno = new List<DetalleCarrito>();
-
         BindingList<DetalleCarrito> listaCarrito = new BindingList<DetalleCarrito>();
-
 
         decimal fondoCaja = 0m;
         decimal totalVendidoDia = 0m;
         int idClienteSeleccionado = 1;
         int idVehiculoSeleccionado = 1;
 
-
         public frmFacturacion(decimal montoApertura)
         {
             InitializeComponent();
-
             fondoCaja = montoApertura;
-
 
             dgvCarrito.AutoGenerateColumns = false;
             dgvCarrito.Columns.Clear();
@@ -44,7 +39,6 @@ namespace AutoAdornos.Caja.UI
             dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "ITBIS", HeaderText = "ITBIS (18%)", DefaultCellStyle = new DataGridViewCellStyle { Format = "N2" } });
             dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Total", HeaderText = "Total", DefaultCellStyle = new DataGridViewCellStyle { Format = "N2" } });
 
-            // Agregar el botón de Eliminar al final
             DataGridViewButtonColumn btnEliminar = new DataGridViewButtonColumn();
             btnEliminar.HeaderText = "Acción";
             btnEliminar.FlatStyle = FlatStyle.Flat;
@@ -60,11 +54,9 @@ namespace AutoAdornos.Caja.UI
 
         private void btnSincronizar_Click(object sender, EventArgs e)
         {
-
             try
             {
                 var servicioIntegracion = new IntegracionReferencia.IntegracionServiceSoapClient();
-
                 var listaProductos = servicioIntegracion.ListarProductos();
 
                 using (var dbLocal = new AutoAdornos_CajaLocalEntities())
@@ -74,15 +66,13 @@ namespace AutoAdornos.Caja.UI
                     foreach (var prod in listaProductos)
                     {
                         var nuevoProductoLocal = new tblProductoCache();
-
                         nuevoProductoLocal.IdProducto = prod.IdProducto;
-                        nuevoProductoLocal.Nombre = prod.Descripcion; 
+                        nuevoProductoLocal.Nombre = prod.Descripcion;
                         nuevoProductoLocal.Precio = prod.Precio;
                         nuevoProductoLocal.Stock = prod.Existencia;
 
                         dbLocal.tblProductoCaches.Add(nuevoProductoLocal);
                     }
-
                     dbLocal.SaveChanges();
                 }
 
@@ -90,7 +80,6 @@ namespace AutoAdornos.Caja.UI
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show("Error al sincronizar con el servidor: " + ex.Message, "Modo Offline", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
@@ -123,9 +112,7 @@ namespace AutoAdornos.Caja.UI
                 Cantidad = (int)numCantidad.Value
             };
 
-
             listaCarrito.Add(nuevoItem);
-
             ActualizarTotal();
 
             txtIdProducto.Text = "";
@@ -165,24 +152,16 @@ namespace AutoAdornos.Caja.UI
             {
                 int idBuscado = int.Parse(txtIdProducto.Text);
 
-
                 using (var dbLocal = new AutoAdornos_CajaLocalEntities())
                 {
-
-                    var producto = dbLocal.tblProductoCaches
-                                          .FirstOrDefault(p => p.IdProducto == idBuscado);
+                    var producto = dbLocal.tblProductoCaches.FirstOrDefault(p => p.IdProducto == idBuscado);
 
                     if (producto != null)
                     {
                         txtNombreProducto.Text = producto.Nombre;
-
-
                         precioActual = producto.Precio ?? 0m;
                         stockActual = Convert.ToInt32(producto.Stock);
                         lblStock.Text = $"Stock Disponible: {stockActual}";
-
-
-
                         numCantidad.Focus();
                     }
                     else
@@ -193,7 +172,7 @@ namespace AutoAdornos.Caja.UI
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Error: El ID debe ser un número entero.");
             }
@@ -209,13 +188,35 @@ namespace AutoAdornos.Caja.UI
 
             try
             {
+                string nombreParaRecibo = "Cliente de Contado";
+
+                if (!string.IsNullOrWhiteSpace(txtCedulaCliente.Text))
+                {
+                    var servicioBusqueda = new IntegracionReferencia.IntegracionServiceSoapClient();
+                    var clienteBD = servicioBusqueda.BuscarClientePorCedulaRNC(txtCedulaCliente.Text);
+
+                    if (clienteBD != null)
+                    {
+                        idClienteSeleccionado = clienteBD.IdCliente;
+                        nombreParaRecibo = clienteBD.Nombre;
+                    }
+                    else
+                    {
+                        MessageBox.Show("La cédula no está registrada. Se facturará como Cliente de Contado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        idClienteSeleccionado = 1;
+                    }
+                }
+                else
+                {
+                    idClienteSeleccionado = 1;
+                }
+
                 int idCliente = idClienteSeleccionado;
                 int idVehiculo = idVehiculoSeleccionado;
                 int idUsuario = SesionGlobal.IdUsuario;
                 int idSucursal = SesionGlobal.IdSucursal;
                 string canalVenta = "CAJA";
 
-                // Usando "Total" que ya incluye los impuestos
                 decimal totalPagar = listaCarrito.Sum(item => item.Total);
                 totalVendidoDia += totalPagar;
 
@@ -252,8 +253,9 @@ namespace AutoAdornos.Caja.UI
                 }
 
                 frmVisorRecibo visor = new frmVisorRecibo();
+                visor.NombreCliente = nombreParaRecibo;
+                visor.CedulaCliente = string.IsNullOrWhiteSpace(txtCedulaCliente.Text) ? "N/A" : txtCedulaCliente.Text;
                 visor.MostrarRecibo(listaCarrito.ToList());
-                visor.CedulaCliente = txtCedulaCliente.Text;
                 visor.ShowDialog();
 
                 foreach (var item in listaCarrito)
@@ -269,6 +271,8 @@ namespace AutoAdornos.Caja.UI
 
                 listaCarrito.Clear();
                 ActualizarTotal();
+                txtCedulaCliente.Clear();
+                idClienteSeleccionado = 1;
                 txtIdProducto.Focus();
             }
             catch (Exception ex)
@@ -288,10 +292,8 @@ namespace AutoAdornos.Caja.UI
             try
             {
                 var servicioIntegracion = new IntegracionReferencia.IntegracionServiceSoapClient();
-
                 MessageBox.Show("Iniciando sincronización de ventas pendientes. Por favor espere...", "Sincronizando", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // ¡AHORA SÍ EXISTE EL MÉTODO!
                 string respuesta = servicioIntegracion.SincronizarVentasOffline();
 
                 MessageBox.Show(respuesta, "Resultado de Sincronización", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -314,14 +316,11 @@ namespace AutoAdornos.Caja.UI
             try
             {
                 var servicioIntegracion = new IntegracionReferencia.IntegracionServiceSoapClient();
-
-
                 var cliente = servicioIntegracion.BuscarClientePorCedulaRNC(txtCedulaCliente.Text);
 
                 if (cliente != null)
                 {
                     idClienteSeleccionado = cliente.IdCliente;
-
                     MessageBox.Show($"Cliente encontrado:\nNombre: {cliente.Nombre}", "Búsqueda Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -330,27 +329,18 @@ namespace AutoAdornos.Caja.UI
                     idClienteSeleccionado = 1;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Error al buscar cliente en el servidor. Trabajando en modo Offline.", "Modo Offline", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 idClienteSeleccionado = 1;
             }
         }
 
-        private void label6_Click(object sender, EventArgs e)
-        {
+        private void label6_Click(object sender, EventArgs e) { }
 
-        }
+        private void label9_Click(object sender, EventArgs e) { }
 
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void label7_Click(object sender, EventArgs e) { }
 
         private void dgvCarrito_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -366,10 +356,7 @@ namespace AutoAdornos.Caja.UI
             }
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void label2_Click(object sender, EventArgs e) { }
 
         private void btnNuevoCliente_Click(object sender, EventArgs e)
         {
@@ -390,5 +377,4 @@ namespace AutoAdornos.Caja.UI
         public decimal Total => Subtotal + ITBIS;
         public decimal Importe => Total;
     }
-
 }

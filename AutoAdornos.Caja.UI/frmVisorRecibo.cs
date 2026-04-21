@@ -13,6 +13,7 @@ namespace AutoAdornos.Caja.UI
 {
     public partial class frmVisorRecibo : Form
     {
+        public string NombreCliente { get; set; } = "Cliente de Contado";
         public string CedulaCliente { get; set; } = "N/A";
 
         public frmVisorRecibo()
