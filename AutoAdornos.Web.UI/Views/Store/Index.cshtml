@@ -1,16 +1,16 @@
 @model IEnumerable<AutoAdornos.Web.UI.Models.ProductoViewModel>
 @{
-    ViewBag.Title = "Catálogo";
+    ViewBag.Title = "Tienda";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <section class="hero-strip">
     <div>
-        <h1>Catálogo de productos</h1>
-        <p>Consulta el inventario disponible y agrega productos al carrito para registrar la venta por el canal WEB.</p>
+        <h1>¡Equipa tu vehículo!</h1>
+        <p>Explora nuestro catálogo y agrega tus accesorios favoritos al carrito.</p>
     </div>
     <form method="get" class="search-box">
-        <input type="text" name="q" value="@ViewBag.Search" class="form-control" placeholder="Buscar por código, descripción o ID" />
+        <input type="text" name="q" value="@ViewBag.Search" class="form-control" placeholder="¿Qué buscas para tu auto? (Ej. Radio, Batería...)" />
         <button type="submit" class="btn btn-secondary">Buscar</button>
     </form>
 </section>
@@ -19,11 +19,11 @@
 @foreach (var item in Model)
 {
     <article class="card product-card">
-        <div class="badge">ID @item.IdProducto</div>
+        <div class="badge">Aprovecha</div>
         <h3>@item.Descripcion</h3>
-        <p class="muted">Código: @(string.IsNullOrWhiteSpace(item.Codigo) ? "N/A" : item.Codigo)</p>
+        <p class="muted">Ref: @(string.IsNullOrWhiteSpace(item.Codigo) ? "N/A" : item.Codigo)</p>
         <p class="price">RD$ @item.Precio.ToString("N2")</p>
-        <p class="stock">Existencia: @item.Existencia</p>
+        <p class="stock">Disponibles: @item.Existencia unidades</p>
 
         @using (Html.BeginForm("Add", "Store", FormMethod.Post))
         {
@@ -34,7 +34,7 @@
             <input type="hidden" name="precio" value="@item.Precio" />
             <div class="inline-row">
                 <input type="number" name="cantidad" value="1" min="1" class="qty-input" />
-                <button type="submit" class="btn btn-primary">Agregar</button>
+                <button type="submit" class="btn btn-primary">Agregar al carrito</button>
             </div>
         }
     </article>

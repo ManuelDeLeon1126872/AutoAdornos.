@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewBag.Title - TurboPOS Web</title>
+    <title>@ViewBag.Title - Auto Adornos Tienda Online</title>
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
 </head>
@@ -12,15 +12,15 @@
     <header class="topbar">
         <div class="container topbar-inner">
             <a href="@Url.Action("Index", "Store")" class="brand">
-                <img src="@Url.Content("~/Content/Images/logo-turbopos.jpg")" alt="TurboPOS" class="brand-logo" />
+                <img src="@Url.Content("~/Content/Images/logo-turbopos.jpg")" alt="Auto Adornos" class="brand-logo" />
             </a>
             <nav class="nav-links">
                 @if (CartSessionManager.IsAuthenticated(Session))
                 {
-                    <a href="@Url.Action("Index", "Store")">Productos</a>
-                    <a href="@Url.Action("Cart", "Store")">Carrito</a>
-                    <a href="@Url.Action("Index", "Checkout")">Checkout</a>
-                    <a href="@Url.Action("Logout", "Account")">Salir</a>
+                    <a href="@Url.Action("Index", "Store")">Tienda</a>
+                    <a href="@Url.Action("Cart", "Store")">Mi Carrito</a>
+                    <a href="@Url.Action("Index", "Checkout")">Pagar</a>
+                    <a href="@Url.Action("Logout", "Account")">Cerrar sesión</a>
                 }
             </nav>
         </div>

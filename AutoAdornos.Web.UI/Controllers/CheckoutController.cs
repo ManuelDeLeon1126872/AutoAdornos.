@@ -53,10 +53,15 @@ namespace AutoAdornos.Web.UI.Controllers
             {
                 var user = CartSessionManager.GetUser(Session);
                 var respuesta = _client.RegistrarVenta(user, model.Items);
+
                 ViewBag.Respuesta = respuesta;
                 ViewBag.Total = model.Total;
+
+                var modeloParaFactura = new CheckoutViewModel { Items = new System.Collections.Generic.List<CartItemViewModel>(model.Items) };
+
                 CartSessionManager.ClearCart(Session);
-                return View("Resultado");
+
+                return View("Resultado", modeloParaFactura);
             }
             catch (Exception ex)
             {

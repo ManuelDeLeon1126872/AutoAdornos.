@@ -5,8 +5,8 @@
 }
 
 <section class="card card-sm login-card">
-    <div class="section-title">Acceso al canal web</div>
-    <p class="muted">Este canal consume la capa de Integración del proyecto AutoAdornos.</p>
+    <div class="section-title">¡Bienvenido a Auto Adornos!</div>
+    <p class="muted">Inicia sesión en tu cuenta para comprar los mejores accesorios para tu vehículo.</p>
 
     @using (Html.BeginForm())
     {
@@ -14,17 +14,17 @@
         @Html.ValidationSummary(true, "", new { @class = "validation-summary-errors" })
 
         <div class="form-row">
-            @Html.LabelFor(m => m.Usuario)
-            @Html.TextBoxFor(m => m.Usuario, new { @class = "form-control", placeholder = "Ingrese su usuario" })
+            @Html.LabelFor(m => m.Usuario, "Tu correo electrónico")
+            @Html.TextBoxFor(m => m.Usuario, new { @class = "form-control", placeholder = "ejemplo@correo.com" })
             @Html.ValidationMessageFor(m => m.Usuario, "", new { @class = "field-validation-error" })
         </div>
 
         <div class="form-row">
-            @Html.LabelFor(m => m.Clave)
-            @Html.PasswordFor(m => m.Clave, new { @class = "form-control", placeholder = "Ingrese su clave" })
+            @Html.LabelFor(m => m.Clave, "Tu contraseña")
+            @Html.PasswordFor(m => m.Clave, new { @class = "form-control", placeholder = "********" })
             @Html.ValidationMessageFor(m => m.Clave, "", new { @class = "field-validation-error" })
         </div>
 
-        <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+        <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
     }
 </section>

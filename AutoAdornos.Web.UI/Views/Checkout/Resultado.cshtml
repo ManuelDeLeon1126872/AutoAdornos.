@@ -1,14 +1,113 @@
+@model AutoAdornos.Web.UI.Models.CheckoutViewModel
 @{
-    ViewBag.Title = "Resultado";
+    ViewBag.Title = "Factura de Compra";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section class="card card-sm center-card">
-    <div class="section-title">Venta procesada</div>
-    <p class="big-response">@ViewBag.Respuesta</p>
-    <p class="muted">Monto enviado a la Integración: RD$ @(((decimal)ViewBag.Total).ToString("N2"))</p>
-    <div class="button-group">
-        <a class="btn btn-primary" href="@Url.Action("Index", "Store")">Volver al catálogo</a>
-        <a class="btn btn-secondary" href="@Url.Action("Cart", "Store")">Ver carrito</a>
+<style>
+    /* Diseño del ticket de venta estilo impresora térmica */
+    .ticket-container {
+        width: 320px;
+        margin: 30px auto;
+        padding: 20px;
+        background: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        font-family: 'Courier New', Courier, monospace;
+        color: #000;
+    }
+    .ticket-header { text-align: center; margin-bottom: 15px; }
+    .ticket-header h2 { margin: 0; font-size: 20px; font-weight: bold; }
+    .ticket-header p { margin: 2px 0; font-size: 12px; }
+    
+    .ticket-table { width: 100%; border-collapse: collapse; margin-bottom: 15px; font-size: 12px; }
+    .ticket-table th, .ticket-table td { padding: 4px 0; text-align: left; }
+    .ticket-table th { border-bottom: 1px dashed #000; border-top: 1px dashed #000; }
+    .ticket-table .right { text-align: right; }
+    
+    .ticket-totals { width: 100%; font-size: 12px; margin-bottom: 15px; }
+    .ticket-totals td { padding: 2px 0; }
+    .ticket-totals .bold { font-weight: bold; font-size: 14px; }
+    
+    /* Magia para que al imprimir SOLO salga el ticket y no la página web completa */
+    @@media print {
+        body * { visibility: hidden; }
+        .ticket-container, .ticket-container * { visibility: visible; }
+        .ticket-container { position: absolute; left: 0; top: 0; margin: 0; border: none; box-shadow: none; width: 100%; }
+        .no-print { display: none !important; }
+    }
+</style>
+
+<section class="text-center no-print" style="margin-bottom: 20px;">
+    <h2 style="color: #28a745;">¡Compra Procesada con Éxito!</h2>
+    <p><strong>@ViewBag.Respuesta</strong></p>
+    
+    <div style="margin-top: 20px;">
+        <button onclick="window.print()" class="btn btn-primary" style="margin-right: 10px;">🖨️ Imprimir Recibo</button>
+        <a class="btn btn-secondary" href="@Url.Action("Index", "Store")">Volver a la tienda</a>
     </div>
 </section>
+
+<div class="ticket-container">
+    <div class="ticket-header">
+        <h2>AUTO ADORNOS</h2>
+        <p>TurboPOS E-Commerce</p>
+        <p>RNC: 101-00000-1</p>
+        <p>Tel: 809-555-1234</p>
+        <p>Fecha: @DateTime.Now.ToString("dd/MM/yyyy hh:mm tt")</p>
+        <p>================================</p>
+        <p><strong>FACTURA AL CONTADO</strong></p>
+        <p>================================</p>
+    </div>
+
+    <table class="ticket-table">
+        <thead>
+            <tr>
+                <th>Cant</th>
+                <th>Descripción</th>
+                <th class="right">Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>@item.Cantidad</td>
+                    <td>@item.Descripcion</td>
+                    <td class="right">$@((item.Precio * item.Cantidad).ToString("N2"))</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @{
+        decimal subtotal = Model.Items.Sum(i => i.Precio * i.Cantidad);
+        decimal itbis = subtotal * 0.18m;
+        decimal totalNeto = subtotal + itbis;
+    }
+
+    <table class="ticket-totals">
+        <tr>
+            <td>Subtotal:</td>
+            <td class="right">$@subtotal.ToString("N2")</td>
+        </tr>
+        <tr>
+            <td>ITBIS (18%):</td>
+            <td class="right">$@itbis.ToString("N2")</td>
+        </tr>
+        <tr>
+            <td colspan="2">--------------------------------</td>
+        </tr>
+        <tr>
+            <td class="bold">TOTAL RD$:</td>
+            <td class="bold right">$@totalNeto.ToString("N2")</td>
+        </tr>
+    </table>
+
+    <div class="ticket-header">
+        <p>================================</p>
+        <p>¡Gracias por su preferencia!</p>
+        <p>Este documento es válido como</p>
+        <p>comprobante de compra web.</p>
+    </div>
+</div>
