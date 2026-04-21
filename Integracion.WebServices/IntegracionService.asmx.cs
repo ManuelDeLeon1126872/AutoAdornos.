@@ -258,6 +258,56 @@ namespace Integracion.API
                 return "Error al registrar cliente: " + ex.Message;
             }
         }
+
+
+
+        [WebMethod(Description = "Trae los vehículos de un cliente.")]
+        public List<VehiculoWeb> ListarVehiculosCliente(int idCliente)
+        {
+            try
+            {
+                var clienteCore = new WebServices.CoreReferencia.CoreServiceSoapClient();
+                // Asumimos que el Core tiene este método habilitado
+                var listaCore = clienteCore.ListarVehiculosPorCliente(idCliente);
+                var listaWeb = new List<VehiculoWeb>();
+
+                foreach (var v in listaCore)
+                {
+                    listaWeb.Add(new VehiculoWeb
+                    {
+                        IdVehiculo = v.IdVehiculo,
+                        Marca = v.Marca,
+                        Modelo = v.Modelo,
+                        Placa = v.Placa,
+                        Anio = v.Anio.HasValue ? v.Anio.Value.ToString() : "N/A"
+                    });
+                }
+                return listaWeb;
+            }
+            catch (Exception)
+            {
+                return new List<VehiculoWeb>(); // Retorna vacío si hay error o está offline
+            }
+        }
+
+        [WebMethod(Description = "Registra un vehículo a un cliente existente.")]
+        public string InsertarVehiculo(int idCliente, string marca, string modelo, string anio, string placa, string color)
+        {
+            try
+            {
+                int anioVehiculo = 0;
+                int.TryParse(anio, out anioVehiculo);
+
+                var clienteCore = new WebServices.CoreReferencia.CoreServiceSoapClient();
+
+                clienteCore.InsertarVehiculo(idCliente, marca, modelo, anioVehiculo, placa, color);
+                return "OK";
+            }
+            catch (Exception ex)
+            {
+                return "Error al guardar vehículo: " + ex.Message;
+            }
+        }
     }
 
     public class ItemVenta
@@ -267,4 +317,16 @@ namespace Integracion.API
         public int Cantidad { get; set; }
         public decimal Precio { get; set; }
     }
+
+    public class VehiculoWeb
+    {
+        public int IdVehiculo { get; set; }
+        public string Marca { get; set; }
+        public string Modelo { get; set; }
+        public string Anio { get; set; }
+        public string Placa { get; set; }
+        public string Display => Marca + " " + Modelo + " - Placa: " + Placa;
+    }
+
+
 }

@@ -212,12 +212,20 @@ namespace AutoAdornos.Caja.UI
                 }
 
                 int idCliente = idClienteSeleccionado;
-                int idVehiculo = idVehiculoSeleccionado;
+                int idVehiculo = cmbVehiculos.SelectedValue != null ? (int)cmbVehiculos.SelectedValue : 1;
                 int idUsuario = SesionGlobal.IdUsuario;
                 int idSucursal = SesionGlobal.IdSucursal;
                 string canalVenta = "CAJA";
 
                 decimal totalPagar = listaCarrito.Sum(item => item.Total);
+
+                frmCobro pantallaCobro = new frmCobro(totalPagar);
+                if (pantallaCobro.ShowDialog() != DialogResult.OK)
+                {
+
+                    return;
+                }
+
                 totalVendidoDia += totalPagar;
 
                 var detallesVenta = new List<IntegracionReferencia.ItemVenta>();
@@ -321,19 +329,57 @@ namespace AutoAdornos.Caja.UI
                 if (cliente != null)
                 {
                     idClienteSeleccionado = cliente.IdCliente;
-                    MessageBox.Show($"Cliente encontrado:\nNombre: {cliente.Nombre}", "Búsqueda Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // 1. Mostrar el nombre fijamente en pantalla
+                    lblNombreCliente.Text = "Cliente: " + cliente.Nombre;
+                    lblNombreCliente.ForeColor = Color.Blue;
+
+                    // 2. Buscar y llenar sus vehículos
+                    var vehiculos = servicioIntegracion.ListarVehiculosCliente(cliente.IdCliente);
+
+                    if (vehiculos != null && vehiculos.Length > 0)
+                    {
+                        // TRUCO MÁGICO: Armamos el texto "Display" aquí mismo en la caja
+                        var listaVisual = vehiculos.Select(v => new
+                        {
+                            IdVehiculo = v.IdVehiculo,
+                            Display = v.Marca + " " + v.Modelo + " - Placa: " + v.Placa
+                        }).ToList();
+
+                        cmbVehiculos.DataSource = listaVisual;
+                        cmbVehiculos.DisplayMember = "Display";    // Ahora sí existe y lo va a encontrar
+                        cmbVehiculos.ValueMember = "IdVehiculo";
+                    }
+                    else
+                    {
+                        cmbVehiculos.DataSource = null;
+                        cmbVehiculos.Items.Clear();
+                        cmbVehiculos.Items.Add("Sin vehículo registrado");
+                        cmbVehiculos.SelectedIndex = 0;
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Cliente no encontrado en la base de datos.\nSe registrará la venta como 'Cliente de Contado'.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    idClienteSeleccionado = 1;
+                    MessageBox.Show("Cliente no encontrado en la base de datos.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    RestablecerClienteContado();
                 }
             }
             catch (Exception)
             {
-                MessageBox.Show("Error al buscar cliente en el servidor. Trabajando en modo Offline.", "Modo Offline", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                idClienteSeleccionado = 1;
+                MessageBox.Show("Error al buscar cliente. Trabajando en modo Offline.", "Modo Offline", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                RestablecerClienteContado();
             }
+        }
+
+        private void RestablecerClienteContado()
+        {
+            idClienteSeleccionado = 1;
+            lblNombreCliente.Text = "Cliente: Contado";
+            lblNombreCliente.ForeColor = Color.Black;
+            cmbVehiculos.DataSource = null;
+            cmbVehiculos.Items.Clear();
+            cmbVehiculos.Items.Add("N/A");
+            cmbVehiculos.SelectedIndex = 0;
         }
 
         private void label6_Click(object sender, EventArgs e) { }

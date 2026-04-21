@@ -134,6 +134,12 @@
     <Compile Include="frmCierreCaja.Designer.cs">
       <DependentUpon>frmCierreCaja.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCobro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCobro.Designer.cs">
+      <DependentUpon>frmCobro.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmFacturacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +183,9 @@
     <EmbeddedResource Include="frmCierreCaja.resx">
       <DependentUpon>frmCierreCaja.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCobro.resx">
+      <DependentUpon>frmCobro.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmFacturacion.resx">
       <DependentUpon>frmFacturacion.cs</DependentUpon>
     </EmbeddedResource>
@@ -216,7 +225,13 @@
     <None Include="Connected Services\IntegracionReferencia\AutoAdornos.Caja.UI.IntegracionReferencia.InsertarClienteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\IntegracionReferencia\AutoAdornos.Caja.UI.IntegracionReferencia.InsertarVehiculoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\IntegracionReferencia\AutoAdornos.Caja.UI.IntegracionReferencia.ListarProductosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\IntegracionReferencia\AutoAdornos.Caja.UI.IntegracionReferencia.ListarVehiculosClienteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\IntegracionReferencia\AutoAdornos.Caja.UI.IntegracionReferencia.RegistrarVentaResponse.datasource">
@@ -229,6 +244,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\IntegracionReferencia\AutoAdornos.Caja.UI.IntegracionReferencia.ValidarUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\IntegracionReferencia\AutoAdornos.Caja.UI.IntegracionReferencia.VehiculoWeb.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\IntegracionReferencia\IntegracionService.wsdl" />

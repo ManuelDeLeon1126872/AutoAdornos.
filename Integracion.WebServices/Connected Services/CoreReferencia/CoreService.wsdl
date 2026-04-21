@@ -355,6 +355,21 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="InsertarVehiculo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idCliente" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="marca" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="modelo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="anio" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="placa" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="color" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertarVehiculoResponse">
+        <s:complexType />
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="ValidarUsuarioSoapIn">
@@ -453,6 +468,12 @@
   <wsdl:message name="RecibirFacturaOfflineSoapOut">
     <wsdl:part name="parameters" element="tns:RecibirFacturaOfflineResponse" />
   </wsdl:message>
+  <wsdl:message name="InsertarVehiculoSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertarVehiculo" />
+  </wsdl:message>
+  <wsdl:message name="InsertarVehiculoSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertarVehiculoResponse" />
+  </wsdl:message>
   <wsdl:portType name="CoreServiceSoap">
     <wsdl:operation name="ValidarUsuario">
       <wsdl:input message="tns:ValidarUsuarioSoapIn" />
@@ -517,6 +538,11 @@
     <wsdl:operation name="RecibirFacturaOffline">
       <wsdl:input message="tns:RecibirFacturaOfflineSoapIn" />
       <wsdl:output message="tns:RecibirFacturaOfflineSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertarVehiculo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Inserta un nuevo vehículo para un cliente existente.</wsdl:documentation>
+      <wsdl:input message="tns:InsertarVehiculoSoapIn" />
+      <wsdl:output message="tns:InsertarVehiculoSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="CoreServiceSoap" type="tns:CoreServiceSoap">
@@ -665,6 +691,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="InsertarVehiculo">
+      <soap:operation soapAction="http://tempuri.org/InsertarVehiculo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="CoreServiceSoap12" type="tns:CoreServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -805,6 +840,15 @@
     </wsdl:operation>
     <wsdl:operation name="RecibirFacturaOffline">
       <soap12:operation soapAction="http://tempuri.org/RecibirFacturaOffline" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarVehiculo">
+      <soap12:operation soapAction="http://tempuri.org/InsertarVehiculo" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

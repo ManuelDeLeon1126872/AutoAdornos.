@@ -621,7 +621,23 @@ Av. Principal #123, Santo Domingo</Value>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Cedula Cliente: </Value>
+                      <Value>Nombre: </Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <Color>#555555</Color>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>=Parameters!pClienteNombre.Value</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <Color>#555555</Color>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value> - Cedula: </Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>9pt</FontSize>
@@ -721,6 +737,10 @@ Revise su mercancía antes de salir.</Value>
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
+    <ReportParameter Name="pClienteNombre">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
@@ -731,6 +751,11 @@ Revise su mercancía antes de salir.</Value>
           <ColumnIndex>1</ColumnIndex>
           <RowIndex>0</RowIndex>
           <ParameterName>pClienteCedula</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>pClienteNombre</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

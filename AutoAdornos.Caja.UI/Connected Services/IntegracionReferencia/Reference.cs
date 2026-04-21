@@ -422,6 +422,114 @@ namespace AutoAdornos.Caja.UI.IntegracionReferencia {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="VehiculoWeb", Namespace="http://autoadornos.com/")]
+    [System.SerializableAttribute()]
+    public partial class VehiculoWeb : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IdVehiculoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MarcaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ModeloField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AnioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PlacaField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int IdVehiculo {
+            get {
+                return this.IdVehiculoField;
+            }
+            set {
+                if ((this.IdVehiculoField.Equals(value) != true)) {
+                    this.IdVehiculoField = value;
+                    this.RaisePropertyChanged("IdVehiculo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Marca {
+            get {
+                return this.MarcaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MarcaField, value) != true)) {
+                    this.MarcaField = value;
+                    this.RaisePropertyChanged("Marca");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Modelo {
+            get {
+                return this.ModeloField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ModeloField, value) != true)) {
+                    this.ModeloField = value;
+                    this.RaisePropertyChanged("Modelo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string Anio {
+            get {
+                return this.AnioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AnioField, value) != true)) {
+                    this.AnioField = value;
+                    this.RaisePropertyChanged("Anio");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string Placa {
+            get {
+                return this.PlacaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PlacaField, value) != true)) {
+                    this.PlacaField = value;
+                    this.RaisePropertyChanged("Placa");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://autoadornos.com/", ConfigurationName="IntegracionReferencia.IntegracionServiceSoap")]
     public interface IntegracionServiceSoap {
@@ -467,6 +575,20 @@ namespace AutoAdornos.Caja.UI.IntegracionReferencia {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://autoadornos.com/InsertarCliente", ReplyAction="*")]
         System.Threading.Tasks.Task<AutoAdornos.Caja.UI.IntegracionReferencia.InsertarClienteResponse> InsertarClienteAsync(AutoAdornos.Caja.UI.IntegracionReferencia.InsertarClienteRequest request);
+        
+        // CODEGEN: Generating message contract since element name ListarVehiculosClienteResult from namespace http://autoadornos.com/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://autoadornos.com/ListarVehiculosCliente", ReplyAction="*")]
+        AutoAdornos.Caja.UI.IntegracionReferencia.ListarVehiculosClienteResponse ListarVehiculosCliente(AutoAdornos.Caja.UI.IntegracionReferencia.ListarVehiculosClienteRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://autoadornos.com/ListarVehiculosCliente", ReplyAction="*")]
+        System.Threading.Tasks.Task<AutoAdornos.Caja.UI.IntegracionReferencia.ListarVehiculosClienteResponse> ListarVehiculosClienteAsync(AutoAdornos.Caja.UI.IntegracionReferencia.ListarVehiculosClienteRequest request);
+        
+        // CODEGEN: Generating message contract since element name marca from namespace http://autoadornos.com/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://autoadornos.com/InsertarVehiculo", ReplyAction="*")]
+        AutoAdornos.Caja.UI.IntegracionReferencia.InsertarVehiculoResponse InsertarVehiculo(AutoAdornos.Caja.UI.IntegracionReferencia.InsertarVehiculoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://autoadornos.com/InsertarVehiculo", ReplyAction="*")]
+        System.Threading.Tasks.Task<AutoAdornos.Caja.UI.IntegracionReferencia.InsertarVehiculoResponse> InsertarVehiculoAsync(AutoAdornos.Caja.UI.IntegracionReferencia.InsertarVehiculoRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -907,6 +1029,162 @@ namespace AutoAdornos.Caja.UI.IntegracionReferencia {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ListarVehiculosClienteRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ListarVehiculosCliente", Namespace="http://autoadornos.com/", Order=0)]
+        public AutoAdornos.Caja.UI.IntegracionReferencia.ListarVehiculosClienteRequestBody Body;
+        
+        public ListarVehiculosClienteRequest() {
+        }
+        
+        public ListarVehiculosClienteRequest(AutoAdornos.Caja.UI.IntegracionReferencia.ListarVehiculosClienteRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://autoadornos.com/")]
+    public partial class ListarVehiculosClienteRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int idCliente;
+        
+        public ListarVehiculosClienteRequestBody() {
+        }
+        
+        public ListarVehiculosClienteRequestBody(int idCliente) {
+            this.idCliente = idCliente;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ListarVehiculosClienteResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ListarVehiculosClienteResponse", Namespace="http://autoadornos.com/", Order=0)]
+        public AutoAdornos.Caja.UI.IntegracionReferencia.ListarVehiculosClienteResponseBody Body;
+        
+        public ListarVehiculosClienteResponse() {
+        }
+        
+        public ListarVehiculosClienteResponse(AutoAdornos.Caja.UI.IntegracionReferencia.ListarVehiculosClienteResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://autoadornos.com/")]
+    public partial class ListarVehiculosClienteResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public AutoAdornos.Caja.UI.IntegracionReferencia.VehiculoWeb[] ListarVehiculosClienteResult;
+        
+        public ListarVehiculosClienteResponseBody() {
+        }
+        
+        public ListarVehiculosClienteResponseBody(AutoAdornos.Caja.UI.IntegracionReferencia.VehiculoWeb[] ListarVehiculosClienteResult) {
+            this.ListarVehiculosClienteResult = ListarVehiculosClienteResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class InsertarVehiculoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertarVehiculo", Namespace="http://autoadornos.com/", Order=0)]
+        public AutoAdornos.Caja.UI.IntegracionReferencia.InsertarVehiculoRequestBody Body;
+        
+        public InsertarVehiculoRequest() {
+        }
+        
+        public InsertarVehiculoRequest(AutoAdornos.Caja.UI.IntegracionReferencia.InsertarVehiculoRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://autoadornos.com/")]
+    public partial class InsertarVehiculoRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int idCliente;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string marca;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string modelo;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string anio;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string placa;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public string color;
+        
+        public InsertarVehiculoRequestBody() {
+        }
+        
+        public InsertarVehiculoRequestBody(int idCliente, string marca, string modelo, string anio, string placa, string color) {
+            this.idCliente = idCliente;
+            this.marca = marca;
+            this.modelo = modelo;
+            this.anio = anio;
+            this.placa = placa;
+            this.color = color;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class InsertarVehiculoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertarVehiculoResponse", Namespace="http://autoadornos.com/", Order=0)]
+        public AutoAdornos.Caja.UI.IntegracionReferencia.InsertarVehiculoResponseBody Body;
+        
+        public InsertarVehiculoResponse() {
+        }
+        
+        public InsertarVehiculoResponse(AutoAdornos.Caja.UI.IntegracionReferencia.InsertarVehiculoResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://autoadornos.com/")]
+    public partial class InsertarVehiculoResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string InsertarVehiculoResult;
+        
+        public InsertarVehiculoResponseBody() {
+        }
+        
+        public InsertarVehiculoResponseBody(string InsertarVehiculoResult) {
+            this.InsertarVehiculoResult = InsertarVehiculoResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IntegracionServiceSoapChannel : AutoAdornos.Caja.UI.IntegracionReferencia.IntegracionServiceSoap, System.ServiceModel.IClientChannel {
     }
@@ -1100,6 +1378,66 @@ namespace AutoAdornos.Caja.UI.IntegracionReferencia {
             inValue.Body.direccion = direccion;
             inValue.Body.email = email;
             return ((AutoAdornos.Caja.UI.IntegracionReferencia.IntegracionServiceSoap)(this)).InsertarClienteAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        AutoAdornos.Caja.UI.IntegracionReferencia.ListarVehiculosClienteResponse AutoAdornos.Caja.UI.IntegracionReferencia.IntegracionServiceSoap.ListarVehiculosCliente(AutoAdornos.Caja.UI.IntegracionReferencia.ListarVehiculosClienteRequest request) {
+            return base.Channel.ListarVehiculosCliente(request);
+        }
+        
+        public AutoAdornos.Caja.UI.IntegracionReferencia.VehiculoWeb[] ListarVehiculosCliente(int idCliente) {
+            AutoAdornos.Caja.UI.IntegracionReferencia.ListarVehiculosClienteRequest inValue = new AutoAdornos.Caja.UI.IntegracionReferencia.ListarVehiculosClienteRequest();
+            inValue.Body = new AutoAdornos.Caja.UI.IntegracionReferencia.ListarVehiculosClienteRequestBody();
+            inValue.Body.idCliente = idCliente;
+            AutoAdornos.Caja.UI.IntegracionReferencia.ListarVehiculosClienteResponse retVal = ((AutoAdornos.Caja.UI.IntegracionReferencia.IntegracionServiceSoap)(this)).ListarVehiculosCliente(inValue);
+            return retVal.Body.ListarVehiculosClienteResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<AutoAdornos.Caja.UI.IntegracionReferencia.ListarVehiculosClienteResponse> AutoAdornos.Caja.UI.IntegracionReferencia.IntegracionServiceSoap.ListarVehiculosClienteAsync(AutoAdornos.Caja.UI.IntegracionReferencia.ListarVehiculosClienteRequest request) {
+            return base.Channel.ListarVehiculosClienteAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<AutoAdornos.Caja.UI.IntegracionReferencia.ListarVehiculosClienteResponse> ListarVehiculosClienteAsync(int idCliente) {
+            AutoAdornos.Caja.UI.IntegracionReferencia.ListarVehiculosClienteRequest inValue = new AutoAdornos.Caja.UI.IntegracionReferencia.ListarVehiculosClienteRequest();
+            inValue.Body = new AutoAdornos.Caja.UI.IntegracionReferencia.ListarVehiculosClienteRequestBody();
+            inValue.Body.idCliente = idCliente;
+            return ((AutoAdornos.Caja.UI.IntegracionReferencia.IntegracionServiceSoap)(this)).ListarVehiculosClienteAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        AutoAdornos.Caja.UI.IntegracionReferencia.InsertarVehiculoResponse AutoAdornos.Caja.UI.IntegracionReferencia.IntegracionServiceSoap.InsertarVehiculo(AutoAdornos.Caja.UI.IntegracionReferencia.InsertarVehiculoRequest request) {
+            return base.Channel.InsertarVehiculo(request);
+        }
+        
+        public string InsertarVehiculo(int idCliente, string marca, string modelo, string anio, string placa, string color) {
+            AutoAdornos.Caja.UI.IntegracionReferencia.InsertarVehiculoRequest inValue = new AutoAdornos.Caja.UI.IntegracionReferencia.InsertarVehiculoRequest();
+            inValue.Body = new AutoAdornos.Caja.UI.IntegracionReferencia.InsertarVehiculoRequestBody();
+            inValue.Body.idCliente = idCliente;
+            inValue.Body.marca = marca;
+            inValue.Body.modelo = modelo;
+            inValue.Body.anio = anio;
+            inValue.Body.placa = placa;
+            inValue.Body.color = color;
+            AutoAdornos.Caja.UI.IntegracionReferencia.InsertarVehiculoResponse retVal = ((AutoAdornos.Caja.UI.IntegracionReferencia.IntegracionServiceSoap)(this)).InsertarVehiculo(inValue);
+            return retVal.Body.InsertarVehiculoResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<AutoAdornos.Caja.UI.IntegracionReferencia.InsertarVehiculoResponse> AutoAdornos.Caja.UI.IntegracionReferencia.IntegracionServiceSoap.InsertarVehiculoAsync(AutoAdornos.Caja.UI.IntegracionReferencia.InsertarVehiculoRequest request) {
+            return base.Channel.InsertarVehiculoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<AutoAdornos.Caja.UI.IntegracionReferencia.InsertarVehiculoResponse> InsertarVehiculoAsync(int idCliente, string marca, string modelo, string anio, string placa, string color) {
+            AutoAdornos.Caja.UI.IntegracionReferencia.InsertarVehiculoRequest inValue = new AutoAdornos.Caja.UI.IntegracionReferencia.InsertarVehiculoRequest();
+            inValue.Body = new AutoAdornos.Caja.UI.IntegracionReferencia.InsertarVehiculoRequestBody();
+            inValue.Body.idCliente = idCliente;
+            inValue.Body.marca = marca;
+            inValue.Body.modelo = modelo;
+            inValue.Body.anio = anio;
+            inValue.Body.placa = placa;
+            inValue.Body.color = color;
+            return ((AutoAdornos.Caja.UI.IntegracionReferencia.IntegracionServiceSoap)(this)).InsertarVehiculoAsync(inValue);
         }
     }
 }

@@ -15,7 +15,6 @@ namespace AutoAdornos.Caja.UI
             if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtCedula.Text))
             {
                 MessageBox.Show("El nombre y la cédula son obligatorios.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtNombre.Focus();
                 return;
             }
 
@@ -23,7 +22,7 @@ namespace AutoAdornos.Caja.UI
             {
                 var servicio = new IntegracionReferencia.IntegracionServiceSoapClient();
 
-                string respuesta = servicio.InsertarCliente(
+                string respuestaCliente = servicio.InsertarCliente(
                     txtNombre.Text,
                     txtCedula.Text,
                     txtTelefono.Text,
@@ -31,14 +30,28 @@ namespace AutoAdornos.Caja.UI
                     txtEmail.Text
                 );
 
-                if (respuesta == "OK")
+                if (respuestaCliente == "OK")
                 {
-                    MessageBox.Show("Cliente guardado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    var clienteBD = servicio.BuscarClientePorCedulaRNC(txtCedula.Text);
+
+                    if (clienteBD != null && !string.IsNullOrWhiteSpace(txtMarca.Text))
+                    {
+                        servicio.InsertarVehiculo(
+                            clienteBD.IdCliente,
+                            txtMarca.Text,
+                            txtModelo.Text,
+                            txtAnio.Text,
+                            txtPlaca.Text,
+                            "N/A"
+                        );
+                    }
+
+                    MessageBox.Show("Cliente registrado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show(respuesta, "Error al guardar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(respuestaCliente, "Error al crear cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
@@ -49,13 +62,11 @@ namespace AutoAdornos.Caja.UI
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-
             this.Close();
         }
 
         private void label5_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

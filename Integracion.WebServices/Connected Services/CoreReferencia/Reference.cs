@@ -1277,6 +1277,13 @@ namespace Integracion.WebServices.CoreReferencia {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/RecibirFacturaOffline", ReplyAction="*")]
         System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.RecibirFacturaOfflineResponse> RecibirFacturaOfflineAsync(Integracion.WebServices.CoreReferencia.RecibirFacturaOfflineRequest request);
+        
+        // CODEGEN: Generating message contract since element name marca from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarVehiculo", ReplyAction="*")]
+        Integracion.WebServices.CoreReferencia.InsertarVehiculoResponse InsertarVehiculo(Integracion.WebServices.CoreReferencia.InsertarVehiculoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarVehiculo", ReplyAction="*")]
+        System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.InsertarVehiculoResponse> InsertarVehiculoAsync(Integracion.WebServices.CoreReferencia.InsertarVehiculoRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -2481,6 +2488,87 @@ namespace Integracion.WebServices.CoreReferencia {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class InsertarVehiculoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertarVehiculo", Namespace="http://tempuri.org/", Order=0)]
+        public Integracion.WebServices.CoreReferencia.InsertarVehiculoRequestBody Body;
+        
+        public InsertarVehiculoRequest() {
+        }
+        
+        public InsertarVehiculoRequest(Integracion.WebServices.CoreReferencia.InsertarVehiculoRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class InsertarVehiculoRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int idCliente;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string marca;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string modelo;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public int anio;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string placa;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public string color;
+        
+        public InsertarVehiculoRequestBody() {
+        }
+        
+        public InsertarVehiculoRequestBody(int idCliente, string marca, string modelo, int anio, string placa, string color) {
+            this.idCliente = idCliente;
+            this.marca = marca;
+            this.modelo = modelo;
+            this.anio = anio;
+            this.placa = placa;
+            this.color = color;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class InsertarVehiculoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertarVehiculoResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Integracion.WebServices.CoreReferencia.InsertarVehiculoResponseBody Body;
+        
+        public InsertarVehiculoResponse() {
+        }
+        
+        public InsertarVehiculoResponse(Integracion.WebServices.CoreReferencia.InsertarVehiculoResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class InsertarVehiculoResponseBody {
+        
+        public InsertarVehiculoResponseBody() {
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface CoreServiceSoapChannel : Integracion.WebServices.CoreReferencia.CoreServiceSoap, System.ServiceModel.IClientChannel {
     }
@@ -2973,6 +3061,40 @@ namespace Integracion.WebServices.CoreReferencia {
             inValue.Body.total = total;
             inValue.Body.canal = canal;
             return ((Integracion.WebServices.CoreReferencia.CoreServiceSoap)(this)).RecibirFacturaOfflineAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Integracion.WebServices.CoreReferencia.InsertarVehiculoResponse Integracion.WebServices.CoreReferencia.CoreServiceSoap.InsertarVehiculo(Integracion.WebServices.CoreReferencia.InsertarVehiculoRequest request) {
+            return base.Channel.InsertarVehiculo(request);
+        }
+        
+        public void InsertarVehiculo(int idCliente, string marca, string modelo, int anio, string placa, string color) {
+            Integracion.WebServices.CoreReferencia.InsertarVehiculoRequest inValue = new Integracion.WebServices.CoreReferencia.InsertarVehiculoRequest();
+            inValue.Body = new Integracion.WebServices.CoreReferencia.InsertarVehiculoRequestBody();
+            inValue.Body.idCliente = idCliente;
+            inValue.Body.marca = marca;
+            inValue.Body.modelo = modelo;
+            inValue.Body.anio = anio;
+            inValue.Body.placa = placa;
+            inValue.Body.color = color;
+            Integracion.WebServices.CoreReferencia.InsertarVehiculoResponse retVal = ((Integracion.WebServices.CoreReferencia.CoreServiceSoap)(this)).InsertarVehiculo(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.InsertarVehiculoResponse> Integracion.WebServices.CoreReferencia.CoreServiceSoap.InsertarVehiculoAsync(Integracion.WebServices.CoreReferencia.InsertarVehiculoRequest request) {
+            return base.Channel.InsertarVehiculoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.InsertarVehiculoResponse> InsertarVehiculoAsync(int idCliente, string marca, string modelo, int anio, string placa, string color) {
+            Integracion.WebServices.CoreReferencia.InsertarVehiculoRequest inValue = new Integracion.WebServices.CoreReferencia.InsertarVehiculoRequest();
+            inValue.Body = new Integracion.WebServices.CoreReferencia.InsertarVehiculoRequestBody();
+            inValue.Body.idCliente = idCliente;
+            inValue.Body.marca = marca;
+            inValue.Body.modelo = modelo;
+            inValue.Body.anio = anio;
+            inValue.Body.placa = placa;
+            inValue.Body.color = color;
+            return ((Integracion.WebServices.CoreReferencia.CoreServiceSoap)(this)).InsertarVehiculoAsync(inValue);
         }
     }
 }

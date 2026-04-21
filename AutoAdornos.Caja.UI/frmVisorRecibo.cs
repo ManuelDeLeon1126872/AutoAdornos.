@@ -23,7 +23,6 @@ namespace AutoAdornos.Caja.UI
 
         public void MostrarRecibo(List<DetalleCarrito> listaComprada)
         {
-
             reportViewer1.LocalReport.DataSources.Clear();
 
             ReportDataSource fuenteDatos = new ReportDataSource("DataSetFactura", listaComprada);
@@ -34,14 +33,14 @@ namespace AutoAdornos.Caja.UI
 
         private void frmVisorRecibo_Load(object sender, EventArgs e)
         {
-
             string ced = string.IsNullOrWhiteSpace(CedulaCliente) ? "N/A" : CedulaCliente;
+            string nombre = string.IsNullOrWhiteSpace(NombreCliente) ? "Cliente de Contado" : NombreCliente;
 
-            ReportParameter[] parametros = new ReportParameter[1];
+            ReportParameter[] parametros = new ReportParameter[2];
             parametros[0] = new ReportParameter("pClienteCedula", ced);
+            parametros[1] = new ReportParameter("pClienteNombre", nombre);
 
             this.reportViewer1.LocalReport.SetParameters(parametros);
-
             this.reportViewer1.RefreshReport();
         }
 
