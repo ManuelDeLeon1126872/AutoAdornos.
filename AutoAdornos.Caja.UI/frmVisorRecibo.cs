@@ -13,6 +13,8 @@ namespace AutoAdornos.Caja.UI
 {
     public partial class frmVisorRecibo : Form
     {
+        public string CedulaCliente { get; set; } = "N/A";
+
         public frmVisorRecibo()
         {
             InitializeComponent();
@@ -32,7 +34,19 @@ namespace AutoAdornos.Caja.UI
         private void frmVisorRecibo_Load(object sender, EventArgs e)
         {
 
+            string ced = string.IsNullOrWhiteSpace(CedulaCliente) ? "N/A" : CedulaCliente;
+
+            ReportParameter[] parametros = new ReportParameter[1];
+            parametros[0] = new ReportParameter("pClienteCedula", ced);
+
+            this.reportViewer1.LocalReport.SetParameters(parametros);
+
             this.reportViewer1.RefreshReport();
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

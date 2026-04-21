@@ -84,6 +84,53 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="BuscarClientePorCedulaRNC">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cedula" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscarClientePorCedulaRNCResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuscarClientePorCedulaRNCResult" type="tns:sp_BuscarClientePorCedulaRNC_Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="sp_BuscarClientePorCedulaRNC_Result">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ExtensionData" type="tns:ExtensionDataObject" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdCliente" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CedulaRNC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Direccion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EsAnonimo" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Estado" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaCreacion" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ExtensionDataObject" />
+      <s:element name="InsertarCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cedulaRNC" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="telefono" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="direccion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertarClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertarClienteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="ListarProductosSoapIn">
@@ -110,6 +157,18 @@
   <wsdl:message name="SincronizarVentasOfflineSoapOut">
     <wsdl:part name="parameters" element="tns:SincronizarVentasOfflineResponse" />
   </wsdl:message>
+  <wsdl:message name="BuscarClientePorCedulaRNCSoapIn">
+    <wsdl:part name="parameters" element="tns:BuscarClientePorCedulaRNC" />
+  </wsdl:message>
+  <wsdl:message name="BuscarClientePorCedulaRNCSoapOut">
+    <wsdl:part name="parameters" element="tns:BuscarClientePorCedulaRNCResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertarClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertarCliente" />
+  </wsdl:message>
+  <wsdl:message name="InsertarClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertarClienteResponse" />
+  </wsdl:message>
   <wsdl:portType name="IntegracionServiceSoap">
     <wsdl:operation name="ListarProductos">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Obtiene el catálogo. Si el CORE falla, usa el Cache local.</wsdl:documentation>
@@ -130,6 +189,16 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sincroniza las ventas guardadas localmente hacia el CORE.</wsdl:documentation>
       <wsdl:input message="tns:SincronizarVentasOfflineSoapIn" />
       <wsdl:output message="tns:SincronizarVentasOfflineSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarClientePorCedulaRNC">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Busca un cliente por su cédula o RNC.</wsdl:documentation>
+      <wsdl:input message="tns:BuscarClientePorCedulaRNCSoapIn" />
+      <wsdl:output message="tns:BuscarClientePorCedulaRNCSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertarCliente">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Registra un nuevo cliente en el servidor central.</wsdl:documentation>
+      <wsdl:input message="tns:InsertarClienteSoapIn" />
+      <wsdl:output message="tns:InsertarClienteSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="IntegracionServiceSoap" type="tns:IntegracionServiceSoap">
@@ -170,6 +239,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="BuscarClientePorCedulaRNC">
+      <soap:operation soapAction="http://autoadornos.com/BuscarClientePorCedulaRNC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarCliente">
+      <soap:operation soapAction="http://autoadornos.com/InsertarCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="IntegracionServiceSoap12" type="tns:IntegracionServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -202,6 +289,24 @@
     </wsdl:operation>
     <wsdl:operation name="SincronizarVentasOffline">
       <soap12:operation soapAction="http://autoadornos.com/SincronizarVentasOffline" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarClientePorCedulaRNC">
+      <soap12:operation soapAction="http://autoadornos.com/BuscarClientePorCedulaRNC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarCliente">
+      <soap12:operation soapAction="http://autoadornos.com/InsertarCliente" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

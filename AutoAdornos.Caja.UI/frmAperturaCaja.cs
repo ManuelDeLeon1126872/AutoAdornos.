@@ -35,5 +35,17 @@ namespace AutoAdornos.Caja.UI
 
             this.Close();
         }
+
+        private void btnRapido_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            string montoTexto = btn.Text.Replace("RD$ ", "").Replace(",", "");
+            txtMontoInicial.Text = montoTexto;
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

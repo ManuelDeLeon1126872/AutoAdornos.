@@ -208,6 +208,220 @@ namespace AutoAdornos.Caja.UI.IntegracionReferencia {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="sp_BuscarClientePorCedulaRNC_Result", Namespace="http://autoadornos.com/")]
+    [System.SerializableAttribute()]
+    public partial class sp_BuscarClientePorCedulaRNC_Result : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private AutoAdornos.Caja.UI.IntegracionReferencia.ExtensionDataObject ExtensionData1Field;
+        
+        private int IdClienteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NombreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CedulaRNCField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TelefonoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DireccionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        private bool EsAnonimoField;
+        
+        private bool EstadoField;
+        
+        private System.DateTime FechaCreacionField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Name="ExtensionData", EmitDefaultValue=false)]
+        public AutoAdornos.Caja.UI.IntegracionReferencia.ExtensionDataObject ExtensionData1 {
+            get {
+                return this.ExtensionData1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ExtensionData1Field, value) != true)) {
+                    this.ExtensionData1Field = value;
+                    this.RaisePropertyChanged("ExtensionData1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int IdCliente {
+            get {
+                return this.IdClienteField;
+            }
+            set {
+                if ((this.IdClienteField.Equals(value) != true)) {
+                    this.IdClienteField = value;
+                    this.RaisePropertyChanged("IdCliente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Nombre {
+            get {
+                return this.NombreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NombreField, value) != true)) {
+                    this.NombreField = value;
+                    this.RaisePropertyChanged("Nombre");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string CedulaRNC {
+            get {
+                return this.CedulaRNCField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CedulaRNCField, value) != true)) {
+                    this.CedulaRNCField = value;
+                    this.RaisePropertyChanged("CedulaRNC");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string Telefono {
+            get {
+                return this.TelefonoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TelefonoField, value) != true)) {
+                    this.TelefonoField = value;
+                    this.RaisePropertyChanged("Telefono");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public string Direccion {
+            get {
+                return this.DireccionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DireccionField, value) != true)) {
+                    this.DireccionField = value;
+                    this.RaisePropertyChanged("Direccion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=6)]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=7)]
+        public bool EsAnonimo {
+            get {
+                return this.EsAnonimoField;
+            }
+            set {
+                if ((this.EsAnonimoField.Equals(value) != true)) {
+                    this.EsAnonimoField = value;
+                    this.RaisePropertyChanged("EsAnonimo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=8)]
+        public bool Estado {
+            get {
+                return this.EstadoField;
+            }
+            set {
+                if ((this.EstadoField.Equals(value) != true)) {
+                    this.EstadoField = value;
+                    this.RaisePropertyChanged("Estado");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=9)]
+        public System.DateTime FechaCreacion {
+            get {
+                return this.FechaCreacionField;
+            }
+            set {
+                if ((this.FechaCreacionField.Equals(value) != true)) {
+                    this.FechaCreacionField = value;
+                    this.RaisePropertyChanged("FechaCreacion");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ExtensionDataObject", Namespace="http://autoadornos.com/")]
+    [System.SerializableAttribute()]
+    public partial class ExtensionDataObject : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://autoadornos.com/", ConfigurationName="IntegracionReferencia.IntegracionServiceSoap")]
     public interface IntegracionServiceSoap {
@@ -239,6 +453,20 @@ namespace AutoAdornos.Caja.UI.IntegracionReferencia {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://autoadornos.com/SincronizarVentasOffline", ReplyAction="*")]
         System.Threading.Tasks.Task<AutoAdornos.Caja.UI.IntegracionReferencia.SincronizarVentasOfflineResponse> SincronizarVentasOfflineAsync(AutoAdornos.Caja.UI.IntegracionReferencia.SincronizarVentasOfflineRequest request);
+        
+        // CODEGEN: Generating message contract since element name cedula from namespace http://autoadornos.com/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://autoadornos.com/BuscarClientePorCedulaRNC", ReplyAction="*")]
+        AutoAdornos.Caja.UI.IntegracionReferencia.BuscarClientePorCedulaRNCResponse BuscarClientePorCedulaRNC(AutoAdornos.Caja.UI.IntegracionReferencia.BuscarClientePorCedulaRNCRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://autoadornos.com/BuscarClientePorCedulaRNC", ReplyAction="*")]
+        System.Threading.Tasks.Task<AutoAdornos.Caja.UI.IntegracionReferencia.BuscarClientePorCedulaRNCResponse> BuscarClientePorCedulaRNCAsync(AutoAdornos.Caja.UI.IntegracionReferencia.BuscarClientePorCedulaRNCRequest request);
+        
+        // CODEGEN: Generating message contract since element name nombre from namespace http://autoadornos.com/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://autoadornos.com/InsertarCliente", ReplyAction="*")]
+        AutoAdornos.Caja.UI.IntegracionReferencia.InsertarClienteResponse InsertarCliente(AutoAdornos.Caja.UI.IntegracionReferencia.InsertarClienteRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://autoadornos.com/InsertarCliente", ReplyAction="*")]
+        System.Threading.Tasks.Task<AutoAdornos.Caja.UI.IntegracionReferencia.InsertarClienteResponse> InsertarClienteAsync(AutoAdornos.Caja.UI.IntegracionReferencia.InsertarClienteRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -527,6 +755,158 @@ namespace AutoAdornos.Caja.UI.IntegracionReferencia {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class BuscarClientePorCedulaRNCRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="BuscarClientePorCedulaRNC", Namespace="http://autoadornos.com/", Order=0)]
+        public AutoAdornos.Caja.UI.IntegracionReferencia.BuscarClientePorCedulaRNCRequestBody Body;
+        
+        public BuscarClientePorCedulaRNCRequest() {
+        }
+        
+        public BuscarClientePorCedulaRNCRequest(AutoAdornos.Caja.UI.IntegracionReferencia.BuscarClientePorCedulaRNCRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://autoadornos.com/")]
+    public partial class BuscarClientePorCedulaRNCRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string cedula;
+        
+        public BuscarClientePorCedulaRNCRequestBody() {
+        }
+        
+        public BuscarClientePorCedulaRNCRequestBody(string cedula) {
+            this.cedula = cedula;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class BuscarClientePorCedulaRNCResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="BuscarClientePorCedulaRNCResponse", Namespace="http://autoadornos.com/", Order=0)]
+        public AutoAdornos.Caja.UI.IntegracionReferencia.BuscarClientePorCedulaRNCResponseBody Body;
+        
+        public BuscarClientePorCedulaRNCResponse() {
+        }
+        
+        public BuscarClientePorCedulaRNCResponse(AutoAdornos.Caja.UI.IntegracionReferencia.BuscarClientePorCedulaRNCResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://autoadornos.com/")]
+    public partial class BuscarClientePorCedulaRNCResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public AutoAdornos.Caja.UI.IntegracionReferencia.sp_BuscarClientePorCedulaRNC_Result BuscarClientePorCedulaRNCResult;
+        
+        public BuscarClientePorCedulaRNCResponseBody() {
+        }
+        
+        public BuscarClientePorCedulaRNCResponseBody(AutoAdornos.Caja.UI.IntegracionReferencia.sp_BuscarClientePorCedulaRNC_Result BuscarClientePorCedulaRNCResult) {
+            this.BuscarClientePorCedulaRNCResult = BuscarClientePorCedulaRNCResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class InsertarClienteRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertarCliente", Namespace="http://autoadornos.com/", Order=0)]
+        public AutoAdornos.Caja.UI.IntegracionReferencia.InsertarClienteRequestBody Body;
+        
+        public InsertarClienteRequest() {
+        }
+        
+        public InsertarClienteRequest(AutoAdornos.Caja.UI.IntegracionReferencia.InsertarClienteRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://autoadornos.com/")]
+    public partial class InsertarClienteRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string nombre;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string cedulaRNC;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string telefono;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string direccion;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string email;
+        
+        public InsertarClienteRequestBody() {
+        }
+        
+        public InsertarClienteRequestBody(string nombre, string cedulaRNC, string telefono, string direccion, string email) {
+            this.nombre = nombre;
+            this.cedulaRNC = cedulaRNC;
+            this.telefono = telefono;
+            this.direccion = direccion;
+            this.email = email;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class InsertarClienteResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertarClienteResponse", Namespace="http://autoadornos.com/", Order=0)]
+        public AutoAdornos.Caja.UI.IntegracionReferencia.InsertarClienteResponseBody Body;
+        
+        public InsertarClienteResponse() {
+        }
+        
+        public InsertarClienteResponse(AutoAdornos.Caja.UI.IntegracionReferencia.InsertarClienteResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://autoadornos.com/")]
+    public partial class InsertarClienteResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string InsertarClienteResult;
+        
+        public InsertarClienteResponseBody() {
+        }
+        
+        public InsertarClienteResponseBody(string InsertarClienteResult) {
+            this.InsertarClienteResult = InsertarClienteResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IntegracionServiceSoapChannel : AutoAdornos.Caja.UI.IntegracionReferencia.IntegracionServiceSoap, System.ServiceModel.IClientChannel {
     }
@@ -662,6 +1042,64 @@ namespace AutoAdornos.Caja.UI.IntegracionReferencia {
             AutoAdornos.Caja.UI.IntegracionReferencia.SincronizarVentasOfflineRequest inValue = new AutoAdornos.Caja.UI.IntegracionReferencia.SincronizarVentasOfflineRequest();
             inValue.Body = new AutoAdornos.Caja.UI.IntegracionReferencia.SincronizarVentasOfflineRequestBody();
             return ((AutoAdornos.Caja.UI.IntegracionReferencia.IntegracionServiceSoap)(this)).SincronizarVentasOfflineAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        AutoAdornos.Caja.UI.IntegracionReferencia.BuscarClientePorCedulaRNCResponse AutoAdornos.Caja.UI.IntegracionReferencia.IntegracionServiceSoap.BuscarClientePorCedulaRNC(AutoAdornos.Caja.UI.IntegracionReferencia.BuscarClientePorCedulaRNCRequest request) {
+            return base.Channel.BuscarClientePorCedulaRNC(request);
+        }
+        
+        public AutoAdornos.Caja.UI.IntegracionReferencia.sp_BuscarClientePorCedulaRNC_Result BuscarClientePorCedulaRNC(string cedula) {
+            AutoAdornos.Caja.UI.IntegracionReferencia.BuscarClientePorCedulaRNCRequest inValue = new AutoAdornos.Caja.UI.IntegracionReferencia.BuscarClientePorCedulaRNCRequest();
+            inValue.Body = new AutoAdornos.Caja.UI.IntegracionReferencia.BuscarClientePorCedulaRNCRequestBody();
+            inValue.Body.cedula = cedula;
+            AutoAdornos.Caja.UI.IntegracionReferencia.BuscarClientePorCedulaRNCResponse retVal = ((AutoAdornos.Caja.UI.IntegracionReferencia.IntegracionServiceSoap)(this)).BuscarClientePorCedulaRNC(inValue);
+            return retVal.Body.BuscarClientePorCedulaRNCResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<AutoAdornos.Caja.UI.IntegracionReferencia.BuscarClientePorCedulaRNCResponse> AutoAdornos.Caja.UI.IntegracionReferencia.IntegracionServiceSoap.BuscarClientePorCedulaRNCAsync(AutoAdornos.Caja.UI.IntegracionReferencia.BuscarClientePorCedulaRNCRequest request) {
+            return base.Channel.BuscarClientePorCedulaRNCAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<AutoAdornos.Caja.UI.IntegracionReferencia.BuscarClientePorCedulaRNCResponse> BuscarClientePorCedulaRNCAsync(string cedula) {
+            AutoAdornos.Caja.UI.IntegracionReferencia.BuscarClientePorCedulaRNCRequest inValue = new AutoAdornos.Caja.UI.IntegracionReferencia.BuscarClientePorCedulaRNCRequest();
+            inValue.Body = new AutoAdornos.Caja.UI.IntegracionReferencia.BuscarClientePorCedulaRNCRequestBody();
+            inValue.Body.cedula = cedula;
+            return ((AutoAdornos.Caja.UI.IntegracionReferencia.IntegracionServiceSoap)(this)).BuscarClientePorCedulaRNCAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        AutoAdornos.Caja.UI.IntegracionReferencia.InsertarClienteResponse AutoAdornos.Caja.UI.IntegracionReferencia.IntegracionServiceSoap.InsertarCliente(AutoAdornos.Caja.UI.IntegracionReferencia.InsertarClienteRequest request) {
+            return base.Channel.InsertarCliente(request);
+        }
+        
+        public string InsertarCliente(string nombre, string cedulaRNC, string telefono, string direccion, string email) {
+            AutoAdornos.Caja.UI.IntegracionReferencia.InsertarClienteRequest inValue = new AutoAdornos.Caja.UI.IntegracionReferencia.InsertarClienteRequest();
+            inValue.Body = new AutoAdornos.Caja.UI.IntegracionReferencia.InsertarClienteRequestBody();
+            inValue.Body.nombre = nombre;
+            inValue.Body.cedulaRNC = cedulaRNC;
+            inValue.Body.telefono = telefono;
+            inValue.Body.direccion = direccion;
+            inValue.Body.email = email;
+            AutoAdornos.Caja.UI.IntegracionReferencia.InsertarClienteResponse retVal = ((AutoAdornos.Caja.UI.IntegracionReferencia.IntegracionServiceSoap)(this)).InsertarCliente(inValue);
+            return retVal.Body.InsertarClienteResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<AutoAdornos.Caja.UI.IntegracionReferencia.InsertarClienteResponse> AutoAdornos.Caja.UI.IntegracionReferencia.IntegracionServiceSoap.InsertarClienteAsync(AutoAdornos.Caja.UI.IntegracionReferencia.InsertarClienteRequest request) {
+            return base.Channel.InsertarClienteAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<AutoAdornos.Caja.UI.IntegracionReferencia.InsertarClienteResponse> InsertarClienteAsync(string nombre, string cedulaRNC, string telefono, string direccion, string email) {
+            AutoAdornos.Caja.UI.IntegracionReferencia.InsertarClienteRequest inValue = new AutoAdornos.Caja.UI.IntegracionReferencia.InsertarClienteRequest();
+            inValue.Body = new AutoAdornos.Caja.UI.IntegracionReferencia.InsertarClienteRequestBody();
+            inValue.Body.nombre = nombre;
+            inValue.Body.cedulaRNC = cedulaRNC;
+            inValue.Body.telefono = telefono;
+            inValue.Body.direccion = direccion;
+            inValue.Body.email = email;
+            return ((AutoAdornos.Caja.UI.IntegracionReferencia.IntegracionServiceSoap)(this)).InsertarClienteAsync(inValue);
         }
     }
 }

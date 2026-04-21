@@ -44,9 +44,29 @@ namespace Integracion.API
             try
             {
                 WebServices.CoreReferencia.CoreServiceSoapClient clienteCore = new WebServices.CoreReferencia.CoreServiceSoapClient();
+
+
                 var productosCore = clienteCore.ListarProductos();
 
-                GuardarLog("ListarProductos", "N/A", "Exito: Datos obtenidos del CORE.");
+
+                dbLocal.Database.ExecuteSqlCommand("TRUNCATE TABLE Cache_tblProducto");
+
+
+                foreach (var prod in productosCore)
+                {
+                    dbLocal.Cache_tblProducto.Add(new Cache_tblProducto
+                    {
+                        IdProducto = prod.IdProducto,
+                        Codigo = prod.Codigo,
+                        Descripcion = prod.Descripcion,
+                        Precio = prod.Precio,
+                        Existencia = prod.Existencia
+                    });
+                }
+                dbLocal.SaveChanges(); 
+
+                GuardarLog("ListarProductos", "N/A", "Exito: Datos obtenidos del CORE y caché actualizado.");
+
 
                 return dbLocal.Cache_tblProducto.ToList();
             }
@@ -197,6 +217,45 @@ namespace Integracion.API
             {
                 GuardarLog("SincronizarVentasOffline", "Sistema", "Error: " + ex.Message);
                 return "Error en la sincronización: No se pudo conectar con el CORE.";
+            }
+        }
+
+        [WebMethod(Description = "Busca un cliente por su cédula o RNC.")]
+        public WebServices.CoreReferencia.sp_BuscarClientePorCedulaRNC_Result BuscarClientePorCedulaRNC(string cedula)
+        {
+            try
+            {
+                // Conectamos con el CORE real
+                WebServices.CoreReferencia.CoreServiceSoapClient clienteCore = new WebServices.CoreReferencia.CoreServiceSoapClient();
+                var cliente = clienteCore.BuscarClientePorCedulaRNC(cedula);
+
+                return cliente;
+            }
+            catch (Exception ex)
+            {
+                GuardarLog("BuscarClientePorCedulaRNC", cedula, "Error CORE: " + ex.Message);
+                return null;
+            }
+        }
+
+        [WebMethod(Description = "Registra un nuevo cliente en el servidor central.")]
+        public string InsertarCliente(string nombre, string cedulaRNC, string telefono, string direccion, string email)
+        {
+            try
+            {
+                WebServices.CoreReferencia.CoreServiceSoapClient clienteCore = new WebServices.CoreReferencia.CoreServiceSoapClient();
+
+                // Llamamos al Core para que inserte el cliente
+                // Nota: Le paso "false" al final asumiendo que es el campo EsAnonimo (0)
+                clienteCore.InsertarCliente(nombre, cedulaRNC, telefono, direccion, email, false);
+
+                GuardarLog("InsertarCliente", cedulaRNC, "Exito: Cliente creado en el CORE.");
+                return "OK";
+            }
+            catch (Exception ex)
+            {
+                GuardarLog("InsertarCliente", cedulaRNC, "Error CORE: " + ex.Message);
+                return "Error al registrar cliente: " + ex.Message;
             }
         }
     }

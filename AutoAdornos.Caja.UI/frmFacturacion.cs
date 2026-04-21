@@ -13,11 +13,17 @@ namespace AutoAdornos.Caja.UI
     public partial class frmFacturacion : Form
     {
         decimal precioActual = 0m;
+        int stockActual = 0;
+
+        public static List<DetalleCarrito> VentasDelTurno = new List<DetalleCarrito>();
+
         BindingList<DetalleCarrito> listaCarrito = new BindingList<DetalleCarrito>();
 
 
         decimal fondoCaja = 0m;
         decimal totalVendidoDia = 0m;
+        int idClienteSeleccionado = 1;
+        int idVehiculoSeleccionado = 1;
 
 
         public frmFacturacion(decimal montoApertura)
@@ -28,13 +34,28 @@ namespace AutoAdornos.Caja.UI
 
 
             dgvCarrito.AutoGenerateColumns = false;
-            dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "IdProducto", HeaderText = "ID" });
+            dgvCarrito.Columns.Clear();
+
+            dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "IdProducto", HeaderText = "ID", Width = 50 });
             dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Descripcion", HeaderText = "Producto", Width = 200 });
-            dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Precio", HeaderText = "Precio" });
-            dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Cantidad", HeaderText = "Cant" });
-            dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Importe", HeaderText = "Subtotal" });
+            dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Precio", HeaderText = "Precio", DefaultCellStyle = new DataGridViewCellStyle { Format = "N2" } });
+            dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Cantidad", HeaderText = "Cant", Width = 50 });
+            dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Subtotal", HeaderText = "Subtotal", DefaultCellStyle = new DataGridViewCellStyle { Format = "N2" } });
+            dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "ITBIS", HeaderText = "ITBIS (18%)", DefaultCellStyle = new DataGridViewCellStyle { Format = "N2" } });
+            dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Total", HeaderText = "Total", DefaultCellStyle = new DataGridViewCellStyle { Format = "N2" } });
+
+            // Agregar el botón de Eliminar al final
+            DataGridViewButtonColumn btnEliminar = new DataGridViewButtonColumn();
+            btnEliminar.HeaderText = "Acción";
+            btnEliminar.FlatStyle = FlatStyle.Flat;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseColumnTextForButtonValue = true;
+            dgvCarrito.Columns.Add(btnEliminar);
 
             dgvCarrito.DataSource = listaCarrito;
+
+            lblSucursal.Text = "Sucursal ID: " + SesionGlobal.IdSucursal.ToString();
+            lblCajero.Text = "Cajero: " + SesionGlobal.NombreUsuario;
         }
 
         private void btnSincronizar_Click(object sender, EventArgs e)
@@ -88,6 +109,12 @@ namespace AutoAdornos.Caja.UI
                 return;
             }
 
+            if (numCantidad.Value > stockActual)
+            {
+                MessageBox.Show("No hay suficiente stock. Solo quedan " + stockActual + " unidades.", "Stock Insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             DetalleCarrito nuevoItem = new DetalleCarrito
             {
                 IdProducto = int.Parse(txtIdProducto.Text),
@@ -105,20 +132,25 @@ namespace AutoAdornos.Caja.UI
             txtNombreProducto.Text = "";
             numCantidad.Value = 0;
             precioActual = 0m;
+            stockActual = 0;
+            lblStock.Text = "Stock Disponible: 0";
             txtIdProducto.Focus();
         }
 
         private void ActualizarTotal()
         {
-            decimal totalGeneral = 0;
+            decimal subtotal = 0, itbis = 0, total = 0;
 
-            // Recorremos nuestra lista en lugar del DataGridView
             foreach (var item in listaCarrito)
             {
-                totalGeneral += item.Importe;
+                subtotal += item.Subtotal;
+                itbis += item.ITBIS;
+                total += item.Total;
             }
 
-            lblTotal.Text = "Total: $" + totalGeneral.ToString("0.00");
+            lblSubtotalGeneral.Text = "Subtotal: $" + subtotal.ToString("N2");
+            lblITBISGeneral.Text = "ITBIS: $" + itbis.ToString("N2");
+            lblTotal.Text = "RD$ " + total.ToString("N2");
         }
 
         private void btnBuscarProducto_Click(object sender, EventArgs e)
@@ -146,6 +178,9 @@ namespace AutoAdornos.Caja.UI
 
 
                         precioActual = producto.Precio ?? 0m;
+                        stockActual = Convert.ToInt32(producto.Stock);
+                        lblStock.Text = $"Stock Disponible: {stockActual}";
+
 
 
                         numCantidad.Focus();
@@ -174,17 +209,15 @@ namespace AutoAdornos.Caja.UI
 
             try
             {
-                int idCliente = 2; 
-                int idVehiculo = 1; 
-                int idUsuario = 1; 
-                int idSucursal = 1; 
-                string canalVenta = "CAJA"; 
+                int idCliente = idClienteSeleccionado;
+                int idVehiculo = idVehiculoSeleccionado;
+                int idUsuario = SesionGlobal.IdUsuario;
+                int idSucursal = SesionGlobal.IdSucursal;
+                string canalVenta = "CAJA";
 
-
-                decimal totalPagar = listaCarrito.Sum(item => item.Importe);
-
+                // Usando "Total" que ya incluye los impuestos
+                decimal totalPagar = listaCarrito.Sum(item => item.Total);
                 totalVendidoDia += totalPagar;
-
 
                 var detallesVenta = new List<IntegracionReferencia.ItemVenta>();
 
@@ -192,16 +225,12 @@ namespace AutoAdornos.Caja.UI
                 {
                     var nuevoItem = new IntegracionReferencia.ItemVenta();
                     nuevoItem.IdProducto = item.IdProducto;
-
                     nuevoItem.Cantidad = item.Cantidad;
                     nuevoItem.Precio = item.Precio;
-
                     detallesVenta.Add(nuevoItem);
                 }
 
-
                 var servicioIntegracion = new IntegracionReferencia.IntegracionServiceSoapClient();
-
 
                 string respuesta = servicioIntegracion.RegistrarVenta(
                     idCliente,
@@ -213,7 +242,6 @@ namespace AutoAdornos.Caja.UI
                     detallesVenta.ToArray()
                 );
 
-
                 if (respuesta.Contains("Error CORE:") || respuesta.Contains("endpoint listening"))
                 {
                     MessageBox.Show("Sin conexión con el servidor central.\n\nVenta guardada localmente para sincronización posterior.", "Modo Offline Activado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -224,17 +252,27 @@ namespace AutoAdornos.Caja.UI
                 }
 
                 frmVisorRecibo visor = new frmVisorRecibo();
-
                 visor.MostrarRecibo(listaCarrito.ToList());
+                visor.CedulaCliente = txtCedulaCliente.Text;
                 visor.ShowDialog();
 
-                listaCarrito.Clear(); 
-                ActualizarTotal();    
+                foreach (var item in listaCarrito)
+                {
+                    VentasDelTurno.Add(new DetalleCarrito
+                    {
+                        IdProducto = item.IdProducto,
+                        Descripcion = item.Descripcion,
+                        Precio = item.Precio,
+                        Cantidad = item.Cantidad
+                    });
+                }
+
+                listaCarrito.Clear();
+                ActualizarTotal();
                 txtIdProducto.Focus();
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show("Error al conectar con Integración: " + ex.Message, "Error Crítico", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -266,7 +304,6 @@ namespace AutoAdornos.Caja.UI
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
-            // 1. Validar que no le den a buscar con la caja vacía
             if (string.IsNullOrWhiteSpace(txtCedulaCliente.Text))
             {
                 MessageBox.Show("Por favor, ingrese un número de cédula o RNC.", "Campo vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -274,19 +311,70 @@ namespace AutoAdornos.Caja.UI
                 return;
             }
 
-            // 2. Simular la búsqueda (Como si llamáramos al servidor)
-            MessageBox.Show("Buscando cliente en el servidor central...", "Buscando", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                var servicioIntegracion = new IntegracionReferencia.IntegracionServiceSoapClient();
 
-            // 3. Crear un cliente de prueba
-            if (txtCedulaCliente.Text == "40212345678" || txtCedulaCliente.Text == "123456789")
-            {
-                MessageBox.Show("Cliente encontrado\n\nNombre: Juan Pérez\nCategoría: Cliente VIP\nDescuento: Aplicable", "Búsqueda Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                var cliente = servicioIntegracion.BuscarClientePorCedulaRNC(txtCedulaCliente.Text);
+
+                if (cliente != null)
+                {
+                    idClienteSeleccionado = cliente.IdCliente;
+
+                    MessageBox.Show($"Cliente encontrado:\nNombre: {cliente.Nombre}", "Búsqueda Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Cliente no encontrado en la base de datos.\nSe registrará la venta como 'Cliente de Contado'.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    idClienteSeleccionado = 1;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                // Si ponen cualquier otra cédula, simulamos que es un cliente nuevo
-                MessageBox.Show("Cliente no encontrado en la base de datos.\n\nSe registrará la venta como 'Cliente de Contado / Consumidor Final'.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("Error al buscar cliente en el servidor. Trabajando en modo Offline.", "Modo Offline", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                idClienteSeleccionado = 1;
             }
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvCarrito_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && dgvCarrito.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+            {
+                DialogResult respuesta = MessageBox.Show("¿Desea eliminar este producto del carrito?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (respuesta == DialogResult.Yes)
+                {
+                    listaCarrito.RemoveAt(e.RowIndex);
+                    ActualizarTotal();
+                }
+            }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnNuevoCliente_Click(object sender, EventArgs e)
+        {
+            frmNuevoCliente pantallaNuevo = new frmNuevoCliente();
+            pantallaNuevo.ShowDialog();
         }
     }
 
@@ -297,11 +385,10 @@ namespace AutoAdornos.Caja.UI
         public decimal Precio { get; set; }
         public int Cantidad { get; set; }
 
-        // Esta propiedad calcula el subtotal automáticamente
-        public decimal Importe
-        {
-            get { return Precio * Cantidad; }
-        }
+        public decimal Subtotal => Precio * Cantidad;
+        public decimal ITBIS => Subtotal * 0.18m;
+        public decimal Total => Subtotal + ITBIS;
+        public decimal Importe => Total;
     }
 
 }
