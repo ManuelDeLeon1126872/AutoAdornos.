@@ -10,7 +10,7 @@ namespace AutoAdornos.Core.Admin
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMenuCore());
+            Application.Run(new Login());
         }
     }
 }

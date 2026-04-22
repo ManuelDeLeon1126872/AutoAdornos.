@@ -196,17 +196,72 @@ namespace Integracion.API
         {
             try
             {
-                // 1. Verificamos si el CORE ya despertó haciendo una pequeña llamada de prueba
+                // 1. Verificamos si el CORE ya despertó
                 WebServices.CoreReferencia.CoreServiceSoapClient clienteCore = new WebServices.CoreReferencia.CoreServiceSoapClient();
                 var pruebaConexion = clienteCore.ListarProductos();
 
                 if (pruebaConexion != null)
                 {
-                    // 2. Si el CORE responde, aquí iría la lógica real de tu compañero para leer 
-                    // la cola (MSMQ o archivo local) y enviarla al CORE usando clienteCore.RegistrarVenta().
+                    // 2. Buscar facturas que están atrapadas en la Cola Local
+                    // El 'false' o '0' significa que no han subido al Core
+                    var facturasPendientes = dbLocal.Cola_tblFactura.Where(f => f.Sincronizado == false).ToList();
 
-                    // Para fines de la presentación del proyecto, devolveremos éxito:
-                    return "Sincronización completada con éxito. Las facturas en cola fueron registradas en el servidor central.";
+                    if (facturasPendientes.Count == 0)
+                    {
+                        return "No hay ventas en modo Offline pendientes por sincronizar.";
+                    }
+
+                    int contadorExito = 0;
+
+                    // 3. Recorremos cada factura atrapada y la subimos al Core
+                    foreach (var factura in facturasPendientes)
+                    {
+                        try
+                        {
+                            // A. Insertar cabecera de la factura en el CORE
+                            int idFacturaCore = clienteCore.InsertarFacturaPrueba(
+                                factura.IdCliente ?? 1,
+                                factura.IdVehiculo ?? 1,
+                                factura.IdUsuario ?? 1,
+                                factura.IdSucursal ?? 1,
+                                factura.CanalVenta,
+                                factura.Subtotal ?? 0,
+                                factura.Impuesto ?? 0,
+                                factura.Total ?? 0
+                            );
+
+                            // B. Buscar los artículos (detalles) de esta factura específica en la cola
+                            var detalles = dbLocal.Cola_tblFacturaDetalle.Where(d => d.IdFacturaLocal == factura.IdFacturaLocal).ToList();
+
+                            // C. Insertar cada artículo en el CORE y descontar el inventario real
+                            foreach (var item in detalles)
+                            {
+                                if (item.IdProducto.HasValue)
+                                {
+                                    clienteCore.InsertarFacturaDetalleProductoPrueba(idFacturaCore, item.IdProducto.Value, item.Cantidad ?? 0, item.Precio ?? 0);
+                                    clienteCore.RegistrarMovimientoInventario(item.IdProducto.Value, factura.IdSucursal ?? 1, "SALIDA", item.Cantidad ?? 0, "Sincronización Offline", factura.IdUsuario ?? 1);
+                                }
+                                else if (item.IdServicio.HasValue)
+                                {
+                                    clienteCore.InsertarFacturaDetalleServicioPrueba(idFacturaCore, item.IdServicio.Value, item.Cantidad ?? 0, item.Precio ?? 0);
+                                }
+                            }
+
+                            // D. ¡ÉXITO! Marcamos la factura local como "Sincronizada" para que no se vuelva a subir mañana
+                            factura.Sincronizado = true;
+                            dbLocal.SaveChanges();
+
+                            contadorExito++;
+                        }
+                        catch (Exception exSync)
+                        {
+                            GuardarLog("SincronizarVentasOffline", $"FacturaLocal: {factura.IdFacturaLocal}", "Error al subir una factura: " + exSync.Message);
+                            // Si falla una sola factura, no detenemos el proceso. Dejamos que intente subir las demás.
+                        }
+                    }
+
+                    GuardarLog("SincronizarVentasOffline", "Sistema", $"Se sincronizaron {contadorExito} facturas con éxito.");
+                    return $"Sincronización completada. Se recuperaron y subieron {contadorExito} facturas al servidor central.";
                 }
                 else
                 {
@@ -215,7 +270,7 @@ namespace Integracion.API
             }
             catch (Exception ex)
             {
-                GuardarLog("SincronizarVentasOffline", "Sistema", "Error: " + ex.Message);
+                GuardarLog("SincronizarVentasOffline", "Sistema", "Error Crítico: " + ex.Message);
                 return "Error en la sincronización: No se pudo conectar con el CORE.";
             }
         }
