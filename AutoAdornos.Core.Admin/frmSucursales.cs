@@ -19,6 +19,12 @@ namespace AutoAdornos.Core.Admin
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtDireccion.Text))
+            {
+                MessageBox.Show("El nombre y la dirección son obligatorios.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             try
             {
                 SucursalBL bl = new SucursalBL();
@@ -30,13 +36,13 @@ namespace AutoAdornos.Core.Admin
                     chkEstado.Checked
                 );
 
-                MessageBox.Show("Sucursal guardada correctamente. Id: " + id);
+                MessageBox.Show("Sucursal guardada correctamente. Id: " + id, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Limpiar();
                 CargarSucursales();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al guardar sucursal: " + ex.Message);
+                MessageBox.Show("Error al guardar sucursal: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -50,10 +56,22 @@ namespace AutoAdornos.Core.Admin
             Limpiar();
         }
 
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void CargarSucursales()
         {
-            SucursalBL bl = new SucursalBL();
-            dgvSucursales.DataSource = bl.ListarSucursalesAdmin();
+            try
+            {
+                SucursalBL bl = new SucursalBL();
+                dgvSucursales.DataSource = bl.ListarSucursalesAdmin();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar sucursales: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Limpiar()
@@ -62,6 +80,7 @@ namespace AutoAdornos.Core.Admin
             txtDireccion.Text = "";
             txtTelefono.Text = "";
             chkEstado.Checked = true;
+            txtNombre.Focus();
         }
     }
 }

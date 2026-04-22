@@ -21,6 +21,18 @@ namespace AutoAdornos.Core.Admin
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtNombreUsuario.Text) || string.IsNullOrWhiteSpace(txtClave.Text) || string.IsNullOrWhiteSpace(txtNombreCompleto.Text))
+            {
+                MessageBox.Show("El usuario, clave y nombre completo son obligatorios.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (cmbSucursal.SelectedValue == null)
+            {
+                MessageBox.Show("Debe seleccionar una sucursal válida.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             try
             {
                 UsuarioBL bl = new UsuarioBL();
@@ -33,13 +45,13 @@ namespace AutoAdornos.Core.Admin
                     chkEstado.Checked
                 );
 
-                MessageBox.Show("Usuario guardado correctamente. Id: " + id);
+                MessageBox.Show("Usuario guardado correctamente. Id: " + id, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Limpiar();
                 CargarUsuarios();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al guardar usuario: " + ex.Message);
+                MessageBox.Show("Error al guardar usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -53,18 +65,37 @@ namespace AutoAdornos.Core.Admin
             Limpiar();
         }
 
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void CargarSucursales()
         {
-            SucursalBL bl = new SucursalBL();
-            cmbSucursal.DataSource = bl.ListarSucursalesAdmin();
-            cmbSucursal.DisplayMember = "Nombre";
-            cmbSucursal.ValueMember = "IdSucursal";
+            try
+            {
+                SucursalBL bl = new SucursalBL();
+                cmbSucursal.DataSource = bl.ListarSucursalesAdmin();
+                cmbSucursal.DisplayMember = "Nombre";
+                cmbSucursal.ValueMember = "IdSucursal";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar sucursales: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void CargarUsuarios()
         {
-            UsuarioBL bl = new UsuarioBL();
-            dgvUsuarios.DataSource = bl.ListarUsuarios();
+            try
+            {
+                UsuarioBL bl = new UsuarioBL();
+                dgvUsuarios.DataSource = bl.ListarUsuarios();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar usuarios: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Limpiar()
@@ -75,6 +106,7 @@ namespace AutoAdornos.Core.Admin
             chkEstado.Checked = true;
             if (cmbSucursal.Items.Count > 0)
                 cmbSucursal.SelectedIndex = 0;
+            txtNombreUsuario.Focus();
         }
     }
 }
