@@ -359,5 +359,91 @@ namespace AutoAdornos.Core.Data
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RecibirFacturaOffline_Result>("sp_RecibirFacturaOffline_Result", idLocalParameter, clienteParameter, totalParameter, canalParameter);
         }
+    
+        public virtual ObjectResult<Nullable<decimal>> sp_InsertarProducto(string codigo, string descripcion, Nullable<decimal> precio, Nullable<int> existencia, Nullable<bool> estado)
+        {
+            var codigoParameter = codigo != null ?
+                new ObjectParameter("Codigo", codigo) :
+                new ObjectParameter("Codigo", typeof(string));
+    
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var precioParameter = precio.HasValue ?
+                new ObjectParameter("Precio", precio) :
+                new ObjectParameter("Precio", typeof(decimal));
+    
+            var existenciaParameter = existencia.HasValue ?
+                new ObjectParameter("Existencia", existencia) :
+                new ObjectParameter("Existencia", typeof(int));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("sp_InsertarProducto", codigoParameter, descripcionParameter, precioParameter, existenciaParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> sp_InsertarSucursal(string nombre, string direccion, string telefono, Nullable<bool> estado)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var direccionParameter = direccion != null ?
+                new ObjectParameter("Direccion", direccion) :
+                new ObjectParameter("Direccion", typeof(string));
+    
+            var telefonoParameter = telefono != null ?
+                new ObjectParameter("Telefono", telefono) :
+                new ObjectParameter("Telefono", typeof(string));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("sp_InsertarSucursal", nombreParameter, direccionParameter, telefonoParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> sp_InsertarUsuario(string nombreUsuario, string clave, string nombreCompleto, Nullable<int> idSucursal, Nullable<bool> estado)
+        {
+            var nombreUsuarioParameter = nombreUsuario != null ?
+                new ObjectParameter("NombreUsuario", nombreUsuario) :
+                new ObjectParameter("NombreUsuario", typeof(string));
+    
+            var claveParameter = clave != null ?
+                new ObjectParameter("Clave", clave) :
+                new ObjectParameter("Clave", typeof(string));
+    
+            var nombreCompletoParameter = nombreCompleto != null ?
+                new ObjectParameter("NombreCompleto", nombreCompleto) :
+                new ObjectParameter("NombreCompleto", typeof(string));
+    
+            var idSucursalParameter = idSucursal.HasValue ?
+                new ObjectParameter("IdSucursal", idSucursal) :
+                new ObjectParameter("IdSucursal", typeof(int));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("sp_InsertarUsuario", nombreUsuarioParameter, claveParameter, nombreCompletoParameter, idSucursalParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<sp_ListarProductosAdmin_Result> sp_ListarProductosAdmin()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ListarProductosAdmin_Result>("sp_ListarProductosAdmin");
+        }
+    
+        public virtual ObjectResult<sp_ListarSucursalesAdmin_Result> sp_ListarSucursalesAdmin()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ListarSucursalesAdmin_Result>("sp_ListarSucursalesAdmin");
+        }
+    
+        public virtual ObjectResult<sp_ListarUsuarios_Result> sp_ListarUsuarios()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ListarUsuarios_Result>("sp_ListarUsuarios");
+        }
     }
 }

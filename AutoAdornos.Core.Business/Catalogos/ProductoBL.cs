@@ -6,6 +6,23 @@ namespace AutoAdornos.Core.Business.Catalogos
 {
     public class ProductoBL
     {
+        public int InsertarProducto(string codigo, string descripcion, decimal precio, int existencia, bool estado)
+        {
+            using (var db = new DBAutoAdornosCoreEntities())
+            {
+                var resultado = db.sp_InsertarProducto(codigo, descripcion, precio, existencia, estado).FirstOrDefault();
+                return resultado.HasValue ? (int)resultado.Value : 0;
+            }
+        }
+
+        public List<sp_ListarProductosAdmin_Result> ListarProductosAdmin()
+        {
+            using (var db = new DBAutoAdornosCoreEntities())
+            {
+                return db.sp_ListarProductosAdmin().ToList();
+            }
+        }
+
         public List<sp_ListarProductos_Result> ListarProductos()
         {
             using (var db = new DBAutoAdornosCoreEntities())

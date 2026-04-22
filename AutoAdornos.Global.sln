@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36811.4 d17.14
+# Visual Studio Version 18
+VisualStudioVersion = 18.4.11620.152 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AutoAdornos.Core.Database", "AutoAdornos.Core.Database\AutoAdornos.Core.Database.sqlproj", "{618E5697-A538-45FF-A4F3-0EDBFF471554}"
 EndProject
@@ -112,6 +112,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoAdornos.Caja.UI", "Auto
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoAdornos.Web.UI", "AutoAdornos.Web.UI\AutoAdornos.Web.UI.csproj", "{6C0F36C1-1127-4FE9-8D43-0E79A2B8D95C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoAdornos.Core.Admin", "AutoAdornos.Core.Admin\AutoAdornos.Core.Admin.csproj", "{BC10FA41-E6DF-4358-FDDD-E825D26831EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -160,6 +162,10 @@ Global
 		{6C0F36C1-1127-4FE9-8D43-0E79A2B8D95C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C0F36C1-1127-4FE9-8D43-0E79A2B8D95C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C0F36C1-1127-4FE9-8D43-0E79A2B8D95C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC10FA41-E6DF-4358-FDDD-E825D26831EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC10FA41-E6DF-4358-FDDD-E825D26831EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC10FA41-E6DF-4358-FDDD-E825D26831EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC10FA41-E6DF-4358-FDDD-E825D26831EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

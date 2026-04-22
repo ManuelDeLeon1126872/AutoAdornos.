@@ -408,6 +408,26 @@
           <Parameter Name="Parametros" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="Respuesta" Type="nvarchar(max)" Mode="In" />
         </Function>
+        <Function Name="sp_InsertarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Codigo" Type="nvarchar" Mode="In" />
+          <Parameter Name="Descripcion" Type="nvarchar" Mode="In" />
+          <Parameter Name="Precio" Type="decimal" Mode="In" />
+          <Parameter Name="Existencia" Type="int" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertarSucursal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="Direccion" Type="nvarchar" Mode="In" />
+          <Parameter Name="Telefono" Type="nvarchar" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NombreUsuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="Clave" Type="nvarchar" Mode="In" />
+          <Parameter Name="NombreCompleto" Type="nvarchar" Mode="In" />
+          <Parameter Name="IdSucursal" Type="int" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
         <Function Name="sp_InsertarVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IdCliente" Type="int" Mode="In" />
           <Parameter Name="Marca" Type="nvarchar" Mode="In" />
@@ -419,8 +439,11 @@
         <Function Name="sp_ListarClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_ListarFacturas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_ListarProductos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_ListarProductosAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_ListarServicios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_ListarSucursales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_ListarSucursalesAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_ListarUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_ListarVehiculosPorCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IdCliente" Type="int" Mode="In" />
         </Function>
@@ -1050,6 +1073,29 @@
             <Parameter Name="Total" Mode="In" Type="Decimal" />
             <Parameter Name="Canal" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="sp_InsertarProducto" ReturnType="Collection(Decimal)">
+            <Parameter Name="Codigo" Mode="In" Type="String" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Precio" Mode="In" Type="Decimal" />
+            <Parameter Name="Existencia" Mode="In" Type="Int32" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertarSucursal" ReturnType="Collection(Decimal)">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Direccion" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="String" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertarUsuario" ReturnType="Collection(Decimal)">
+            <Parameter Name="NombreUsuario" Mode="In" Type="String" />
+            <Parameter Name="Clave" Mode="In" Type="String" />
+            <Parameter Name="NombreCompleto" Mode="In" Type="String" />
+            <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ListarProductosAdmin" ReturnType="Collection(DBAutoAdornosCoreModel.sp_ListarProductosAdmin_Result)" />
+          <FunctionImport Name="sp_ListarSucursalesAdmin" ReturnType="Collection(DBAutoAdornosCoreModel.sp_ListarSucursalesAdmin_Result)" />
+          <FunctionImport Name="sp_ListarUsuarios" ReturnType="Collection(DBAutoAdornosCoreModel.sp_ListarUsuarios_Result)" />
         </EntityContainer>
         <ComplexType Name="sp_BuscarClientePorCedulaRNC_Result">
           <Property Type="Int32" Name="IdCliente" Nullable="false" />
@@ -1204,6 +1250,31 @@
         </EntityType>
         <ComplexType Name="sp_RecibirFacturaOffline_Result">
           <Property Type="Boolean" Name="Resultado" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_ListarProductosAdmin_Result">
+          <Property Type="Int32" Name="IdProducto" Nullable="false" />
+          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
+          <Property Type="Decimal" Name="Precio" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="Existencia" Nullable="false" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+          <Property Type="DateTime" Name="FechaCreacion" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_ListarSucursalesAdmin_Result">
+          <Property Type="Int32" Name="IdSucursal" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Direccion" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="20" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+          <Property Type="DateTime" Name="FechaCreacion" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_ListarUsuarios_Result">
+          <Property Type="Int32" Name="IdUsuario" Nullable="false" />
+          <Property Type="String" Name="NombreUsuario" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="NombreCompleto" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="IdSucursal" Nullable="true" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+          <Property Type="DateTime" Name="FechaCreacion" Nullable="false" Precision="23" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1581,6 +1652,46 @@
             <ResultMapping>
               <ComplexTypeMapping TypeName="DBAutoAdornosCoreModel.sp_RecibirFacturaOffline_Result">
                 <ScalarProperty Name="Resultado" ColumnName="Resultado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_InsertarProducto" FunctionName="DBAutoAdornosCoreModel.Store.sp_InsertarProducto" />
+          <FunctionImportMapping FunctionImportName="sp_InsertarSucursal" FunctionName="DBAutoAdornosCoreModel.Store.sp_InsertarSucursal" />
+          <FunctionImportMapping FunctionImportName="sp_InsertarUsuario" FunctionName="DBAutoAdornosCoreModel.Store.sp_InsertarUsuario" />
+          <FunctionImportMapping FunctionImportName="sp_ListarProductosAdmin" FunctionName="DBAutoAdornosCoreModel.Store.sp_ListarProductosAdmin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAutoAdornosCoreModel.sp_ListarProductosAdmin_Result">
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Existencia" ColumnName="Existencia" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ListarSucursalesAdmin" FunctionName="DBAutoAdornosCoreModel.Store.sp_ListarSucursalesAdmin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAutoAdornosCoreModel.sp_ListarSucursalesAdmin_Result">
+                <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ListarUsuarios" FunctionName="DBAutoAdornosCoreModel.Store.sp_ListarUsuarios">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAutoAdornosCoreModel.sp_ListarUsuarios_Result">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
