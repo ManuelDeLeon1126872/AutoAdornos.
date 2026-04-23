@@ -19,6 +19,10 @@ namespace AutoAdornos.Web.UI.Services
 
         [OperationContract(Action = "http://autoadornos.com/SincronizarVentasOffline", ReplyAction = "*")]
         string SincronizarVentasOffline();
+
+        // EL ARREGLO ESTÁ AQUÍ: Le pusimos el mismo formato que tienen los demás
+        [OperationContract(Action = "http://autoadornos.com/RegistrarUsuarioWeb", ReplyAction = "*")]
+        bool RegistrarUsuarioWeb(string nombreUsuario, string clave, string nombreCompleto);
     }
 
     [Serializable]

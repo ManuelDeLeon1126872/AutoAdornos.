@@ -51,8 +51,13 @@ namespace AutoAdornos.Web.UI.Controllers
 
             try
             {
+                // 1. Atrapamos el método de pago que el cliente eligió en el HTML
+                string metodoPago = Request.Form["MetodoPago"] ?? "Efectivo";
+
                 var user = CartSessionManager.GetUser(Session);
-                var respuesta = _client.RegistrarVenta(user, model.Items);
+
+                // 2. Se lo pasamos a nuestro puente actualizado
+                var respuesta = _client.RegistrarVenta(user, model.Items, metodoPago);
 
                 ViewBag.Respuesta = respuesta;
                 ViewBag.Total = model.Total;

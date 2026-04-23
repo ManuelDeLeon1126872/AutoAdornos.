@@ -1,0 +1,47 @@
+@model AutoAdornos.Web.UI.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Crear Cuenta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="card card-sm login-card">
+    <div class="section-title">Únete a Auto Adornos</div>
+    <p class="muted">Crea tu cuenta hoy mismo y empieza a equipar tu vehículo con nosotros.</p>
+
+    @if (ViewBag.Error != null)
+    {
+        <div style="color: #dc3545; background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 10px; border-radius: 5px; margin-bottom: 15px; text-align: center;">
+            @ViewBag.Error
+        </div>
+    }
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "validation-summary-errors" })
+
+        <div class="form-row">
+            @Html.LabelFor(m => m.NombreCompleto, "Tu Nombre Completo")
+            @Html.TextBoxFor(m => m.NombreCompleto, new { @class = "form-control", placeholder = "Ej. Juan Pérez", required = "required" })
+            @Html.ValidationMessageFor(m => m.NombreCompleto, "", new { @class = "field-validation-error" })
+        </div>
+
+        <div class="form-row">
+            @Html.LabelFor(m => m.Usuario, "Tu correo electrónico (Usuario)")
+            @Html.TextBoxFor(m => m.Usuario, new { @class = "form-control", placeholder = "ejemplo@correo.com", required = "required" })
+            @Html.ValidationMessageFor(m => m.Usuario, "", new { @class = "field-validation-error" })
+        </div>
+
+        <div class="form-row">
+            @Html.LabelFor(m => m.Clave, "Tu contraseña")
+            @Html.PasswordFor(m => m.Clave, new { @class = "form-control", placeholder = "********", required = "required" })
+            @Html.ValidationMessageFor(m => m.Clave, "", new { @class = "field-validation-error" })
+        </div>
+        
+        <div class="text-center mt-3" style="margin-bottom: 15px;">
+            <p>¿Ya tienes cuenta? <a href="@Url.Action("Login", "Account")" class="btn btn-outline-primary btn-sm">Inicia sesión aquí</a></p>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Crear mi cuenta</button>
+    }
+</section>

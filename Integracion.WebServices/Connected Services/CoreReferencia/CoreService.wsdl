@@ -370,6 +370,22 @@
       <s:element name="InsertarVehiculoResponse">
         <s:complexType />
       </s:element>
+      <s:element name="InsertarUsuarioWeb">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombreUsuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="clave" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombreCompleto" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertarUsuarioWebResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertarUsuarioWebResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="ValidarUsuarioSoapIn">
@@ -474,6 +490,12 @@
   <wsdl:message name="InsertarVehiculoSoapOut">
     <wsdl:part name="parameters" element="tns:InsertarVehiculoResponse" />
   </wsdl:message>
+  <wsdl:message name="InsertarUsuarioWebSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertarUsuarioWeb" />
+  </wsdl:message>
+  <wsdl:message name="InsertarUsuarioWebSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertarUsuarioWebResponse" />
+  </wsdl:message>
   <wsdl:portType name="CoreServiceSoap">
     <wsdl:operation name="ValidarUsuario">
       <wsdl:input message="tns:ValidarUsuarioSoapIn" />
@@ -543,6 +565,11 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Inserta un nuevo vehículo para un cliente existente.</wsdl:documentation>
       <wsdl:input message="tns:InsertarVehiculoSoapIn" />
       <wsdl:output message="tns:InsertarVehiculoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertarUsuarioWeb">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Registra un nuevo usuario desde la página Web</wsdl:documentation>
+      <wsdl:input message="tns:InsertarUsuarioWebSoapIn" />
+      <wsdl:output message="tns:InsertarUsuarioWebSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="CoreServiceSoap" type="tns:CoreServiceSoap">
@@ -700,6 +727,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="InsertarUsuarioWeb">
+      <soap:operation soapAction="http://tempuri.org/InsertarUsuarioWeb" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="CoreServiceSoap12" type="tns:CoreServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -849,6 +885,15 @@
     </wsdl:operation>
     <wsdl:operation name="InsertarVehiculo">
       <soap12:operation soapAction="http://tempuri.org/InsertarVehiculo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarUsuarioWeb">
+      <soap12:operation soapAction="http://tempuri.org/InsertarUsuarioWeb" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

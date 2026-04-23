@@ -446,5 +446,23 @@ namespace AutoAdornos.Core.Services
                 db.sp_InsertarVehiculo(idCliente, marca, modelo, anio, placa, color);
             }
         }
+
+        [WebMethod(Description = "Registra un nuevo usuario desde la página Web")]
+        public bool InsertarUsuarioWeb(string nombreUsuario, string clave, string nombreCompleto)
+        {
+            try
+            {
+                using (var db = new Data.DBAutoAdornosCoreEntities())
+                {
+                    // Le mandamos IdSucursal = 1 (Sucursal virtual/web) y Estado = 1 (Activo)
+                    db.sp_InsertarUsuario(nombreUsuario, clave, nombreCompleto, 1, true);
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

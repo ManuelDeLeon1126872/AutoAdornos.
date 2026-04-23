@@ -1,4 +1,4 @@
-﻿using AutoAdornos.Core.Business.Seguridad; // Importante para poder usar UsuarioBL
+﻿using AutoAdornos.Core.Business.Seguridad;
 using System;
 using System.Windows.Forms;
 
@@ -31,8 +31,11 @@ namespace AutoAdornos.Core.Admin
                 {
                     this.Hide();
 
-                    // Llevamos al usuario al menú de administración
-                    frmMenuCore menuAdmin = new frmMenuCore();
+                    // Convertimos el perfil de forma segura. Si por alguna razón viene nulo, asume 1 (Admin)
+                    int perfilDeteccion = usuarioAutenticado.IdPerfil != null ? Convert.ToInt32(usuarioAutenticado.IdPerfil) : 1;
+
+                    // Le pasamos el perfil detectado al menú
+                    frmMenuCore menuAdmin = new frmMenuCore(perfilDeteccion);
                     menuAdmin.ShowDialog();
 
                     this.Close();

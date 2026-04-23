@@ -72,7 +72,7 @@ namespace AutoAdornos.Web.UI.Services
             }
         }
 
-        public string RegistrarVenta(UserSessionModel user, IEnumerable<CartItemViewModel> items)
+        public string RegistrarVenta(UserSessionModel user, IEnumerable<CartItemViewModel> items, string metodoPago)
         {
             if (user == null)
             {
@@ -98,7 +98,7 @@ namespace AutoAdornos.Web.UI.Services
                     user.IdVehiculoDefault,
                     user.IdUsuario,
                     user.IdSucursal,
-                    "WEB",
+                    "WEB - " + metodoPago, // <--- AQUÍ LE AGREGAMOS EL MÉTODO DE PAGO AL CANAL
                     total,
                     detalles);
             }
@@ -129,6 +129,20 @@ namespace AutoAdornos.Web.UI.Services
             catch
             {
                 factory.Abort();
+            }
+        }
+
+        public bool RegistrarUsuarioWeb(string nombreUsuario, string clave, string nombreCompleto)
+        {
+            ChannelFactory<IIntegracionServiceSoap> factory = null;
+            try
+            {
+                var client = BuildClient(out factory);
+                return client.RegistrarUsuarioWeb(nombreUsuario, clave, nombreCompleto);
+            }
+            finally
+            {
+                CloseFactory(factory);
             }
         }
     }

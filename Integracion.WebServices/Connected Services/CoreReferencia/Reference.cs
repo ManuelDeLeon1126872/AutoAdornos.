@@ -1284,6 +1284,13 @@ namespace Integracion.WebServices.CoreReferencia {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarVehiculo", ReplyAction="*")]
         System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.InsertarVehiculoResponse> InsertarVehiculoAsync(Integracion.WebServices.CoreReferencia.InsertarVehiculoRequest request);
+        
+        // CODEGEN: Generating message contract since element name nombreUsuario from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarUsuarioWeb", ReplyAction="*")]
+        Integracion.WebServices.CoreReferencia.InsertarUsuarioWebResponse InsertarUsuarioWeb(Integracion.WebServices.CoreReferencia.InsertarUsuarioWebRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarUsuarioWeb", ReplyAction="*")]
+        System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.InsertarUsuarioWebResponse> InsertarUsuarioWebAsync(Integracion.WebServices.CoreReferencia.InsertarUsuarioWebRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -2569,6 +2576,82 @@ namespace Integracion.WebServices.CoreReferencia {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class InsertarUsuarioWebRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertarUsuarioWeb", Namespace="http://tempuri.org/", Order=0)]
+        public Integracion.WebServices.CoreReferencia.InsertarUsuarioWebRequestBody Body;
+        
+        public InsertarUsuarioWebRequest() {
+        }
+        
+        public InsertarUsuarioWebRequest(Integracion.WebServices.CoreReferencia.InsertarUsuarioWebRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class InsertarUsuarioWebRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string nombreUsuario;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string clave;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string nombreCompleto;
+        
+        public InsertarUsuarioWebRequestBody() {
+        }
+        
+        public InsertarUsuarioWebRequestBody(string nombreUsuario, string clave, string nombreCompleto) {
+            this.nombreUsuario = nombreUsuario;
+            this.clave = clave;
+            this.nombreCompleto = nombreCompleto;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class InsertarUsuarioWebResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="InsertarUsuarioWebResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Integracion.WebServices.CoreReferencia.InsertarUsuarioWebResponseBody Body;
+        
+        public InsertarUsuarioWebResponse() {
+        }
+        
+        public InsertarUsuarioWebResponse(Integracion.WebServices.CoreReferencia.InsertarUsuarioWebResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class InsertarUsuarioWebResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool InsertarUsuarioWebResult;
+        
+        public InsertarUsuarioWebResponseBody() {
+        }
+        
+        public InsertarUsuarioWebResponseBody(bool InsertarUsuarioWebResult) {
+            this.InsertarUsuarioWebResult = InsertarUsuarioWebResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface CoreServiceSoapChannel : Integracion.WebServices.CoreReferencia.CoreServiceSoap, System.ServiceModel.IClientChannel {
     }
@@ -3095,6 +3178,35 @@ namespace Integracion.WebServices.CoreReferencia {
             inValue.Body.placa = placa;
             inValue.Body.color = color;
             return ((Integracion.WebServices.CoreReferencia.CoreServiceSoap)(this)).InsertarVehiculoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Integracion.WebServices.CoreReferencia.InsertarUsuarioWebResponse Integracion.WebServices.CoreReferencia.CoreServiceSoap.InsertarUsuarioWeb(Integracion.WebServices.CoreReferencia.InsertarUsuarioWebRequest request) {
+            return base.Channel.InsertarUsuarioWeb(request);
+        }
+        
+        public bool InsertarUsuarioWeb(string nombreUsuario, string clave, string nombreCompleto) {
+            Integracion.WebServices.CoreReferencia.InsertarUsuarioWebRequest inValue = new Integracion.WebServices.CoreReferencia.InsertarUsuarioWebRequest();
+            inValue.Body = new Integracion.WebServices.CoreReferencia.InsertarUsuarioWebRequestBody();
+            inValue.Body.nombreUsuario = nombreUsuario;
+            inValue.Body.clave = clave;
+            inValue.Body.nombreCompleto = nombreCompleto;
+            Integracion.WebServices.CoreReferencia.InsertarUsuarioWebResponse retVal = ((Integracion.WebServices.CoreReferencia.CoreServiceSoap)(this)).InsertarUsuarioWeb(inValue);
+            return retVal.Body.InsertarUsuarioWebResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.InsertarUsuarioWebResponse> Integracion.WebServices.CoreReferencia.CoreServiceSoap.InsertarUsuarioWebAsync(Integracion.WebServices.CoreReferencia.InsertarUsuarioWebRequest request) {
+            return base.Channel.InsertarUsuarioWebAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Integracion.WebServices.CoreReferencia.InsertarUsuarioWebResponse> InsertarUsuarioWebAsync(string nombreUsuario, string clave, string nombreCompleto) {
+            Integracion.WebServices.CoreReferencia.InsertarUsuarioWebRequest inValue = new Integracion.WebServices.CoreReferencia.InsertarUsuarioWebRequest();
+            inValue.Body = new Integracion.WebServices.CoreReferencia.InsertarUsuarioWebRequestBody();
+            inValue.Body.nombreUsuario = nombreUsuario;
+            inValue.Body.clave = clave;
+            inValue.Body.nombreCompleto = nombreCompleto;
+            return ((Integracion.WebServices.CoreReferencia.CoreServiceSoap)(this)).InsertarUsuarioWebAsync(inValue);
         }
     }
 }

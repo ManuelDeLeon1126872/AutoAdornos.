@@ -7,32 +7,49 @@ namespace AutoAdornos.Core.Admin
 {
     public partial class frmProductos : Form
     {
-        // 1. Variable mágica para saber si estamos creando o editando
         private int idProductoEditando = 0;
+        private int _perfilUsuario; // Aquí guardamos si es Cajero o Admin
 
-        public frmProductos()
+        // Modificamos el constructor para recibir quién abrió la pantalla
+        public frmProductos(int perfilUsuario = 1)
         {
             InitializeComponent();
-
-            // 2. Conectamos el evento de Doble Clic a la tabla desde aquí
-            this.dgvProductos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellDoubleClick);
+            _perfilUsuario = perfilUsuario;
+            this.dgvProductos.CellDoubleClick += new DataGridViewCellEventHandler(this.dgvProductos_CellDoubleClick);
         }
 
         private void frmProductos_Load(object sender, EventArgs e)
         {
             chkEstado.Checked = true;
             CargarProductos();
+
+            // MODO CAJERO (Solo Lectura)
+            if (_perfilUsuario == 2)
+            {
+                // Deshabilitamos que puedan escribir
+                txtCodigo.Enabled = false;
+                txtDescripcion.Enabled = false;
+                txtPrecio.Enabled = false;
+                txtExistencia.Enabled = false;
+                chkEstado.Enabled = false;
+
+                // Escondemos los botones peligrosos
+                btnGuardar.Visible = false;
+                btnLimpiar.Visible = false;
+
+                this.Text = "Inventario de Productos - MODO LECTURA";
+                MessageBox.Show("Modo Cajero: Puede consultar el inventario, pero no modificarlo.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
-        // 3. El evento que se dispara al hacer doble clic en la tabla
         private void dgvProductos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            // Si es Cajero, no hacemos nada al hacer doble clic
+            if (_perfilUsuario == 2) return;
+
             if (e.RowIndex >= 0)
             {
-                // Extraemos la fila a la que se le hizo clic
                 DataGridViewRow fila = dgvProductos.Rows[e.RowIndex];
-
-                // Llenamos el formulario con los datos de esa fila
                 idProductoEditando = Convert.ToInt32(fila.Cells["IdProducto"].Value);
                 txtCodigo.Text = fila.Cells["Codigo"].Value.ToString();
                 txtDescripcion.Text = fila.Cells["Descripcion"].Value.ToString();
@@ -40,9 +57,8 @@ namespace AutoAdornos.Core.Admin
                 txtExistencia.Text = fila.Cells["Existencia"].Value.ToString();
                 chkEstado.Checked = Convert.ToBoolean(fila.Cells["Estado"].Value);
 
-                // Cambiamos el estilo del botón para indicar que estamos en MODO EDICIÓN
                 btnGuardar.Text = "ACTUALIZAR PRODUCTO";
-                btnGuardar.BackColor = Color.FromArgb(11, 110, 42); // Verde para actualizar
+                btnGuardar.BackColor = Color.FromArgb(11, 110, 42);
             }
         }
 
@@ -58,83 +74,44 @@ namespace AutoAdornos.Core.Admin
             {
                 ProductoBL bl = new ProductoBL();
 
-                // Revisamos si la variable está en 0 (NUEVO) o tiene un ID (EDITANDO)
                 if (idProductoEditando == 0)
                 {
-                    // MODO CREACIÓN
-                    int id = bl.InsertarProducto(
-                        txtCodigo.Text.Trim(),
-                        txtDescripcion.Text.Trim(),
-                        decimal.Parse(txtPrecio.Text),
-                        int.Parse(txtExistencia.Text),
-                        chkEstado.Checked
-                    );
+                    bl.InsertarProducto(txtCodigo.Text.Trim(), txtDescripcion.Text.Trim(), decimal.Parse(txtPrecio.Text), int.Parse(txtExistencia.Text), chkEstado.Checked);
                     MessageBox.Show("Producto creado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    // MODO ACTUALIZACIÓN (RESTOCK)
-                    bl.ActualizarProducto(
-                        idProductoEditando,
-                        txtCodigo.Text.Trim(),
-                        txtDescripcion.Text.Trim(),
-                        decimal.Parse(txtPrecio.Text),
-                        int.Parse(txtExistencia.Text),
-                        chkEstado.Checked
-                    );
+                    bl.ActualizarProducto(idProductoEditando, txtCodigo.Text.Trim(), txtDescripcion.Text.Trim(), decimal.Parse(txtPrecio.Text), int.Parse(txtExistencia.Text), chkEstado.Checked);
                     MessageBox.Show("Inventario/Producto actualizado correctamente.", "Restock Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
                 Limpiar();
                 CargarProductos();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al guardar: Verifique que su compañero haya creado el método ActualizarProducto en ProductoBL. Detalle: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            catch (Exception ex) { MessageBox.Show("Error al guardar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
-        private void btnListar_Click(object sender, EventArgs e)
-        {
-            CargarProductos();
-        }
-
-        private void btnLimpiar_Click(object sender, EventArgs e)
-        {
-            Limpiar();
-        }
-
-        private void btnCerrar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        private void btnListar_Click(object sender, EventArgs e) { CargarProductos(); }
+        private void btnLimpiar_Click(object sender, EventArgs e) { Limpiar(); }
+        private void btnCerrar_Click(object sender, EventArgs e) { this.Close(); }
 
         private void CargarProductos()
         {
-            try
-            {
-                ProductoBL bl = new ProductoBL();
-                dgvProductos.DataSource = bl.ListarProductosAdmin();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar productos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            try { dgvProductos.DataSource = new ProductoBL().ListarProductosAdmin(); }
+            catch (Exception ex) { MessageBox.Show("Error al cargar productos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
         private void Limpiar()
         {
-            idProductoEditando = 0; // Reseteamos la variable mágica
+            idProductoEditando = 0;
             txtCodigo.Text = "";
             txtDescripcion.Text = "";
             txtPrecio.Text = "";
             txtExistencia.Text = "";
             chkEstado.Checked = true;
 
-            // Devolvemos el botón a su estilo original (Azul y Nuevo)
             btnGuardar.Text = "GUARDAR PRODUCTO";
             btnGuardar.BackColor = Color.FromArgb(10, 17, 40);
-
             txtCodigo.Focus();
         }
     }

@@ -363,6 +363,20 @@ namespace Integracion.API
                 return "Error al guardar vehículo: " + ex.Message;
             }
         }
+
+        [WebMethod]
+        public bool RegistrarUsuarioWeb(string nombreUsuario, string clave, string nombreCompleto)
+        {
+            try
+            {
+                var clienteCore = new WebServices.CoreReferencia.CoreServiceSoapClient();
+                return clienteCore.InsertarUsuarioWeb(nombreUsuario, clave, nombreCompleto);
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 
     public class ItemVenta

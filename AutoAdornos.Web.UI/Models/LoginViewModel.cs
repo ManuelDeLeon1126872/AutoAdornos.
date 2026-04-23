@@ -13,4 +13,11 @@ namespace AutoAdornos.Web.UI.Models
         [Display(Name = "Clave")]
         public string Clave { get; set; }
     }
+
+    public class RegisterViewModel
+    {
+        public string NombreCompleto { get; set; }
+        public string Usuario { get; set; }
+        public string Clave { get; set; }
+    }
 }

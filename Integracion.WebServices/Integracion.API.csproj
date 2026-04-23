@@ -253,6 +253,9 @@
     <Content Include="Connected Services\CoreReferencia\Integracion.WebServices.CoreReferencia.InsertarVehiculoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\CoreReferencia\Integracion.WebServices.CoreReferencia.InsertarUsuarioWebResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\CoreReferencia\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

@@ -24,6 +24,9 @@
             @Html.PasswordFor(m => m.Clave, new { @class = "form-control", placeholder = "********" })
             @Html.ValidationMessageFor(m => m.Clave, "", new { @class = "field-validation-error" })
         </div>
+        <div class="text-center mt-3">
+            <p>¿No tienes cuenta? <a href="@Url.Action("Register", "Account")" class="btn btn-outline-primary btn-sm">Regístrate aquí</a></p>
+        </div>
 
         <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
     }

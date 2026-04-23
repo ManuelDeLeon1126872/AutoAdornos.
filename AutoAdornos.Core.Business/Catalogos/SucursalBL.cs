@@ -30,5 +30,25 @@ namespace AutoAdornos.Core.Business.Catalogos
                 return db.sp_ListarSucursales().ToList();
             }
         }
+
+        public void ActualizarSucursal(int idSucursal, string nombre, string direccion, string telefono, bool estado)
+        {
+            using (var db = new AutoAdornos.Core.Data.DBAutoAdornosCoreEntities())
+            {
+                // Usamos SQL directo a prueba de balas
+                db.Database.ExecuteSqlCommand(
+                    "UPDATE tblSucursal SET Nombre = {0}, Direccion = {1}, Telefono = {2}, Estado = {3} WHERE IdSucursal = {4}",
+                    nombre, direccion, telefono, estado, idSucursal
+                );
+            }
+        }
+
+        public void EliminarSucursal(int idSucursal)
+        {
+            using (var db = new AutoAdornos.Core.Data.DBAutoAdornosCoreEntities())
+            {
+                db.Database.ExecuteSqlCommand("DELETE FROM tblSucursal WHERE IdSucursal = {0}", idSucursal);
+            }
+        }
     }
 }

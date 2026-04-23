@@ -18,6 +18,7 @@
         private void InitializeComponent()
         {
             this.panelHeader = new System.Windows.Forms.Panel();
+            this.lblAcceso = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
             this.lblSub = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
@@ -32,6 +33,7 @@
             // panelHeader
             // 
             this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(17)))), ((int)(((byte)(40)))));
+            this.panelHeader.Controls.Add(this.lblAcceso);
             this.panelHeader.Controls.Add(this.btnSalir);
             this.panelHeader.Controls.Add(this.lblSub);
             this.panelHeader.Controls.Add(this.lblTitulo);
@@ -40,6 +42,19 @@
             this.panelHeader.Name = "panelHeader";
             this.panelHeader.Size = new System.Drawing.Size(1200, 120);
             this.panelHeader.TabIndex = 0;
+            // 
+            // lblAcceso
+            // 
+            this.lblAcceso.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblAcceso.AutoSize = true;
+            this.lblAcceso.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblAcceso.ForeColor = System.Drawing.Color.Gold;
+            this.lblAcceso.Location = new System.Drawing.Point(740, 43);
+            this.lblAcceso.Name = "lblAcceso";
+            this.lblAcceso.Size = new System.Drawing.Size(262, 28);
+            this.lblAcceso.TabIndex = 3;
+            this.lblAcceso.Text = "ACCESO: ADMINISTRADOR";
+            this.lblAcceso.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnSalir
             // 
@@ -168,5 +183,6 @@
         private System.Windows.Forms.Button btnUsuarios;
         private System.Windows.Forms.Button btnProductos;
         private System.Windows.Forms.Button btnSucursales;
+        private System.Windows.Forms.Label lblAcceso;
     }
 }

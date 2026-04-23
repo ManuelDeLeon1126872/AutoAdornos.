@@ -50,7 +50,45 @@
                 @Html.LabelFor(m => m.Observacion, "¿Alguna nota para nosotros?")
                 @Html.TextAreaFor(m => m.Observacion, new { @class = "form-control", rows = 4, placeholder = "Ej. Por favor empacar para regalo..." })
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Confirmar y pagar pedido</button>
+
+            <hr style="margin: 20px 0; border-top: 1px solid #eee;" />
+            <div class="section-title">Método de pago</div>
+            
+            <div class="form-row">
+                <select name="MetodoPago" id="MetodoPago" class="form-control" onchange="mostrarTarjeta()">
+                    <option value="Efectivo">Pago al recibir (Efectivo)</option>
+                    <option value="Tarjeta">Tarjeta de Crédito/Débito</option>
+                </select>
+            </div>
+
+            <div id="divTarjeta" style="display:none; padding: 15px; background-color: #f8f9fa; border-radius: 8px; margin-bottom: 15px;">
+                <div class="form-row">
+                    <label>Número de Tarjeta</label>
+                    <input type="text" name="NumeroTarjeta" class="form-control" placeholder="XXXX-XXXX-XXXX-XXXX" />
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <div class="form-row" style="flex: 1;">
+                        <label>Vencimiento</label>
+                        <input type="text" class="form-control" placeholder="MM/YY" />
+                    </div>
+                    <div class="form-row" style="flex: 1;">
+                        <label>CVC</label>
+                        <input type="text" class="form-control" placeholder="123" />
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" style="margin-top: 15px;">Confirmar y pagar pedido</button>
         }
     </article>
 </section>
+
+<script>
+    function mostrarTarjeta() {
+        var metodo = document.getElementById("MetodoPago").value;
+        if (metodo === "Tarjeta") {
+            document.getElementById("divTarjeta").style.display = "block";
+        } else {
+            document.getElementById("divTarjeta").style.display = "none";
+        }
+    }
+</script>

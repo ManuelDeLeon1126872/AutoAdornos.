@@ -24,6 +24,9 @@
             this.btnCerrar = new System.Windows.Forms.Button();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cmbPerfil = new System.Windows.Forms.ComboBox();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.chkEstado = new System.Windows.Forms.CheckBox();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
@@ -90,6 +93,9 @@
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.Color.White;
+            this.panelLeft.Controls.Add(this.label5);
+            this.panelLeft.Controls.Add(this.cmbPerfil);
+            this.panelLeft.Controls.Add(this.btnEliminar);
             this.panelLeft.Controls.Add(this.chkEstado);
             this.panelLeft.Controls.Add(this.btnLimpiar);
             this.panelLeft.Controls.Add(this.btnGuardar);
@@ -108,55 +114,82 @@
             this.panelLeft.Size = new System.Drawing.Size(400, 720);
             this.panelLeft.TabIndex = 1;
             // 
-            // chkEstado
+            // label1
             // 
-            this.chkEstado.AutoSize = true;
-            this.chkEstado.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.chkEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(110)))), ((int)(((byte)(42)))));
-            this.chkEstado.Location = new System.Drawing.Point(30, 480);
-            this.chkEstado.Name = "chkEstado";
-            this.chkEstado.Size = new System.Drawing.Size(176, 32);
-            this.chkEstado.TabIndex = 11;
-            this.chkEstado.Text = "Cuenta Activa";
-            this.chkEstado.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.Gray;
+            this.label1.Location = new System.Drawing.Point(25, 70);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(188, 23);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "CORREO O USUARIO*";
             // 
-            // btnLimpiar
+            // txtNombreUsuario
             // 
-            this.btnLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLimpiar.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLimpiar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnLimpiar.ForeColor = System.Drawing.Color.Gray;
-            this.btnLimpiar.Location = new System.Drawing.Point(30, 620);
-            this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(340, 45);
-            this.btnLimpiar.TabIndex = 10;
-            this.btnLimpiar.Text = "LIMPIAR CAMPOS";
-            this.btnLimpiar.UseVisualStyleBackColor = true;
-            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            this.txtNombreUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(246)))), ((int)(((byte)(249)))));
+            this.txtNombreUsuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNombreUsuario.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.txtNombreUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(17)))), ((int)(((byte)(40)))));
+            this.txtNombreUsuario.Location = new System.Drawing.Point(30, 95);
+            this.txtNombreUsuario.Multiline = true;
+            this.txtNombreUsuario.Name = "txtNombreUsuario";
+            this.txtNombreUsuario.Size = new System.Drawing.Size(340, 40);
+            this.txtNombreUsuario.TabIndex = 2;
             // 
-            // btnGuardar
+            // label2
             // 
-            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(17)))), ((int)(((byte)(40)))));
-            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGuardar.FlatAppearance.BorderSize = 0;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(30, 540);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(340, 60);
-            this.btnGuardar.TabIndex = 9;
-            this.btnGuardar.Text = "GUARDAR USUARIO";
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.Gray;
+            this.label2.Location = new System.Drawing.Point(25, 145);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(132, 23);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "CONTRASEÑA*";
+            // 
+            // txtClave
+            // 
+            this.txtClave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(246)))), ((int)(((byte)(249)))));
+            this.txtClave.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtClave.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.txtClave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(17)))), ((int)(((byte)(40)))));
+            this.txtClave.Location = new System.Drawing.Point(30, 170);
+            this.txtClave.Multiline = true;
+            this.txtClave.Name = "txtClave";
+            this.txtClave.PasswordChar = '•';
+            this.txtClave.Size = new System.Drawing.Size(340, 40);
+            this.txtClave.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.Gray;
+            this.label3.Location = new System.Drawing.Point(25, 220);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(186, 23);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "NOMBRE COMPLETO*";
+            // 
+            // txtNombreCompleto
+            // 
+            this.txtNombreCompleto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(246)))), ((int)(((byte)(249)))));
+            this.txtNombreCompleto.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNombreCompleto.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.txtNombreCompleto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(17)))), ((int)(((byte)(40)))));
+            this.txtNombreCompleto.Location = new System.Drawing.Point(30, 245);
+            this.txtNombreCompleto.Multiline = true;
+            this.txtNombreCompleto.Name = "txtNombreCompleto";
+            this.txtNombreCompleto.Size = new System.Drawing.Size(340, 40);
+            this.txtNombreCompleto.TabIndex = 6;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.Gray;
-            this.label4.Location = new System.Drawing.Point(25, 380);
+            this.label4.Location = new System.Drawing.Point(25, 295);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(193, 23);
             this.label4.TabIndex = 7;
@@ -170,80 +203,92 @@
             this.cmbSucursal.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.cmbSucursal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(17)))), ((int)(((byte)(40)))));
             this.cmbSucursal.FormattingEnabled = true;
-            this.cmbSucursal.Location = new System.Drawing.Point(30, 410);
+            this.cmbSucursal.Location = new System.Drawing.Point(30, 320);
             this.cmbSucursal.Name = "cmbSucursal";
             this.cmbSucursal.Size = new System.Drawing.Size(340, 39);
             this.cmbSucursal.TabIndex = 8;
             // 
-            // label3
+            // label5
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.Gray;
-            this.label3.Location = new System.Drawing.Point(25, 280);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(186, 23);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "NOMBRE COMPLETO*";
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.Color.Gray;
+            this.label5.Location = new System.Drawing.Point(25, 370);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(155, 23);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "NIVEL DE PERFIL*";
             // 
-            // txtNombreCompleto
+            // cmbPerfil
             // 
-            this.txtNombreCompleto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(246)))), ((int)(((byte)(249)))));
-            this.txtNombreCompleto.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtNombreCompleto.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.txtNombreCompleto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(17)))), ((int)(((byte)(40)))));
-            this.txtNombreCompleto.Location = new System.Drawing.Point(30, 310);
-            this.txtNombreCompleto.Multiline = true;
-            this.txtNombreCompleto.Name = "txtNombreCompleto";
-            this.txtNombreCompleto.Size = new System.Drawing.Size(340, 40);
-            this.txtNombreCompleto.TabIndex = 6;
+            this.cmbPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(246)))), ((int)(((byte)(249)))));
+            this.cmbPerfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPerfil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbPerfil.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.cmbPerfil.FormattingEnabled = true;
+            this.cmbPerfil.Location = new System.Drawing.Point(30, 395);
+            this.cmbPerfil.Name = "cmbPerfil";
+            this.cmbPerfil.Size = new System.Drawing.Size(340, 39);
+            this.cmbPerfil.TabIndex = 13;
             // 
-            // label2
+            // chkEstado
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(25, 180);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(132, 23);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "CONTRASEÑA*";
+            this.chkEstado.AutoSize = true;
+            this.chkEstado.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.chkEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(110)))), ((int)(((byte)(42)))));
+            this.chkEstado.Location = new System.Drawing.Point(30, 450);
+            this.chkEstado.Name = "chkEstado";
+            this.chkEstado.Size = new System.Drawing.Size(176, 32);
+            this.chkEstado.TabIndex = 11;
+            this.chkEstado.Text = "Cuenta Activa";
+            this.chkEstado.UseVisualStyleBackColor = true;
             // 
-            // txtClave
+            // btnGuardar
             // 
-            this.txtClave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(246)))), ((int)(((byte)(249)))));
-            this.txtClave.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtClave.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.txtClave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(17)))), ((int)(((byte)(40)))));
-            this.txtClave.Location = new System.Drawing.Point(30, 210);
-            this.txtClave.Multiline = true;
-            this.txtClave.Name = "txtClave";
-            this.txtClave.PasswordChar = '•';
-            this.txtClave.Size = new System.Drawing.Size(340, 40);
-            this.txtClave.TabIndex = 4;
+            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(17)))), ((int)(((byte)(40)))));
+            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGuardar.FlatAppearance.BorderSize = 0;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
+            this.btnGuardar.Location = new System.Drawing.Point(30, 500);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(165, 50);
+            this.btnGuardar.TabIndex = 9;
+            this.btnGuardar.Text = "GUARDAR";
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // label1
+            // btnEliminar
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.Gray;
-            this.label1.Location = new System.Drawing.Point(25, 80);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(188, 23);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "CORREO O USUARIO*";
+            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.btnEliminar.ForeColor = System.Drawing.Color.White;
+            this.btnEliminar.Location = new System.Drawing.Point(205, 500);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(165, 50);
+            this.btnEliminar.TabIndex = 14;
+            this.btnEliminar.Text = "ELIMINAR";
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
-            // txtNombreUsuario
+            // btnLimpiar
             // 
-            this.txtNombreUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(246)))), ((int)(((byte)(249)))));
-            this.txtNombreUsuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtNombreUsuario.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.txtNombreUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(17)))), ((int)(((byte)(40)))));
-            this.txtNombreUsuario.Location = new System.Drawing.Point(30, 110);
-            this.txtNombreUsuario.Multiline = true;
-            this.txtNombreUsuario.Name = "txtNombreUsuario";
-            this.txtNombreUsuario.Size = new System.Drawing.Size(340, 40);
-            this.txtNombreUsuario.TabIndex = 2;
+            this.btnLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLimpiar.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpiar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLimpiar.ForeColor = System.Drawing.Color.Gray;
+            this.btnLimpiar.Location = new System.Drawing.Point(30, 565);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(340, 45);
+            this.btnLimpiar.TabIndex = 10;
+            this.btnLimpiar.Text = "LIMPIAR CAMPOS";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // lblFormulario
             // 
@@ -390,7 +435,10 @@
         private System.Windows.Forms.TextBox txtNombreCompleto;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbSucursal;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cmbPerfil;
         private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.CheckBox chkEstado;
         private System.Windows.Forms.Panel panelMain;
